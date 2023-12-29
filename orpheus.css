@@ -33,11 +33,13 @@ h2 {
 .sheet-right {
   text-align: right
 }
+
 /*-----textarea-----*/
 
 textarea {
   height: 50px;
 }
+
 /*-----
 input[type="text"] {
   background:none;
@@ -53,6 +55,7 @@ input.sheet-tab1:not(:checked)~.sheet-tab1,
 input.sheet-tab2:not(:checked)~.sheet-tab2,
 input.sheet-tab3:not(:checked)~.sheet-tab3,
 input.sheet-tab4:not(:checked)~.sheet-tab4,
+input.sheet-tab4:not(:checked)~.sheet-tab4,
 input.sheet-tab5:not(:checked)~.sheet-tab5 {
   display: none;
 }
@@ -61,7 +64,7 @@ input.sheet-tab {
   width: calc(20% - 4px);
   max-width: 150px;
   height: 20px;
-  
+
   outline: none !important;
   position: relative;
   cursor: pointer;
@@ -84,7 +87,7 @@ input.sheet-tab::before {
   font-size: 14px;
   font-weight: bold;
   text-align: center;
-  
+
   width: 100%;
   height: 20px;
 }
@@ -107,9 +110,6 @@ div.sheet-body {
   display: none;
 }
 
-input.sheet-arrow:checked~div.sheet-body {
-  display: block;
-}
 /*-----radio boxes-----*/
 
 /* -----Hide actual radio----- */
@@ -133,24 +133,24 @@ input.sheet-normal[type="radio"]+span::before {
   text-align: center;
   display: inline-block;
   vertical-align: middle;
-  
+
   -moz-box-shadow: 0 0 2px #ccc;
   -webkit-box-shadow: 0 0 2px #ccc;
   box-shadow: 0 0 2px #ccc;
-  
+
   background: #f6f6f6;
   background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
   background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
   background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
   background: -o-radial-gradient(#f6f6f6, #dfdfdf);
   background: radial-gradient(#f6f6f6, #dfdfdf);
-  
+
   color: black;
   content: "•";
   width: 12px;
   height: 12px;
   font-size: 3em;
-  
+
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -226,12 +226,13 @@ input.sheet-aggravateddot:checked~span.sheet-aggravateddot {
   width: 20px;
   height: 20px;
 }
+
 .sheet-lethaldot:after {
   content: "X";
   color: black;
   font-weight: bold;
-    font-size: 20px;
-    padding-left: 4px;
+  font-size: 20px;
+  padding-left: 4px;
 }
 
 .sheet-aggravateddot {
@@ -242,7 +243,7 @@ input.sheet-aggravateddot:checked~span.sheet-aggravateddot {
 }
 
 .sheet-grid {
-margin-left: auto;
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -269,11 +270,11 @@ input.sheet-bigcheck[type="checkbox"]+span::before {
   text-align: center;
   display: inline-block;
   vertical-align: middle;
-  
+
   -moz-box-shadow: 0 0 2px #ccc;
   -webkit-box-shadow: 0 0 2px #ccc;
   box-shadow: 0 0 2px #ccc;
-  
+
   background: #f6f6f6;
   background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
   background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
@@ -287,11 +288,12 @@ input.sheet-bigcheck[type="checkbox"]+span::before {
   width: 14px;
   height: 14px;
   font-size: 12px;
-  
+
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
+
 input.sheet-bigcheck[type="checkbox"]:checked+span::before {
   color: red;
   content: "✓";
@@ -325,16 +327,16 @@ input.sheet-roundcheck[type="checkbox"]+span::before {
   -moz-box-shadow: 0 0 20px #ccc;
   -webkit-box-shadow: 0 0 20px #ccc;
   box-shadow: 0 0 20px #ccc;
-  
+
   background: #f6f6f6;
   background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
   background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
   background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
   background: -o-radial-gradient(#f6f6f6, #dfdfdf);
   background: radial-gradient(#f6f6f6, #dfdfdf);
-  
+
   -moz-border-radius: 20px 20px 20px 20px;
-    -webkit-border-radius: 20px 20px 20px 20px;
+  -webkit-border-radius: 20px 20px 20px 20px;
   border-radius: 20px 20px 20px 20px;
 }
 
@@ -343,16 +345,18 @@ input.sheet-roundcheck[type="checkbox"]+span::before {
   width: 14px;
   height: 14px;
   font-size: 12px;
-  
+
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   border-radius: 20px;
 }
+
 input.sheet-roundcheck[type="checkbox"]:checked+span::before {
   color: blue;
   font-size: 3em;
   content: "•";
 }
+
 /*-------Tables--------*/
 table.sheet-devotions {
   border: 1px solid black;
@@ -414,6 +418,7 @@ input.sheet-arrow[type="checkbox"]+span::before {
   height: 14px;
   font-size: 12px;
 }
+
 input.sheet-arrow[type="checkbox"]:checked+span::before {
   color: white;
   content: "▼";
@@ -423,4 +428,25 @@ input.sheet-arrow[type="checkbox"]:checked+span::before {
 
 .sheet-select {
   margin-bottom: 0
+}
+
+button.sheet-toggle {
+  /* Resetting user-agent styling */
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  overflow: visible;
+  text-transform: none;
+  border-style: none;
+
+  padding: 0 4px;
+  background: white;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+input.sheet-flag[value="1"]~.sheet-toggle {
+  text-shadow: 0px 0px 10px black;
+  font-weight: bold;
 }
