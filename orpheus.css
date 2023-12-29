@@ -403,27 +403,6 @@ input.sheet-arrow[type="checkbox"] {
   z-index: 1;
 }
 
-/* -----Fake sheet-arrow checkbox----- */
-
-input.sheet-arrow[type="checkbox"]+span::before {
-  color: white;
-  margin-right: 4px;
-  line-height: 14px;
-  text-align: center;
-  display: inline-block;
-  vertical-align: middle;
-  float: left;
-  content: "►";
-  width: 14px;
-  height: 14px;
-  font-size: 12px;
-}
-
-input.sheet-arrow[type="checkbox"]:checked+span::before {
-  color: white;
-  content: "▼";
-}
-
 /*-------sheet select---------*/
 
 .sheet-select {
