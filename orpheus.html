@@ -20,8 +20,8 @@
               <td><input type="text" name="attr_player_name" /></td>
             </tr>
             <tr>
-              <td>Chronicle</td>
-              <td><input type="text" name="attr_chronicle_name" /></td>
+              <td>Crucible</td>
+              <td><input type="text" name="attr_crucible_name" /></td>
             </tr>
           </table>
         </div>
@@ -141,7 +141,7 @@
           </td>
         </tr>
         <tr>
-          <td>resistance</td>
+          <td>rsistance</td>
           <td>
             <h4>Resolve</h4>
           </td>
@@ -914,19 +914,22 @@
               <td>
                 <h5 class="right">Size</h5>
               </td>
-              <td><input type="text" name="attr_size" style="width:100px" /></td>
+              <td><input type="number" name="attr_size" value="@{base_size}+@{giant}-@{small_framed}" disabled="disabled"
+                  style="width:100px" /></td>
             </tr>
             <tr>
               <td>
                 <h5 class="right">Speed</h5>
               </td>
-              <td><input type="text" name="attr_speed" style="width:100px" /></td>
+              <td><input type="number" name="attr_speed" style="width:100px" disabled="disabled"
+                  value="@{species_factor}+@{speed_base}+@{speed_penalty}+@{fleet_of_foot}" /></td>
             </tr>
             <tr>
               <td>
                 <h5 class="right">Defense</h5>
               </td>
-              <td><input type="text" name="attr_defense" style="width:100px" /></td>
+              <td><input type="number" name="attr_defense" value="@{defense_base}+@{defense_penalty}+@{defense_bonus}"
+                  disabled="disabled" style="width:100px" /></td>
             </tr>
             <tr>
               <td>
@@ -938,7 +941,9 @@
               <td>
                 <h5 class="right">Initiative Mod</h5>
               </td>
-              <td><input type="text" name="attr_initiative_mod" style="width:100px" /></td>
+              <td><input type="number" name="attr_initiative_mod"
+                  value="@{initiative_base}+@{initiative_penalty}+@{fast_reflexes}+@{initiative_bonus}" disabled="disabled"
+                  style="width:100px" /></td>
             </tr>
             <tr>
               <td>
@@ -1661,21 +1666,174 @@
         <h2>Settings</h2>
       </div>
       <div>
+          <h3>Defense Settings</h3>
+          <span>Defense Trait</span>:
+          <select name="attr_defense_attr">
+            <option value="" disabled hidden>Defense?</option>
+            <option value="lowest">Lowest</option>
+            <option value="highest">Highest</option>
+            <option value="wits">Wits</option>
+            <option value="dexterity">Dexterity</option>
+          </select>
+          <select name="attr_defense_skill">
+            <option value="nothing"></option>
+            <option value="athletics" selected>+ Athletics</option>
+            <option value="brawl">+ Brawl</option>
+            <option value="weaponry">+ Weaponry</option>
+          </select>
+          <span>Defense Bonus</span>:
+          <input type="number" name="attr_defense_bonus" value="0" />
         <div>
+          <h3>Health Settings</h3>
           <span>Base Size</span>:
           <input type="number" name="attr_base_size" value="5" />
-          <span class="checkbox">
-            <input type="hidden" class="flag" name="attr_giant">
+          <span class="sheet-checkbox">
+            <input type="hidden" class="sheet-flag" name="attr_giant">
             <button type="action" name="act_giant"></button>
-            <button type="action" class="toggle" name="act_giant">Giant</button>
+            <button type="action" class="sheet-toggle" name="act_giant">Giant</button>
           </span>
-          <span class="checkbox">
-            <input type="hidden" class="flag" name="attr_small_framed">
+          <span class="sheet-checkbox">
+            <input type="hidden" class="sheet-flag" name="attr_small_framed">
             <button type="action" name="act_small_framed"></button>
-            <button type="action" class="toggle" name="act_small_framed">Small Framed</button>
+            <button type="action" class="sheet-toggle" name="act_small_framed">Small Framed</button>
           </span>
-        </div>
       </div>
-    </div>
-  </div>
+      <div>
+        <h3>Speed Settings</h3>
+        <span>Species Factor</span><input type="number" name="attr_species_factor" value="5" />
+        <span>Fleet of Foot</span>: <input type="number" name="attr_fleet_of_foot" style="width: 55px;" value="0" />
+      </div>
+      <div>
+        <h3>Initiative Settings</h3>
+        <span>Fast Reflexes</span><input type="number" name="attr_fast_reflexes" value="0" />
+        <span>Initiative Bonus</span><input type="number" name="attr_initiative_bonus" value="0" />
+      </div>
+      </div>
+      </div>
 </div>
+<!-- HIDDEN FIELDS AND FORMULAS -->
+<input type="hidden" name="attr_version" value="0" />
+<input type="hidden" name="attr_health" value="0" />
+<input type="hidden" name="attr_speed_base" value="0" />
+<input type="hidden" name="attr_speed_penalty" value="0" />
+<input type="hidden" name="attr_defense_base" value="0" />
+<input type="hidden" name="attr_defense_penalty" value="0" />
+<input type="hidden" name="attr_initiative_penalty" value="0" />
+<input type="hidden" name="attr_initiative_base" value="0" />
+
+<script type="text/worker">
+  const attributes = ["int", "wits", "res", "str", "dex", "sta", "pre", "man", "com"];
+  const mentalSkills = ["academics", "computer", "enigmas", "investigation", "medicine", "occult", "politics", "science"];
+  const physicalSkills = ["athletics", "brawl", "drive", "firearms", "larceny", "ride", "stealth", "survival", "weaponry"];
+  const socialSkills = ["animalken", "empathy", "expression", "intimidation", "persuasion", "socialize", "streetwise", "subterfuge"];
+  const skills = [...mentalSkills, ...physicalSkills, ...socialSkills];
+  const normalStats = [...attributes, ...skills];
+  const sizeStats = ["base_size", "giant", "small_framed"];
+  const speedStats = ["species_factor", "fleet_of_foot"];
+  const defenseStats = ["defense_attr", "defense_skill", "defense_bonus"];
+  const allStats = [...normalStats, ...sizeStats, ...speedStats, ...defenseStats, "willpower_available"];
+  allStats.forEach((attr) => {
+    on(`change:${attr}`, (eventInfo) => {
+      const source = eventInfo.sourceAttribute;
+      const derivedHealthStats = [...sizeStats, "sta"];
+      if (derivedHealthStats.includes(source)) {
+        updateHealth();
+      }
+
+      const derivedSpeedStats = ["dex","str", ...speedStats];
+      if (derivedSpeedStats.includes(source)) {
+          updateSpeed();
+      }
+
+      const derivedDefenseStats = ["wits", "dex", "athletics", "brawl", "weaponry", ...defenseStats];
+      if (derivedDefenseStats.includes(source)) {
+          updateDefense();
+      };
+    });
+  });
+
+  const checkboxAttributes = [
+    "small_framed",
+    "giant"
+  ];
+  checkboxAttributes.forEach((checkboxAttribute) => {
+    on(`clicked:${checkboxAttribute}`, () => {
+      const attr = checkboxAttribute.replace(":","_");
+      getAttrs([attr], (values) => {
+        const checkboxValue = ["1", "on"].includes(values[attr]);
+        setAttrs({
+          [attr]: checkboxValue ? "0" : "1"
+        });
+      });
+    })
+  })
+
+  on("sheet:opened", () => {
+    updateHealth();
+    updateSpeed();
+    updateDefense();
+    updateInitiative();
+  });
+
+  const updateHealth = () => {
+    getAttrs(["sta","res","base_size","giant","small_framed"], (v) => {
+      const health = Number(v.sta) + Number(v.base_size) + Number(v.giant) - Number(v.small_framed);
+      setAttrs({
+        health
+      });
+    });
+  };
+
+  const updateSpeed = () => {
+    getAttrs(["dex", "str"], (v) => {
+      const dex = parseInt(v.str) || 1;
+      const str = parseInt(v.dex) || 1;
+      speed = str + dex;
+      setAttrs({
+        speed_base: speed
+      });
+    });
+  }
+
+  const updateDefense = () => {
+    getAttrs(["defense_attr","defense_skill","entity","athletics","brawl","dex","weaponry","wits"], (v) => {
+      setAttrs({
+        defense_base: getDefenseAttr(v) + getDefenseSkill(v)
+      });
+    });
+  }
+
+  const getDefenseAttr = (v) => {
+    const dex = parseInt(v.dex, 10) || 0;
+    const wits = parseInt(v.wits, 10) || 10;
+    switch (v.defense_attr) {
+      case "lowest":
+        return Math.min(dex, wits);
+      case "highest":
+        return Math.max(dex, wits);
+      case "wits":
+        return wits;
+      case "dexterity":
+        return dex;
+    }
+  };
+
+  const getDefenseSkill = (v) => {
+    const skill = v.defense_skill;
+    if (skill === "nothing") {
+      return 0;
+    }
+    return parseInt(v[skill], 10) || 0;
+  };
+
+  const updateInitiative = () => {
+    getAttrs(["dex", "com"], function(v) {
+      var dexterity = parseInt(v.dex) || 1;
+      var composure = parseInt(v.com) || 1;
+      const initiativeBase = dexterity + composure;
+      setAttrs({
+        initiative_base: initiativeBase
+      });;
+    });
+  }
+</script>
