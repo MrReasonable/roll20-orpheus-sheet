@@ -187,10 +187,7 @@
           </div>
           <table style="width:100%">
             <tr>
-              <th colspan="4">Mental</th>
-            </tr>
-            <tr>
-              <td colspan="4" class="sheet-center">(-3 unskilled)</td>
+              <th colspan="4">Mental (-3 unskilled)</th>
             </tr>
             <tr>
               <td>Academics</td>
@@ -297,10 +294,7 @@
               </td>
             </tr>
             <tr>
-              <th colspan="4">Physical</th>
-            </tr>
-            <tr>
-              <td colspan="4" class="sheet-center">(-1 unskilled)</td>
+              <th colspan="4">Physical (-1 unskilled)</th>
             </tr>
             <tr>
               <td>Athletics</td>
@@ -407,10 +401,7 @@
               </td>
             </tr>
             <tr>
-              <th colspan="4">Social</th>
-            </tr>
-            <tr>
-              <td colspan="4" class="sheet-center">(-1 unskilled)</td>
+              <th colspan="4">Social (-1 unskilled)</th>
             </tr>
             <tr>
               <td>Animal Ken</td>
@@ -771,37 +762,50 @@
           <br>
           <div class="sheet-center">
             <h5>Willpower</h5>
-            <table class="sheet-grid">
-              <tr>
-                <td>
-                  <input type="radio" name="attr_willpower_dot" value="0" class="sheet-normal" checked="checked" />
-                  <input type="radio" name="attr_willpower_dot" value="1" class="sheet-normal" /><span></span>
-                  <input type="radio" name="attr_willpower_dot" value="2" class="sheet-normal" /><span></span>
-                  <input type="radio" name="attr_willpower_dot" value="3" class="sheet-normal" /><span></span>
-                  <input type="radio" name="attr_willpower_dot" value="4" class="sheet-normal" /><span></span>
-                  <input type="radio" name="attr_willpower_dot" value="5" class="sheet-normal" /><span></span>
-                  <input type="radio" name="attr_willpower_dot" value="6" class="sheet-normal" /><span></span>
-                  <input type="radio" name="attr_willpower_dot" value="7" class="sheet-normal" /><span></span>
-                  <input type="radio" name="attr_willpower_dot" value="8" class="sheet-normal" /><span></span>
-                  <input type="radio" name="attr_willpower_dot" value="9" class="sheet-normal" /><span></span>
-                  <input type="radio" name="attr_willpower_dot" value="10" class="sheet-normal" /><span></span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input type="checkbox" name="attr_willpower_available" value="1" class="sheet-normal" /><span></span>
-                  <input type="checkbox" name="attr_willpower_available" value="2" class="sheet-normal" /><span></span>
-                  <input type="checkbox" name="attr_willpower_available" value="3" class="sheet-normal" /><span></span>
-                  <input type="checkbox" name="attr_willpower_available" value="4" class="sheet-normal" /><span></span>
-                  <input type="checkbox" name="attr_willpower_available" value="5" class="sheet-normal" /><span></span>
-                  <input type="checkbox" name="attr_willpower_available" value="6" class="sheet-normal" /><span></span>
-                  <input type="checkbox" name="attr_willpower_available" value="7" class="sheet-normal" /><span></span>
-                  <input type="checkbox" name="attr_willpower_available" value="8" class="sheet-normal" /><span></span>
-                  <input type="checkbox" name="attr_willpower_available" value="9" class="sheet-normal" /><span></span>
-                  <input type="checkbox" name="attr_willpower_available" value="10" class="sheet-normal" /><span></span>
-                </td>
-              </tr>
-            </table>
+            <div class="sheet-checkboxes">
+              <input type="hidden" name="attr_willpower" class="sheet-if" value="0" />
+              <input type="hidden" name="attr_current_willpower" class="sheet-checked-if" value="0" />
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6 sheet-ge-5 sheet-ge-4 sheet-ge-3 sheet-ge-2 sheet-ge-1">
+                <button type="action" name="act_willpower_box1"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6 sheet-ge-5 sheet-ge-4 sheet-ge-3 sheet-ge-2">
+                <button type="action" name="act_willpower_box2"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6 sheet-ge-5 sheet-ge-4 sheet-ge-3">
+                <button type="action" name="act_willpower_box3"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6 sheet-ge-5 sheet-ge-4">
+                <button type="action" name="act_willpower_box4"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6 sheet-ge-5">
+                <button type="action" name="act_willpower_box5"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6">
+                <button type="action" name="act_willpower_box6"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7">
+                <button type="action" name="act_willpower_box7"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ne-7 sheet-ge-10 sheet-ge-9 sheet-ge-8">
+                <button type="action" name="act_willpower_box8"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ne-7 sheet-ne-8 sheet-ge-10 sheet-ge-9">
+                <button type="action" name="act_willpower_box9"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ne-7 sheet-ne-8 sheet-ne-9 sheet-ge-10">
+                <button type="action" name="act_willpower_box10"></button>
+              </div>
+            </div>
           </div>
           <br>
           <br>
@@ -1669,8 +1673,7 @@
           <h3>Defense Settings</h3>
           <span>Defense Trait</span>:
           <select name="attr_defense_attr">
-            <option value="" disabled hidden>Defense?</option>
-            <option value="lowest">Lowest</option>
+            <option value="lowest" selected>Lowest</option>
             <option value="highest">Highest</option>
             <option value="wits">Wits</option>
             <option value="dexterity">Dexterity</option>
@@ -1688,12 +1691,12 @@
           <span>Base Size</span>:
           <input type="number" name="attr_base_size" value="5" />
           <span class="sheet-checkbox">
-            <input type="hidden" class="sheet-flag" name="attr_giant">
+            <input type="hidden" class="sheet-flag" name="attr_giant" value="0">
             <button type="action" name="act_giant"></button>
             <button type="action" class="sheet-toggle" name="act_giant">Giant</button>
           </span>
           <span class="sheet-checkbox">
-            <input type="hidden" class="sheet-flag" name="attr_small_framed">
+            <input type="hidden" class="sheet-flag" name="attr_small_framed" value="0">
             <button type="action" name="act_small_framed"></button>
             <button type="action" class="sheet-toggle" name="act_small_framed">Small Framed</button>
           </span>
@@ -1722,118 +1725,162 @@
 <input type="hidden" name="attr_initiative_base" value="0" />
 
 <script type="text/worker">
-  const attributes = ["int", "wits", "res", "str", "dex", "sta", "pre", "man", "com"];
-  const mentalSkills = ["academics", "computer", "enigmas", "investigation", "medicine", "occult", "politics", "science"];
-  const physicalSkills = ["athletics", "brawl", "drive", "firearms", "larceny", "ride", "stealth", "survival", "weaponry"];
-  const socialSkills = ["animalken", "empathy", "expression", "intimidation", "persuasion", "socialize", "streetwise", "subterfuge"];
-  const skills = [...mentalSkills, ...physicalSkills, ...socialSkills];
-  const normalStats = [...attributes, ...skills];
-  const sizeStats = ["base_size", "giant", "small_framed"];
-  const speedStats = ["species_factor", "fleet_of_foot"];
-  const defenseStats = ["defense_attr", "defense_skill", "defense_bonus"];
-  const allStats = [...normalStats, ...sizeStats, ...speedStats, ...defenseStats, "willpower_available"];
+  const attributes = ["int", "wits", "res", "str", "dex", "sta", "pre", "man", "com"]
+  const mentalSkills = ["academics", "computer", "enigmas", "investigation", "medicine", "occult", "politics", "science"]
+  const physicalSkills = ["athletics", "brawl", "drive", "firearms", "larceny", "ride", "stealth", "survival", "weaponry"]
+  const socialSkills = ["animalken", "empathy", "expression", "intimidation", "persuasion", "socialize", "streetwise", "subterfuge"]
+  const skills = [...mentalSkills, ...physicalSkills, ...socialSkills]
+  const normalStats = [...attributes, ...skills]
+  const sizeStats = ["base_size", "giant", "small_framed"]
+  const speedStats = ["species_factor", "fleet_of_foot"]
+  const defenseStats = ["defense_attr", "defense_skill", "defense_bonus"]
+  const allStats = [...normalStats, ...sizeStats, ...speedStats, ...defenseStats, "willpower_available"]
   allStats.forEach((attr) => {
     on(`change:${attr}`, (eventInfo) => {
-      const source = eventInfo.sourceAttribute;
-      const derivedHealthStats = [...sizeStats, "sta"];
-      if (derivedHealthStats.includes(source)) {
-        updateHealth();
-      }
+      const source = eventInfo.sourceAttribute
+      const derivedHealthStats = [...sizeStats, "sta"]
+      const derivedSpeedStats = ["dex","str", ...speedStats]
+      const derivedDefenseStats = ["wits", "dex", "athletics", "brawl", "weaponry", ...defenseStats]
+      const derivedInitiativeStats = ["dex", "com"]
+      const derivedWillpowerStats = ["res", "com"]
+      const statUpdaters = [
+        [derivedHealthStats, updateHealth],
+        [derivedSpeedStats, updateSpeed],
+        [derivedDefenseStats, updateDefense],
+        [derivedInitiativeStats, updateInitiative],
+        [derivedWillpowerStats, updateWillpower],
+      ]
+      updateStats(statUpdaters, source)
+    })
+  })
 
-      const derivedSpeedStats = ["dex","str", ...speedStats];
-      if (derivedSpeedStats.includes(source)) {
-          updateSpeed();
+  const updateStats = (statUpdaters, source) => {
+    statUpdaters.forEach(([stats, updater]) => {
+      if (stats.includes(source)) {
+        updater()
       }
-
-      const derivedDefenseStats = ["wits", "dex", "athletics", "brawl", "weaponry", ...defenseStats];
-      if (derivedDefenseStats.includes(source)) {
-          updateDefense();
-      };
-    });
-  });
+    })
+  }
 
   const checkboxAttributes = [
     "small_framed",
     "giant"
-  ];
+  ]
   checkboxAttributes.forEach((checkboxAttribute) => {
     on(`clicked:${checkboxAttribute}`, () => {
-      const attr = checkboxAttribute.replace(":","_");
+      const attr = checkboxAttribute.replace(":","_")
       getAttrs([attr], (values) => {
-        const checkboxValue = ["1", "on"].includes(values[attr]);
+        const checkboxValue = ["1", "on"].includes(values[attr])
         setAttrs({
           [attr]: checkboxValue ? "0" : "1"
-        });
-      });
+        })
+      })
+    })
+  })
+
+  const currentValueSeriesAttributes = ["willpower", "vitality"]
+  const currentValueAttributes = [
+    ...currentValueSeriesAttributes.flatMap((currentValueSeriesAttribute) =>
+        new Array(30).fill(1).map((_, i) => `${currentValueSeriesAttribute}_box${i+1}`)
+      ) 
+  ]
+
+  currentValueAttributes.forEach((currentValueAttribute) => {
+    on(`clicked:${currentValueAttribute}`, () => {
+      const [attribute, value] = currentValueAttribute.split("_box")
+      const attr = `current_${attribute}`
+      const clickedValue = parseInt(value)
+      getAttrs([attr], (v) => {
+        const currentValue = parseInt(v[attr])
+        const newValue = currentValue === clickedValue ? currentValue - 1 : clickedValue
+        setAttrs({
+          [`current_${attribute}`]: newValue
+        })
+      })
     })
   })
 
   on("sheet:opened", () => {
-    updateHealth();
-    updateSpeed();
-    updateDefense();
-    updateInitiative();
-  });
+    updateHealth()
+    updateSpeed()
+    updateDefense()
+    updateInitiative()
+    updateWillpower()
+  })
 
   const updateHealth = () => {
     getAttrs(["sta","res","base_size","giant","small_framed"], (v) => {
-      const health = Number(v.sta) + Number(v.base_size) + Number(v.giant) - Number(v.small_framed);
+      const health = Number(v.sta) + Number(v.base_size) + Number(v.giant) - Number(v.small_framed)
       setAttrs({
         health
-      });
-    });
-  };
+      })
+    })
+  }
 
   const updateSpeed = () => {
     getAttrs(["dex", "str"], (v) => {
-      const dex = parseInt(v.str) || 1;
-      const str = parseInt(v.dex) || 1;
-      speed = str + dex;
+      const dex = parseInt(v.str) || 1
+      const str = parseInt(v.dex) || 1
+      speed = str + dex
       setAttrs({
         speed_base: speed
-      });
-    });
+      })
+    })
   }
 
   const updateDefense = () => {
     getAttrs(["defense_attr","defense_skill","entity","athletics","brawl","dex","weaponry","wits"], (v) => {
       setAttrs({
         defense_base: getDefenseAttr(v) + getDefenseSkill(v)
-      });
-    });
+      })
+    })
   }
 
   const getDefenseAttr = (v) => {
-    const dex = parseInt(v.dex, 10) || 0;
-    const wits = parseInt(v.wits, 10) || 10;
+    const dex = parseInt(v.dex, 10) || 0
+    const wits = parseInt(v.wits, 10) || 10
     switch (v.defense_attr) {
       case "lowest":
-        return Math.min(dex, wits);
+        return Math.min(dex, wits)
       case "highest":
-        return Math.max(dex, wits);
+        return Math.max(dex, wits)
       case "wits":
-        return wits;
+        return wits
       case "dexterity":
-        return dex;
+        return dex
     }
-  };
+  }
 
   const getDefenseSkill = (v) => {
-    const skill = v.defense_skill;
+    const skill = v.defense_skill
     if (skill === "nothing") {
-      return 0;
+      return 0
     }
-    return parseInt(v[skill], 10) || 0;
-  };
+    return parseInt(v[skill], 10) || 0
+  }
 
   const updateInitiative = () => {
     getAttrs(["dex", "com"], function(v) {
-      var dexterity = parseInt(v.dex) || 1;
-      var composure = parseInt(v.com) || 1;
-      const initiativeBase = dexterity + composure;
+      const dexterity = parseInt(v.dex) || 0
+      const composure = parseInt(v.com) || 0
+      const initiativeBase = dexterity + composure
       setAttrs({
         initiative_base: initiativeBase
-      });;
-    });
+      })
+    })
+  }
+
+  const updateWillpower = () => {
+    getAttrs(["res", "com", "current_willpower"], function(v) {
+      const resolve = parseInt(v.res) || 0
+      const composure = parseInt(v.com) || 0
+      const currentWillpower = parseInt(v.current_willpower) || 0
+      const willpower = resolve+composure
+      const newCurrentWp = currentWillpower > willpower ? willpower : currentWillpower
+        setAttrs({
+          willpower,
+          current_willpower: newCurrentWp
+        })
+    })
   }
 </script>

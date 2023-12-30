@@ -3,23 +3,23 @@
 /*-----text-----*/
 
 h5 {
-  text-shadow: 0px 0px 10px black;
   color: black;
 }
 
 th {
-  text-shadow: 0px 0px 10px black;
   color: black;
+  padding-top: 10px;
+    padding-bottom: 5px;
 }
 
 h4 {
-  text-shadow: 0px 0px 10px white;
   color: black;
 }
 
 h2 {
   background: black;
   color: white;
+  margin: 10px 0px;
 }
 
 .sheet-center {
@@ -85,7 +85,6 @@ input.sheet-tab::before {
   border-top-right-radius: 4px;
 
   font-size: 14px;
-  font-weight: bold;
   text-align: center;
 
   width: 100%;
@@ -94,12 +93,14 @@ input.sheet-tab::before {
 
 input.sheet-tab:checked::before {
   border-bottom-color: white;
+  text-shadow: 0px 0px 10px black;
+    font-weight: bold;
 }
 
 .sheet-tab-br {
   border-bottom: 1px solid #a8a8a8;
   margin-bottom: 5px;
-  margin-top: 1px;
+    margin-top: 6px;
 }
 
 input.sheet-arrow {
@@ -247,6 +248,32 @@ input.sheet-aggravateddot:checked~span.sheet-aggravateddot {
   margin-right: auto;
 }
 
+.sheet-checkboxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input.sheet-if[value="0"]~.sheet-ne-0,
+input.sheet-if[value="1"]~.sheet-ne-1,
+input.sheet-if:not([value="1"])~.sheet-eq-1,
+input.sheet-if[value="2"]~.sheet-ne-2,
+input.sheet-if[value="3"]~.sheet-ne-3,
+input.sheet-if[value="4"]~.sheet-ne-4,
+input.sheet-if[value="5"]~.sheet-ne-5,
+input.sheet-if[value="6"]~.sheet-ne-6,
+input.sheet-if[value="7"]~.sheet-ne-7,
+input.sheet-if[value="8"]~.sheet-ne-8,
+input.sheet-if[value="9"]~.sheet-ne-9,
+input.sheet-if[value="10"]~.sheet-ne-10,
+input.sheet-if[value="11"]~.sheet-ne-11,
+input.sheet-if[value="12"]~.sheet-ne-12,
+input.sheet-if[value="13"]~.sheet-ne-13,
+input.sheet-if[value="14"]~.sheet-ne-14,
+input.sheet-if[value="15"]~.sheet-ne-15,
+input.sheet-if[value="16"]~.sheet-ne-16 {
+  display: none;
+}
 /*--------------Big Checkbox--------------*/
 
 /* ----Hide actual sheet-arrow checkbox---- */
@@ -409,7 +436,7 @@ input.sheet-arrow[type="checkbox"] {
   margin-bottom: 0
 }
 
-.sheet-checkbox>input[type="hidden"]+button,
+.sheet-checkbox>button,
 .sheet-healthbox>button,
 input.sheet-flag+button.sheet-radio {
   width: 10px;
@@ -441,7 +468,24 @@ input.sheet-flag[value="1"]~.sheet-toggle {
 }
 .sheet-healthbox>input[value="2"]~button.sheet-damage,
 .sheet-checkbox>input[value="1"]+button,
-.sheet-checkbox>input[value="on"]+button {
+.sheet-checkbox>input[value="on"]+button,
+input.sheet-checked-if[value="0"]~.sheet-checkbox.sheet-ge-0>button,
+input.sheet-checked-if[value="1"]~.sheet-checkbox.sheet-ge-1>button,
+input.sheet-checked-if[value="2"]~.sheet-checkbox.sheet-ge-2>button,
+input.sheet-checked-if[value="3"]~.sheet-checkbox.sheet-ge-3>button,
+input.sheet-checked-if[value="4"]~.sheet-checkbox.sheet-ge-4>button,
+input.sheet-checked-if[value="5"]~.sheet-checkbox.sheet-ge-5>button,
+input.sheet-checked-if[value="6"]~.sheet-checkbox.sheet-ge-6>button,
+input.sheet-checked-if[value="7"]~.sheet-checkbox.sheet-ge-7>button,
+input.sheet-checked-if[value="8"]~.sheet-checkbox.sheet-ge-8>button,
+input.sheet-checked-if[value="9"]~.sheet-checkbox.sheet-ge-9>button,
+input.sheet-checked-if[value="10"]~.sheet-checkbox.sheet-ge-10>button,
+input.sheet-checked-if[value="11"]~.sheet-checkbox.sheet-ge-11>button,
+input.sheet-checked-if[value="12"]~.sheet-checkbox.sheet-ge-12>button,
+input.sheet-checked-if[value="13"]~.sheet-checkbox.sheet-ge-13>button,
+input.sheet-checked-if[value="14"]~.sheet-checkbox.sheet-ge-14>button,
+input.sheet-checked-if[value="15"]~.sheet-checkbox.sheet-ge-15>button,
+input.sheet-checked-if[value="16"]~.sheet-checkbox.sheet-ge-16>button {
   background:
     linear-gradient(to top left,
       rgba(0, 0, 0, 0) 0%,
