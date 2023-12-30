@@ -198,7 +198,8 @@ input.sheet-blackdot:checked+input.sheet-whitedot {
 
 .sheet-healthbox>input[value="2"]~button.sheet-damage,
 .sheet-checkbox>input[value="1"]+button,
-.sheet-checkbox>input[value="on"]+button {
+.sheet-checkbox>input[value="on"]+button,
+.sheet-radio-select:hover input.sheet-clear[type="radio"]+span::before {
   background:
     linear-gradient(to top left,
       rgba(0, 0, 0, 0) 0%,
@@ -417,7 +418,8 @@ input.sheet-arrow[type="checkbox"] {
 /*-------sheet select---------*/
 
 .sheet-select {
-  margin-bottom: 0
+  margin: 0;
+    width: 210px;
 }
 
 button.sheet-dot,

@@ -45,7 +45,18 @@
           <table>
             <tr>
               <td>Shade</td>
-              <td><input type="text" name="attr_shade" /></td>
+              <td>
+                <select name="attr_shade" class="sheet-select">
+                  <option value="none" selected>---</option>
+                  <option value="banshee">Banshee</option>
+                  <option value="haunter">Haunter</option>
+                  <option value="orphan_grinder">Orphan Grinder</option>
+                  <option value="phantasm">Phantasm</option>
+                  <option value="poltergeist">Poltergeist</option>
+                  <option value="skinrider">Spectre</option>
+                  <option value="wisp">Wisp</option>
+                </select>
+              </td>
             </tr>
             <tr>
               <td>Company</td>
@@ -53,7 +64,16 @@
             </tr>
             <tr>
               <td>Lament</td>
-              <td><input type="text" name="attr_lament" /></td>
+              <td>
+                <select name="attr_lament" class="sheet-select">
+                  <option value="none" selected>---</option>
+                  <option value="skimmer">Skimmer</option>
+                  <option value="sleeper">Sleeper</option>
+                  <option value="spirit">Spirit</option>
+                  <option value="hue">Hue</option>
+                  <option value="spectre">Spectre</option>
+                </select>
+              </td>
             </tr>
           </table>
         </div>
@@ -141,7 +161,7 @@
           </td>
         </tr>
         <tr>
-          <td>rsistance</td>
+          <td>resistance</td>
           <td>
             <h4>Resolve</h4>
           </td>
@@ -1838,21 +1858,28 @@
     "pre": "presence",
     "man": "manipulation",
     "com": "composure",
+    "willpower_available": "current_willpower",
   }
 
   //Upgrade for new sheet versions
   const versionUpdate = () => {
-    getAttrs(versionAttrs, function(v) {
+    getAttrs(versionAttrs, (v) => {
       const version = parseInt(v.version) || 0;
       if (version === 0) {
-        getAttrs(Object.keys(v0AttrMap), function(v) {
+        getAttrs(Object.keys(v0AttrMap), (v) => {
           const newAttrs = Object.entries(v0AttrMap).reduce((attrs, [oldAttr, newAttr]) => ({
             ...attrs,
             [newAttr]: parseInt(v[oldAttr]) || 0
-          }), {});
+          }), {})
           setAttrs(newAttrs);
-        });
+        })
       }
+      getAttrs(["shade", "lament"], (v) => {
+        setAttrs({
+          "shade": v.shade.toLowerCase().replace(" ", "_"),
+          "lament": v.lament.toLowerCase().replace(" ", "_"),
+        })
+      })
       setAttrs({
         version: 1
       });
