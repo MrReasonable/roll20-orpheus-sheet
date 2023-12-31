@@ -53,8 +53,9 @@
                   <option value="orphan_grinder">Orphan Grinder</option>
                   <option value="phantasm">Phantasm</option>
                   <option value="poltergeist">Poltergeist</option>
-                  <option value="skinrider">Spectre</option>
+                  <option value="skinrider">Skinrider</option>
                   <option value="wisp">Wisp</option>
+                  <option value="spectre">Spectre</option>
                 </select>
               </td>
             </tr>
@@ -71,7 +72,6 @@
                   <option value="sleeper">Sleeper</option>
                   <option value="spirit">Spirit</option>
                   <option value="hue">Hue</option>
-                  <option value="spectre">Spectre</option>
                 </select>
               </td>
             </tr>
@@ -749,39 +749,75 @@
               </div>
             </div>
           </div>
-          <div class="sheet-center">
+          <input type="hidden" name="attr_shade" class="sheet-shade-if" value="spectre" />
+          <div class="sheet-center sheet-ne-spectre">
             <h5>Vitality</h5>
-            <table class="sheet-grid">
-              <tr>
-                <td>
-                  <input type="radio" class="sheet-normal" name="attr_vitality_dot" value="0" checked="checked" />
-                  <input type="radio" class="sheet-normal" name="attr_vitality_dot" value="1" /><span></span>
-                  <input type="radio" class="sheet-normal" name="attr_vitality_dot" value="2" /><span></span>
-                  <input type="radio" class="sheet-normal" name="attr_vitality_dot" value="3" /><span></span>
-                  <input type="radio" class="sheet-normal" name="attr_vitality_dot" value="4" /><span></span>
-                  <input type="radio" class="sheet-normal" name="attr_vitality_dot" value="5" /><span></span>
-                  <input type="radio" class="sheet-normal" name="attr_vitality_dot" value="6" /><span></span>
-                  <input type="radio" class="sheet-normal" name="attr_vitality_dot" value="7" /><span></span>
-                  <input type="radio" class="sheet-normal" name="attr_vitality_dot" value="8" /><span></span>
-                  <input type="radio" class="sheet-normal" name="attr_vitality_dot" value="9" /><span></span>
-                  <input type="radio" class="sheet-normal" name="attr_vitality_dot" value="10" /><span></span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <input type="checkbox" class="sheet-normal" name="attr_vitality_available" value="1" /><span></span>
-                  <input type="checkbox" class="sheet-normal" name="attr_vitality_available" value="2" /><span></span>
-                  <input type="checkbox" class="sheet-normal" name="attr_vitality_available" value="3" /><span></span>
-                  <input type="checkbox" class="sheet-normal" name="attr_vitality_available" value="4" /><span></span>
-                  <input type="checkbox" class="sheet-normal" name="attr_vitality_available" value="5" /><span></span>
-                  <input type="checkbox" class="sheet-normal" name="attr_vitality_available" value="6" /><span></span>
-                  <input type="checkbox" class="sheet-normal" name="attr_vitality_available" value="7" /><span></span>
-                  <input type="checkbox" class="sheet-normal" name="attr_vitality_available" value="8" /><span></span>
-                  <input type="checkbox" class="sheet-normal" name="attr_vitality_available" value="9" /><span></span>
-                  <input type="checkbox" class="sheet-normal" name="attr_vitality_available" value="10" /><span></span>
-                </td>
-              </tr>
-            </table>
+            <div class="sheet-checkboxes">
+              <input type="hidden" name="attr_vitality" class="sheet-highlighted-if" value="6" />
+              <input type="hidden" name="attr_current_vitality" class="sheet-checked-if" value="0" />
+              <input type="hidden" name="attr_lament" class="sheet-lament-if" value="hue" />
+              <input type="hidden" name="attr_luminous" class="sheet-luminous-if" value="0" />
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ge-11 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6 sheet-ge-5 sheet-ge-4 sheet-ge-3 sheet-ge-2 sheet-ge-1">
+                <button type="action" name="act_vitality_box1"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ge-11 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6 sheet-ge-5 sheet-ge-4 sheet-ge-3 sheet-ge-2">
+                <button type="action" name="act_vitality_box2"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ge-11 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6 sheet-ge-5 sheet-ge-4 sheet-ge-3">
+                <button type="action" name="act_vitality_box3"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ge-11 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6 sheet-ge-5 sheet-ge-4">
+                <button type="action" name="act_vitality_box4"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ge-11 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6 sheet-ge-5">
+                <button type="action" name="act_vitality_box5"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ge-11 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7 sheet-ge-6">
+                <button type="action" name="act_vitality_box6"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ge-11 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ge-7">
+                <button type="action" name="act_vitality_box7"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ne-7 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ge-11 sheet-ge-10 sheet-ge-9 sheet-ge-8 sheet-ne-hue">
+                <button type="action" name="act_vitality_box8"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ne-7 sheet-ne-8 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ge-11 sheet-ge-10 sheet-ge-9 sheet-ne-hue">
+                <button type="action" name="act_vitality_box9"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ne-7 sheet-ne-8 sheet-ne-9 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ge-11 sheet-ge-10 sheet-ne-hue">
+                <button type="action" name="act_vitality_box10"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ne-7 sheet-ne-8 sheet-ne-9 sheet-ne-10 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ge-11 sheet-ne-hue sheet-luminous sheet-ne-luminous-0">
+                <button type="action" name="act_vitality_box11"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ne-7 sheet-ne-8 sheet-ne-9 sheet-ne-10 sheet-ne-11 sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ge-12 sheet-ne-hue sheet-luminous sheet-ne-luminous-0 sheet-ne-luminous-1">
+                <button type="action" name="act_vitality_box12"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ne-7 sheet-ne-8 sheet-ne-9 sheet-ne-10 sheet-ne-11 sheet-ne-12  sheet-ge-15 sheet-ge-14 sheet-ge-13 sheet-ne-hue sheet-luminous sheet-ne-luminous-0 sheet-ne-luminous-1 sheet-ne-luminous-2">
+                <button type="action" name="act_vitality_box13"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ne-7 sheet-ne-8 sheet-ne-9 sheet-ne-10 sheet-ne-11 sheet-ne-12 sheet-ne-13 sheet-ge-15 sheet-ge-14 sheet-ne-hue sheet-luminous sheet-ne-luminous-0 sheet-ne-luminous-1 sheet-ne-luminous-2 sheet-ne-luminous-3">
+                <button type="action" name="act_vitality_box14"></button>
+              </div>
+              <div
+                class="sheet-checkbox sheet-ne-0 sheet-ne-1 sheet-ne-2 sheet-ne-3 sheet-ne-4 sheet-ne-5 sheet-ne-6 sheet-ne-7 sheet-ne-8 sheet-ne-9  sheet-ne-10 sheet-ne-11 sheet-ne-12 sheet-ne-13 sheet-ne-14 sheet-ge-15 sheet-luminous sheet-ne-luminous-0 sheet-ne-luminous-1 sheet-ne-luminous-2 sheet-ne-luminous-3 sheet-ne-luminous-4">
+                <button type="action" name="act_vitality_box15"></button>
+              </div>
+            </div>
           </div>
           <br>
           <div class="sheet-center">
@@ -1640,16 +1676,32 @@
             <button type="action" name="act_small_framed"></button>
             <button type="action" class="sheet-toggle" name="act_small_framed">Small Framed</button>
           </span>
+          <br>
+          <span>Iron Stamina</span>: <input type="number" name="attr_iron_stamina" value="0" />
       </div>
       <div>
         <h3>Speed Settings</h3>
-        <span>Species Factor</span><input type="number" name="attr_species_factor" value="5" />
+        <span>Species Factor</span>:<input type="number" name="attr_species_factor" value="5" />
         <span>Fleet of Foot</span>: <input type="number" name="attr_fleet_of_foot" style="width: 55px;" value="0" />
       </div>
       <div>
         <h3>Initiative Settings</h3>
-        <span>Fast Reflexes</span><input type="number" name="attr_fast_reflexes" value="0" />
-        <span>Initiative Bonus</span><input type="number" name="attr_initiative_bonus" value="0" />
+        <span>Fast Reflexes</span>:
+        <input type="number" name="attr_fast_reflexes" value="0" />
+        <span class="sheet-checkbox">
+          <input type="hidden" class="sheet-flag" name="attr_shoot_first" value="0">
+          <button type="action" name="act_shoot_first"></button>
+          <button type="action" class="sheet-toggle" name="act_shoot_first">Shoot First</button>
+        </span>
+        <span>Initiative Bonus</span>:
+        <input type="number" name="attr_initiative_bonus" value="0" />
+        </div>
+        <div>
+          <h3>Vitality Settings</h3>
+          <span>Vitality Rating</span>:
+          <input type="number" name="attr_vitality" value="6" />
+          <span>Luminous</span>:
+          <input type="number" name="attr_luminous" value="0" />
       </div>
       </div>
       </div>
@@ -1672,27 +1724,56 @@
   const skills = [...mentalSkills, ...physicalSkills, ...socialSkills]
   const normalStats = [...attributes, ...skills]
   const sizeStats = ["base_size", "giant", "small_framed"]
+  const woundPenaltyStats = ["iron_stamina"]
   const speedStats = ["species_factor", "fleet_of_foot"]
   const defenseStats = ["defense_attr", "defense_skill", "defense_bonus"]
-  const allStats = [...normalStats, ...sizeStats, ...speedStats, ...defenseStats, "willpower_available"]
+  const initiativeStats = ["shoot_first"]
+  const allStats = [...normalStats, ...sizeStats, ...speedStats, ...defenseStats, ...initiativeStats, ...woundPenaltyStats]
+
+  const derivedHealthStats = [...sizeStats, "stamina"]
+  const derivedSpeedStats = ["dexterity","strength", ...speedStats]
+  const derivedDefenseStats = ["wits", "dexterity", "athletics", "brawl", "weaponry", ...defenseStats]
+  const derivedInitiativeStats = ["dexterity", "composure", "firearms", "shoot_first"]
+  const derivedWillpowerStats = ["resolve", "composure"]
+  const derivedWoundPenaltyStats = ["iron_stamina"]
+
+  const maxValues = {
+    'fleet_of_foot': 3,
+    'iron_stamina': 3,
+    'vitality': 10,
+    'spite': 10
+  }
+
   allStats.forEach((attr) => {
     on(`change:${attr}`, (eventInfo) => {
-      const source = eventInfo.sourceAttribute
-      const derivedHealthStats = [...sizeStats, "stamina"]
-      const derivedSpeedStats = ["dexterity","strength", ...speedStats]
-      const derivedDefenseStats = ["wits", "dexterity", "athletics", "brawl", "weaponry", ...defenseStats]
-      const derivedInitiativeStats = ["dexterity", "composure"]
-      const derivedWillpowerStats = ["resolve", "composure"]
       const statUpdaters = [
         [derivedHealthStats, updateHealth],
         [derivedSpeedStats, updateSpeed],
         [derivedDefenseStats, updateDefense],
         [derivedInitiativeStats, updateInitiative],
         [derivedWillpowerStats, updateWillpower],
-      ]
+        [derivedWoundPenaltyStats, updateWoundPenalties],
+      ]  
+      const source = eventInfo.sourceAttribute
+      fixMaxOverflow(eventInfo)
       updateStats(statUpdaters, source)
     })
   })
+
+  const fixMaxOverflow = (eventInfo) => {
+    const source = eventInfo.sourceAttribute
+    const maxValue = maxValues[source]
+    if (maxValue) {
+      getAttrs([source], (v) => {
+        const value = parseInt(v[source])
+        if (value > maxValue) {
+          setAttrs({
+            [source]: eventInfo.previousValue
+          })
+        }
+      })
+    }
+  }
 
   const updateStats = (statUpdaters, source) => {
     statUpdaters.forEach(([stats, updater]) => {
@@ -1704,7 +1785,8 @@
 
   const checkboxAttributes = [
     "small_framed",
-    "giant"
+    "giant",
+    "shoot_first"
   ]
   checkboxAttributes.forEach((checkboxAttribute) => {
     on(`clicked:${checkboxAttribute}`, () => {
@@ -1799,8 +1881,11 @@
   }
 
   const updateInitiative = () => {
-    getAttrs(["dexterity", "composure"], function(v) {
-      const initiativeBase = (parseInt(v.dexterity) || 0) + (parseInt(v.composure) || 0)
+    getAttrs(["dexterity", "composure", "shoot_first", "firearms"], function(v) {
+      const initiativeBase = 
+        (parseInt(v.dexterity) || 0) + 
+        (parseInt(v.composure) || 0) +
+        (v.shoot_first === "1" ? (parseInt(v.firearms) || 0) : 0)
       setAttrs({
         initiative_base: initiativeBase
       })
@@ -1808,7 +1893,7 @@
   }
 
   const updateWillpower = () => {
-    getAttrs(["resolve", "composure", "current_willpower"], function(v) {
+    getAttrs(["resolve", "composure", "current_willpower"], (v) => {
       const resolve = parseInt(v.resolve) || 0
       const composure = parseInt(v.composure) || 0
       const currentWillpower = parseInt(v.current_willpower) || 0
@@ -1836,17 +1921,35 @@
   
   // Register button click event for each health attribute
   Object.entries(healthAttrs).forEach(([attr, depth]) => {
-    console.log(attr, depth);
     on(`clicked:${attr}`, () => {
         // Increment / cycle corresponding attribute value
         getAttrs([attr], (v) => {
-            const healthValue = parseInt(v[attr]) || 0;
+            const healthValue = parseInt(v[attr]) || 0
             setAttrs({
                 [attr]: (healthValue + 1) % depth
-            });
-        });
-    });
-  });
+            })
+        })
+    })
+  })
+
+  const updateWoundPenalties = () => {
+    getAttrs(["iron_stamina"], (v) => {
+        const ironStamina = parseInt(v.iron_stamina, 10) || 0
+        const woundPenalties = getWoundPenalties(ironStamina)
+
+        setAttrs(woundPenalties)
+    })
+  }
+
+  const getWoundPenalties = (ironStamina) => {
+    const maxPenalty = Math.min(ironStamina, 3) - 3
+    // Whitespace instead of empty string to avoid displaying default value
+    return {
+        "wound_penalty_1": Math.min(maxPenalty + 2, 0) || " ",
+        "wound_penalty_2": Math.min(maxPenalty + 1, 0) || " ",
+        "wound_penalty_3": Math.min(maxPenalty, 0) || " "
+    }
+  }
 
   const versionAttrs = ["version"];
   const v0AttrMap = {
@@ -1859,6 +1962,8 @@
     "man": "manipulation",
     "com": "composure",
     "willpower_available": "current_willpower",
+    "vitality_dot": "vitality",
+    "vitality_available": "current_vitality",
   }
 
   //Upgrade for new sheet versions
@@ -1871,7 +1976,7 @@
             ...attrs,
             [newAttr]: parseInt(v[oldAttr]) || 0
           }), {})
-          setAttrs(newAttrs);
+          setAttrs(newAttrs)
         })
       }
       getAttrs(["shade", "lament"], (v) => {
@@ -1882,7 +1987,7 @@
       })
       setAttrs({
         version: 1
-      });
-    });
-  };
+      })
+    })
+  }
 </script>

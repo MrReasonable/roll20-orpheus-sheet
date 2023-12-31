@@ -101,7 +101,7 @@ input.sheet-tab:checked::before {
 .sheet-tab-br {
   border-bottom: 1px solid #a8a8a8;
   margin-bottom: 5px;
-    margin-top: 6px;
+  margin-top: 6px;
 }
 
 input.sheet-arrow {
@@ -256,8 +256,31 @@ input.sheet-if[value="12"]~.sheet-ne-12,
 input.sheet-if[value="13"]~.sheet-ne-13,
 input.sheet-if[value="14"]~.sheet-ne-14,
 input.sheet-if[value="15"]~.sheet-ne-15,
-input.sheet-if[value="16"]~.sheet-ne-16 {
+input.sheet-if[value="16"]~.sheet-ne-16,
+input.sheet-luminous-if[value="0"]~.sheet-ne-luminous-0,
+input.sheet-luminous-if[value="1"]~.sheet-ne-luminous-1,
+input.sheet-luminous-if[value="2"]~.sheet-ne-luminous-2,
+input.sheet-luminous-if[value="3"]~.sheet-ne-luminous-3,
+input.sheet-luminous-if[value="4"]~.sheet-ne-luminous-4,
+input.sheet-lament-if[value="hue"]~.sheet-ne-hue,
+input.sheet-shade-if[value="spectre"]~.sheet-ne-spectre {
   display: none;
+}
+input.sheet-highlighted-if[value="0"]~.sheet-ge-0>button,
+input.sheet-highlighted-if[value="1"]~.sheet-ne-1>button,
+input.sheet-highlighted-if[value="2"]~.sheet-ne-2>button,
+input.sheet-highlighted-if[value="3"]~.sheet-ne-3>button,
+input.sheet-highlighted-if[value="4"]~.sheet-ne-4>button,
+input.sheet-highlighted-if[value="5"]~.sheet-ne-5>button,
+input.sheet-highlighted-if[value="6"]~.sheet-ne-6>button,
+input.sheet-highlighted-if[value="7"]~.sheet-ne-7>button,
+input.sheet-highlighted-if[value="8"]~.sheet-ne-8>button,
+input.sheet-highlighted-if[value="9"]~.sheet-ne-9>button {
+  background-color: greenyellow;
+}
+
+input.sheet-luminous-if~.sheet-luminous>button {
+  background-color: yellow !important;
 }
 /*--------------Big Checkbox--------------*/
 
