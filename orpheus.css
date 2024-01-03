@@ -43,6 +43,7 @@
 
 .charsheet h2 span {
   display: inline-block;
+  width: 100%;
   color: white;
   background-color: black;
 }
@@ -184,6 +185,7 @@
 .charsheet input.normal[type="radio"]:checked ~ input.normal[type="radio"] + span::before {
   content: "";
 }
+
 .charsheet input.blackdot:checked + input.whitedot {
   z-index: 3;
 }
@@ -201,6 +203,9 @@
   align-items: center;
 }
 
+.charsheet .textboxes {
+  text-align: center;
+}
 /* Used for wound penalty alignment */
 .charsheet .healthbox {
   width: 12px;
@@ -306,6 +311,16 @@
   display: none;
 }
 
+.charsheet input.if[value="spectre"] ~ .ne-spectre,
+.charsheet input.if[value="banshee"] ~ .ne-banshee,
+.charsheet input.if[value="haunter"] ~ .ne-haunter,
+.charsheet input.if[value="poltergeist"] ~ .ne-poltergeist,
+.charsheet input.if[value="skinrider"] ~ .ne-skinrider,
+.charsheet input.if[value="phantasm"] ~ .ne-phantasm,
+.charsheet input.if[value="orphan_grinder"] ~ .ne-orphan-grinder,
+.charsheet input.if[value="wisp"] ~ .ne-wisp {
+  display: none;
+}
 /*--------------Big Checkbox--------------*/
 
 /* ----Hide actual arrow checkbox---- */
@@ -420,6 +435,18 @@
 .charsheet table.devotions {
   border: 1px solid black;
   background: #1C1C1C;
+  color: white;
+  
+  }
+  
+  .charsheet table.devotions input[type="text"] {
+    max-width: 100px;
+  }
+  
+  .charsheet table.devotions textarea,
+  .charsheet table.devotions input[type="text"] {
+    background: #1C1C1C;
+    color: white;
 }
 
 .charsheet table.weapon,
@@ -481,6 +508,7 @@
   line-height: 11px;
   background: #efefef;
 }
+
 .charsheet button.toggle {
   /* Resetting user-agent styling */
   font-family: inherit;
@@ -501,6 +529,7 @@
   text-shadow: 0px 0px 10px black;
   font-weight: bold;
 }
+
 .charsheet .healthbox > input[value="2"] ~ button.damage,
 .charsheet .checkbox > input[value="1"] + button,
 .charsheet .checkbox > input[value="on"] + button,
@@ -536,6 +565,7 @@
       rgba(0, 0, 0, 0) 100%),
     #efefef;
 }
+
 .charsheet .skills {
   display: inline-grid;
   grid-template-columns: 1fr auto;
@@ -685,10 +715,6 @@
 .charsheet .flex {
   display: flex;
   align-items: start;
-}
-
-.charsheet .inline-flex {
-  display: inline-flex;
 }
 
 .charsheet .grow {
