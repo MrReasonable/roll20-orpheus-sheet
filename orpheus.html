@@ -703,7 +703,7 @@
                                                 <button type="action" class="radio" name="act_stain"></button>
                                             </span>
                                             <input type="hidden" class="flag" name="attr_stain_flag">
-                                            <input type="text" name="stain" />
+                                            <input type="text" name="attr_stain" />
                                         </div>
                                     </fieldset>
                                 </div>
@@ -2405,18 +2405,18 @@ const extraTraitCount = 9;
 const weaponCount = 6;
 const maxTraitCount = Math.max(extraTraitCount, weaponCount)
 const repeatingWeaponTraits = [
-    "attr_weapon_name_%d",
-    "attr_weapon_damage_%d",
-    "attr_weapon_range_%d",
-    "attr_weapon_clip_%d",
-    "attr_weapon_initiative_%d",
-    "attr_weapon_strength_%d",
-    "attr_weapon_size_%d",
+    "weapon_name_%d",
+    "weapon_damage_%d",
+    "weapon_range_%d",
+    "weapon_clip_%d",
+    "weapon_initiative_%d",
+    "weapon_strength_%d",
+    "weapon_size_%d",
 ]
 
 const repeatingV1Attrs = [
-    ...[...Array(extraTraitCount+1).keys()].flatMap((i) => [`other_traits_${i+1}_name`, `other_traits_${i+1}`]),
-    ...[...Array(weaponCount+1).keys()].flatMap((i) => repeatingWeaponTraits.map((t) => t.replace("%d", i+1)))
+    ...[...Array(extraTraitCount).keys()].flatMap((i) => [`other_traits_${i+1}_name`, `other_traits_${i+1}`]),
+    ...[...Array(weaponCount).keys()].flatMap((i) => repeatingWeaponTraits.map((t) => t.replace("%d", i+1)))
 ]
 
 const version1Attrs = ['int', 'res', 'str', 'dex', 'sta', 'pre', 'man', 'com', 'willpower_available', 'vitality_dot', 'vitality_available', 'shade', 'lament']
@@ -2435,27 +2435,27 @@ const v1AttrMap = {
     "vitality_available": "current_vitality",
     "spite_dot": "spite",
     "spite_available": "current_spite",
-    'attr_armor_rating': 'attr_armor_name0',
-    'attr_speed_defense': 'attr_armor_speed0',
-    'attr_armor_strength': 'attr_armor_strength0',
-    'attr_armor_defense,': 'attr_armor_defense0',
-    'attr_armor_text': 'attr_armor_description0',
+    'armor_rating': 'armor_name0',
+    'speed_defense': 'armor_speed0',
+    'armor_strength': 'armor_strength0',
+    'armor_defense,': 'armor_defense0',
+    'armor_text': 'armor_description0',
   }
 
   const newV1Attr = ['iron_stamina', 'fleet_of_foot', 'shoot_first', 'giant', 'small_framed', 'defense_bonus']
 
-  const v0ArmorAttr = ['attr_armor_rating', 'attr_armor_strength', 'attr_armor_defense,', 'attr_speed_defense', 'attr_armor_text']
+  const v0ArmorAttr = ['armor_rating', 'armor_strength', 'armor_defense,', 'speed_defense', 'armor_text']
 
   const repeatingV1AttrMap = {
     "other_traits_%d_name": "extra_trait_%d_name",
     "other_traits_%d": "extra_trait_%d",
-    "attr_weapon_name_%d": "attr_attack_name%d",
-    "attr_weapon_damage_%d": "attr_attack_damage%d",
-    "attr_weapon_range_%d": "attr_attack_range%d",
-    "attr_weapon_clip_%d": "attr_attack_magazine%d",
-    "attr_weapon_initiative_%d": "attr_attack_initiative%d",
-    "attr_weapon_strength_%d": "attr_attack_strength%d",
-    "attr_weapon_size_%d": "attr_attack_size%d"
+    "weapon_name_%d": "attack_name%d",
+    "weapon_damage_%d": "attack_damage%d",
+    "weapon_range_%d": "attack_range%d",
+    "weapon_clip_%d": "attack_magazine%d",
+    "weapon_initiative_%d": "attack_initiative%d",
+    "weapon_strength_%d": "attack_strength%d",
+    "weapon_size_%d": "attack_size%d"
   }
 
   const versionAttrs = ["version", ...version1Attrs, ...repeatingV1Attrs, ...v0ArmorAttr]
@@ -2463,16 +2463,17 @@ const v1AttrMap = {
   //Upgrade for new sheet versions
   const versionUpdate = () => {
     getAttrs(versionAttrs, (v) => {
-      const version = parseInt(v.version) || 0
+        console.log(versionAttrs,v);
+        const version = parseInt(v.version) || 0
       let attrs = {}
       if (version < 1) {
         if(v.attr_armor_rating) {
             [ballistic, general] = v.attr_armor_rating.split("/")
             if(ballistic) {
-                attrs["attr_armor_ballistic0"] = ballistic
+                attrs["armor_ballistic0"] = ballistic
             }
             if(general) {
-                attrs["attr_armor_general0"] = general || ballistic || 0
+                attrs["armor_general0"] = general || ballistic || 0
             }
         }
         //Rename v0 attributes to v1 attributes
@@ -2489,15 +2490,15 @@ const v1AttrMap = {
           "shade": v.shade.toLowerCase().replace(" ", ""),
           "lament": v.lament.toLowerCase().replace(" ", ""),
         }
-        const repeatingAttrs = [...Array(maxTraitCount-1).keys()].reduce((attrs, i) => {
+        const repeatingAttrs = [...Array(maxTraitCount).keys()].reduce((attrs, i) => {
             const repeatingAttrMap = Object.entries(repeatingV1AttrMap)
                 .filter(([oldAttr, _]) => oldAttr.replace("%d", i+1) in v)
-                .reduce((attrs, [oldAttr, newAttr]) => (
-                    {
+                .reduce((attrs, [oldAttr, newAttr]) => {
+                    return{
                             ...attrs,
                             [newAttr.replace("%d", i+1)]: v[oldAttr.replace("%d", i+1)]
                     }
-                ), {})
+                }, {})
                 return {
                     ...attrs,
                     ...repeatingAttrMap
@@ -2511,7 +2512,7 @@ const v1AttrMap = {
           ...lamentAndShadeAttrs,
           ...repeatingAttrs,
         }
-        attrs["version"] = 1
+        attrs["version"] = 0
       }
       console.log("Upgrading for V1:", attrs)
       setAttrs(attrs)
