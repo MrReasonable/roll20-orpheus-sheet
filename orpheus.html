@@ -2467,8 +2467,8 @@ const v1AttrMap = {
         const version = parseInt(v.version) || 0
       let attrs = {}
       if (version < 1) {
-        if(v.attr_armor_rating) {
-            [ballistic, general] = v.attr_armor_rating.split("/")
+        if(v.armor_rating) {
+            const [ballistic, general] = v.armor_rating.split("/")
             if(ballistic) {
                 attrs["armor_ballistic0"] = ballistic
             }
@@ -2479,7 +2479,7 @@ const v1AttrMap = {
         //Rename v0 attributes to v1 attributes
         const renamedAttrs = Object.entries(v1AttrMap).reduce((attrs, [oldAttr, newAttr]) => ({
           ...attrs,
-          [newAttr]: parseInt(v[oldAttr]) || 0
+          [newAttr]: v[oldAttr] || ""
         }), {})
         //Initialise new attributes
         const newAttrs = newV1Attr.reduce((attrs, newAttr) => ({
@@ -2512,7 +2512,7 @@ const v1AttrMap = {
           ...lamentAndShadeAttrs,
           ...repeatingAttrs,
         }
-        attrs["version"] = 0
+        attrs["version"] = 1
       }
       console.log("Upgrading for V1:", attrs)
       setAttrs(attrs)
