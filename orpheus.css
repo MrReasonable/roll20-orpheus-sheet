@@ -306,18 +306,25 @@
 .charsheet input.luminous-if[value="2"] ~ .ne-luminous-2,
 .charsheet input.luminous-if[value="3"] ~ .ne-luminous-3,
 .charsheet input.luminous-if[value="4"] ~ .ne-luminous-4,
+.charsheet input.lament-if[value="none"] ~ .ne-mortal,
+.charsheet input.lament-if[value="skimmer"] ~ .ne-skimmer,
+.charsheet input.lament-if[value="sleeper"] ~ .ne-sleeper,
+.charsheet input.lament-if[value="spirit"] ~ .ne-spirit,
 .charsheet input.lament-if[value="hue"] ~ .ne-hue,
-.charsheet input.shade-if[value="spectre"] ~ .ne-spectre {
+.charsheet input.shade-if[value="none"] ~ .ne-mortal,
+.charsheet input.shade-if[value="spectre"] ~ .ne-spectre,
+.charsheet input.shade-if[value="banshee"] ~ .ne-banshee,
+.charsheet input.shade-if[value="haunter"] ~ .ne-haunter,
+.charsheet input.shade-if[value="poltergeist"] ~ .ne-poltergeist,
+.charsheet input.shade-if[value="skinrider"] ~ .ne-skinrider,
+.charsheet input.shade-if[value="phantasm"] ~ .ne-phantasm,
+.charsheet input.shade-if[value="orphan_grinder"] ~ .ne-orphan-grinder,
+.charsheet input.shade-if[value="wisp"] ~ .ne-wisp {
   display: none;
 }
 
-.charsheet input.if[value="spectre"] ~ .ne-spectre,
-.charsheet input.if[value="banshee"] ~ .ne-banshee,
-.charsheet input.if[value="haunter"] ~ .ne-haunter,
-.charsheet input.if[value="poltergeist"] ~ .ne-poltergeist,
-.charsheet input.if[value="skinrider"] ~ .ne-skinrider,
-.charsheet input.if[value="phantasm"] ~ .ne-phantasm,
-.charsheet input.if[value="orphan_grinder"] ~ .ne-orphan-grinder,
+.charsheet input.if[value="wisp"] ~ .ne-wisp,
+.charsheet input.if[value="wisp"] ~ .ne-wisp,
 .charsheet input.if[value="wisp"] ~ .ne-wisp {
   display: none;
 }
@@ -436,13 +443,13 @@
   border: 1px solid black;
   background: #1C1C1C;
   color: white;
-  
+
   }
-  
+
   .charsheet table.devotions input[type="text"] {
     max-width: 100px;
   }
-  
+
   .charsheet table.devotions textarea,
   .charsheet table.devotions input[type="text"] {
     background: #1C1C1C;
