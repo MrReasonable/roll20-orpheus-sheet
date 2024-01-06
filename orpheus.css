@@ -4,6 +4,11 @@
   font-family: "Courier";
 }
 
+.background {
+  background: none;
+  padding: 20px;
+  min-width: 61em;
+}
 .charsheet .label {
   font-size: inherit;
   color: inherit;
@@ -19,6 +24,7 @@
 .charsheet .radio {
   margin: inherit;
   padding: inherit;
+  display: inline-block;
 }
 
 .charsheet h5 {
@@ -132,7 +138,7 @@
 .charsheet .tab-br {
   border-bottom: 1px solid #a8a8a8;
   margin-bottom: 5px;
-  margin-top: 6px;
+  margin-top: 1px;
 }
 
 /*-----radio boxes-----*/
@@ -576,6 +582,7 @@
 .charsheet .skills {
   display: inline-grid;
   grid-template-columns: 1fr auto;
+  min-width: 16em;
 }
 
 .charsheet .diceroller-grid > .span,
