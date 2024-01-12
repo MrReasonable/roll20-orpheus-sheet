@@ -202,6 +202,7 @@
                 <div class="el_spacer"></div>
                 <div class="flex">
                     <!-- SKILL FIELDS -->
+                    <input type="hidden" class="widen-if" name="attr_enable_specialties">
                     <div class="skills">
                         <div class="section-header">
                             <h2><span>SKILLS</span></h2>
@@ -213,11 +214,18 @@
                         <div>
                             <input type="hidden" class="if" name="attr_enable_profession">
                             <span class="checkbox eq-1">
-                                <input type="hidden" class="flag " name="attr_academics_box" value="0">
+                                <input type="hidden" class="flag" name="attr_academics_box" value="0">
                                 <button type="action" name="act_academics_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_academics_flag" value="0" />
-                            <button type="action" class="toggle" name="act_academics">Academics</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_academics" value="0">
+                            <button type="action" class="toggle" name="act_academics">Academics<sup>(s)</sup></button>
+                            <span>
+                                <input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_academics">
+                                </span>
+                            </span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_academics" value="0" />
@@ -235,7 +243,12 @@
                                 <button type="action" name="act_computer_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_computer_flag" value="0" />
-                            <button type="action" class="toggle" name="act_computer">Computer</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_computer" value="0">
+                            <button type="action" class="toggle" name="act_computer">Computer<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_computer">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_computer" value="0" />
@@ -253,7 +266,12 @@
                                 <button type="action" name="act_crafts_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_crafts_flag" value="0" />
-                            <button type="action" class="toggle" name="act_crafts">Crafts</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_crafts" value="0">
+                            <button type="action" class="toggle" name="act_crafts">Crafts<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_crafts">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_crafts" value="0" />
@@ -271,7 +289,12 @@
                                 <button type="action" name="act_investigation_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_investigation_flag" value="0" />
-                            <button type="action" class="toggle" name="act_investigation">Investigation</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_investigation" value="0">
+                            <button type="action" class="toggle" name="act_investigation">Investigation<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_investigation">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_investigation" value="0" />
@@ -289,7 +312,13 @@
                                 <button type="action" name="act_medicine_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_medicine_flag" value="0" />
-                            <button type="action" class="toggle" name="act_medicine">Medicine</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_medicine" value="0">
+                            <button type="action" class="toggle" name="act_medicine">Medicine<sup>(s)</sup></button>
+                            <span>
+                                <input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_medicine">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_medicine" value="0" />
@@ -307,7 +336,12 @@
                                 <button type="action" name="act_occult_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_occult_flag" value="0" />
-                            <button type="action" class="toggle" name="act_occult">Occult</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_occult" value="0">
+                            <button type="action" class="toggle" name="act_occult">Occult<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_occult">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_occult" value="0" />
@@ -325,7 +359,12 @@
                                 <button type="action" name="act_politics_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_politics_flag" value="0" />
-                            <button type="action" class="toggle" name="act_politics">Politics</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_politics" value="0">
+                            <button type="action" class="toggle" name="act_politics">Politics<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_politics">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_politics" value="0" />
@@ -343,7 +382,12 @@
                                 <button type="action" name="act_science_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_science_flag" value="0" />
-                            <button type="action" class="toggle" name="act_science">Science</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_science" value="0">
+                            <button type="action" class="toggle" name="act_science">Science<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_science">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_science" value="0" />
@@ -365,7 +409,12 @@
                                 <button type="action" name="act_athletics_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_athletics_flag" value="0" />
-                            <button type="action" class="toggle" name="act_athletics">Athletics</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_athletics" value="0">
+                            <button type="action" class="toggle" name="act_athletics">Athletics<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_athletics">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_athletics" value="0" />
@@ -383,7 +432,12 @@
                                 <button type="action" name="act_brawl_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_brawl_flag" value="0" />
-                            <button type="action" class="toggle" name="act_brawl">Brawl</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_brawl" value="0">
+                            <button type="action" class="toggle" name="act_brawl">Brawl<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_brawl">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_brawl" value="0" />
@@ -401,7 +455,12 @@
                                 <button type="action" name="act_drive_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_drive_flag" value="0" />
-                            <button type="action" class="toggle" name="act_drive">Drive</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_drive" value="0">
+                            <button type="action" class="toggle" name="act_drive">Drive<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_drive">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_drive" value="0" />
@@ -419,7 +478,12 @@
                                 <button type="action" name="act_firearms_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_firearms_flag" value="0" />
-                            <button type="action" class="toggle" name="act_firearms">Firearms</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_firearms" value="0">
+                            <button type="action" class="toggle" name="act_firearms">Firearms<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_firearms">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_firearms" value="0" />
@@ -437,7 +501,12 @@
                                 <button type="action" name="act_larceny_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_larceny_flag" value="0" />
-                            <button type="action" class="toggle" name="act_larceny">Larceny</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_larceny" value="0">
+                            <button type="action" class="toggle" name="act_larceny">Larceny<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_larceny">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_larceny" value="0" />
@@ -455,7 +524,12 @@
                                 <button type="action" name="act_stealth_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_stealth_flag" value="0" />
-                            <button type="action" class="toggle" name="act_stealth">Stealth</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_stealth" value="0">
+                            <button type="action" class="toggle" name="act_stealth">Stealth<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_stealth">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_stealth" value="0" />
@@ -473,7 +547,12 @@
                                 <button type="action" name="act_survival_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_survival_flag" value="0" />
-                            <button type="action" class="toggle" name="act_survival">Survival</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_survival" value="0">
+                            <button type="action" class="toggle" name="act_survival">Survival<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_survival">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_survival" value="0" />
@@ -491,7 +570,12 @@
                                 <button type="action" name="act_weaponry_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_weaponry_flag" value="0" />
-                            <button type="action" class="toggle" name="act_weaponry">Weaponry</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_weaponry" value="0">
+                            <button type="action" class="toggle" name="act_weaponry">Weaponry<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_weaponry">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_weaponry" value="0" />
@@ -513,7 +597,12 @@
                                 <button type="action" name="act_animalken_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_animalken_flag" value="0" />
-                            <button type="action" class="toggle" name="act_animalken">Animal Ken</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_animalken" value="0">
+                            <button type="action" class="toggle" name="act_animalken">Animal Ken<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_animalken">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_animalken" value="0" />
@@ -531,7 +620,12 @@
                                 <button type="action" name="act_empathy_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_empathy_flag" value="0" />
-                            <button type="action" class="toggle" name="act_empathy">Empathy</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_empathy" value="0">
+                            <button type="action" class="toggle" name="act_empathy">Empathy<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_empathy">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_empathy" value="0" />
@@ -549,7 +643,12 @@
                                 <button type="action" name="act_expression_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_expression_flag" value="0" />
-                            <button type="action" class="toggle" name="act_expression">Expression</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_expression" value="0">
+                            <button type="action" class="toggle" name="act_expression">Expression<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_expression">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_expression" value="0" />
@@ -567,7 +666,12 @@
                                 <button type="action" name="act_intimidation_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_intimidation_flag" value="0" />
-                            <button type="action" class="toggle" name="act_intimidation">Intimidation</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_intimidation" value="0">
+                            <button type="action" class="toggle" name="act_intimidation">Intimidation<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_intimidation">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_intimidation" value="0" />
@@ -585,7 +689,12 @@
                                 <button type="action" name="act_persuasion_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_persuasion_flag" value="0" />
-                            <button type="action" class="toggle" name="act_persuasion">Persuasion</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_persuasion" value="0">
+                            <button type="action" class="toggle" name="act_persuasion">Persuasion<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_persuasion">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_persuasion" value="0" />
@@ -603,7 +712,12 @@
                                 <button type="action" name="act_socialize_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_socialize_flag" value="0" />
-                            <button type="action" class="toggle" name="act_socialize">Socialize</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_socialize" value="0">
+                            <button type="action" class="toggle" name="act_socialize">Socialize<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_socialize">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_socialize" value="0" />
@@ -621,7 +735,12 @@
                                 <button type="action" name="act_streetwise_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_streetwise_flag" value="0" />
-                            <button type="action" class="toggle" name="act_streetwise">Streetwise</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_streetwise" value="0">
+                            <button type="action" class="toggle" name="act_streetwise">Streetwise<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_streetwise">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_streetwise" value="0" />
@@ -639,7 +758,12 @@
                                 <button type="action" name="act_subterfuge_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_subterfuge_flag" value="0" />
-                            <button type="action" class="toggle" name="act_subterfuge">Subterfuge</button>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_subterfuge" value="0">
+                            <button type="action" class="toggle" name="act_subterfuge">Subterfuge<sup>(s)</sup></button>
+                            <span><input type="hidden" class="if" name="attr_enable_specialties">
+                                <span class="eq-1 skill_specialty">
+                                    <input type="text" name="attr_specialization_subterfuge">
+                                </span></span>
                         </div>
                         <div class="dots">
                             <input type="hidden" name="attr_subterfuge" value="0" />
@@ -2097,6 +2221,11 @@
                             <button type="action" class="toggle" name="act_enable_profession">Enable checkboxes next to
                                 skills (Normally used for professions, rote skills, etc)</button>
                         </span>
+                        <span class="checkbox">
+                            <input type="hidden" class="flag" name="attr_enable_specialties" value="0">
+                            <button type="action" name="act_enable_specialties"></button>
+                            <button type="action" class="toggle" name="act_enable_specialties">Display specialty input field next to
+                                skills</button>
                     </div>
                 </div>
             </div>
@@ -2125,10 +2254,11 @@
 <input type="hidden" name="attr_armor_penalty" value="0" />
 <script type="text/worker">
   const attributes = ["intelligence", "wits", "resolve", "strength", "dexterity", "stamina", "presence", "manipulation", "composure"]
-  const mentalSkills = ["academics", "computer", "investigation", "medicine", "occult", "politics", "science"]
+  const mentalSkills = ["academics", "computer", "crafts", "investigation", "medicine", "occult", "politics", "science"]
   const physicalSkills = ["athletics", "brawl", "drive", "firearms", "larceny", "stealth", "survival", "weaponry"]
   const socialSkills = ["animalken", "empathy", "expression", "intimidation", "persuasion", "socialize", "streetwise", "subterfuge"]
   const skills = [...mentalSkills, ...physicalSkills, ...socialSkills]
+  const skillsSpecializations = skills.map((skill) => `specialization_${skill}`)
   const normalStats = [...attributes, ...skills]
   const sizeStats = ["base_size", "giant", "small_framed"]
   const woundPenaltyStats = ["iron_stamina"]
@@ -2160,6 +2290,7 @@
         [derivedInitiativeStats, updateInitiative],
         [derivedWillpowerStats, updateWillpower],
         [derivedWoundPenaltyStats, updateWoundPenalties],
+        [skillsSpecializations, updateSpecializationVisible],
       ]
       const source = eventInfo.sourceAttribute
       fixMaxOverflow(eventInfo)
@@ -2219,6 +2350,7 @@
     "giant",
     "shoot_first",
     "enable_profession",
+    "enable_specialties",
     "armor_flag0",
     "armor_flag1",
     "armor_flag2",
@@ -2357,6 +2489,16 @@
     })
   }
 
+  const updateSpecializationVisible = () => {
+    getAttrs(skillsSpecializations, (v) => {
+        const specializationVisibility = skillsSpecializations.reduce((acc, skill) => ({
+            ...acc,
+            [`has_${skill}`]: v[skill] ? "1" : "0"
+        }), {})
+        setAttrs(specializationVisibility)
+    })
+  }
+
   //Health boxes
   // trait name and depth (number of distinct healthbox states)
   const healthTraits = { "healthbox": 4 };
@@ -2422,7 +2564,6 @@
     [...Array(16).keys()].forEach((attr) => {//healthbox nr. 1 through 16
         on(`change:healthbox_${attr+1}`, (eventInfo) => {
             const source = eventInfo.sourceAttribute;
-            console.log(source);
             updateAttacks();
         });
     });
@@ -2520,7 +2661,6 @@ const v1AttrMap = {
   //Upgrade for new sheet versions
   const versionUpdate = () => {
     getAttrs(versionAttrs, (v) => {
-        console.log(versionAttrs,v);
         const version = parseInt(v.version) || 0
       let attrs = {}
       if (version < 1) {
@@ -2584,5 +2724,6 @@ const v1AttrMap = {
     updateDefense()
     updateInitiative()
     updateWillpower()
+    updateSpecializationVisible()
   })
 </script>

@@ -334,115 +334,6 @@
 .charsheet input.if[value="wisp"] ~ .ne-wisp {
   display: none;
 }
-/*--------------Big Checkbox--------------*/
-
-/* ----Hide actual arrow checkbox---- */
-.charsheet input.bigcheck[type="checkbox"] {
-  opacity: 0;
-  width: 16px;
-  height: 16px;
-  position: relative;
-  top: 5px;
-  left: 6px;
-  margin: -10px;
-  cursor: pointer;
-  z-index: 1;
-}
-
-/* ----Fake arrow checkbox---- */
-.charsheet input.bigcheck[type="checkbox"] + span::before {
-  margin-right: 4px;
-  border: solid 1px #a8a8a8;
-  line-height: 14px;
-  text-align: center;
-  display: inline-block;
-  vertical-align: middle;
-
-  -moz-box-shadow: 0 0 2px #ccc;
-  -webkit-box-shadow: 0 0 2px #ccc;
-  box-shadow: 0 0 2px #ccc;
-
-  background: #f6f6f6;
-  background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
-  background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
-  background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
-  background: -o-radial-gradient(#f6f6f6, #dfdfdf);
-  background: radial-gradient(#f6f6f6, #dfdfdf);
-}
-
-.charsheet input.bigcheck[type="checkbox"] + span::before {
-  content: "";
-  width: 14px;
-  height: 14px;
-  font-size: 12px;
-
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-
-.charsheet input.bigcheck[type="checkbox"]:checked + span::before {
-  color: red;
-  content: "✓";
-}
-
-/*--------------Round checkbox--------------*/
-
-/* ----Hide actual roundcheck checkbox---- */
-.charsheet input.roundcheck[type="checkbox"] {
-  opacity: 0;
-  width: 16px;
-  height: 16px;
-  position: relative;
-  top: 5px;
-  left: 6px;
-  margin: -10px;
-  cursor: pointer;
-  z-index: 1;
-}
-
-/* ----Fake roundcheck checkbox---- */
-.charsheet input.roundcheck[type="checkbox"] + span::before {
-  margin-right: 4px;
-  border: solid 1px #a8a8a8;
-  line-height: 14px;
-  text-align: center;
-  display: inline-block;
-  vertical-align: middle;
-  border-radius: 20px 20px 20px 20px;
-
-  -moz-box-shadow: 0 0 20px #ccc;
-  -webkit-box-shadow: 0 0 20px #ccc;
-  box-shadow: 0 0 20px #ccc;
-
-  background: #f6f6f6;
-  background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
-  background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
-  background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
-  background: -o-radial-gradient(#f6f6f6, #dfdfdf);
-  background: radial-gradient(#f6f6f6, #dfdfdf);
-
-  -moz-border-radius: 20px 20px 20px 20px;
-  -webkit-border-radius: 20px 20px 20px 20px;
-  border-radius: 20px 20px 20px 20px;
-}
-
-.charsheet input.roundcheck[type="checkbox"] + span::before {
-  content: "";
-  width: 14px;
-  height: 14px;
-  font-size: 12px;
-
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-}
-
-.charsheet input.roundcheck[type="checkbox"]:checked + span::before {
-  color: blue;
-  font-size: 3em;
-  content: "•";
-}
 
 /*-------Tables--------*/
 .charsheet table.devotions {
@@ -473,33 +364,6 @@
 .charsheet td.armor {
   border: 0px solid black;
   background: none;
-}
-
-/*-----arrow-----*/
-.charsheet input.arrow {
-  float: left;
-}
-
-.charsheet div.body {
-  display: none;
-}
-
-.charsheet input.arrow:checked ~ div.body {
-  display: block;
-}
-
-/* ----Hide actual arrow checkbox---- */
-
-.charsheet input.arrow[type="checkbox"] {
-  opacity: 0;
-  width: 16px;
-  height: 16px;
-  position: relative;
-  top: 5px;
-  left: 6px;
-  margin: -10px;
-  cursor: pointer;
-  z-index: 1;
 }
 
 /*-------sheet select---------*/
@@ -585,12 +449,48 @@
   min-width: 16em;
 }
 
+.charsheet input.widen-if[value="1"] ~ .skills,
+.charsheet input.widen-if[value="on"] ~ .skills {
+  min-width: 30em;
+}
 .charsheet .diceroller-grid > .span,
 .charsheet .skills > .section-header,
 .charsheet .diceroller-grid > .subheader,
 .charsheet .skills > .subheader,
 .charsheet .skills > .subsubheader {
   grid-column: 1 / span 2;
+}
+
+.charsheet .skills input.if-has-specialty[value="0"]+button.toggle > sup {
+  display: none;
+}
+
+.charsheet .skills .checkbox:has(input.flag[value="1"])~button.toggle::after {
+  content: "+";
+}
+
+.charsheet .skills input.if-has-specialty[value="1"]+button:hover+span>input.if[value="0"]+.skill_specialty {
+  position: absolute;
+  display: block;
+  background-color: #DDD;
+  border: 1px solid black;
+  padding: 2px;
+  margin: 0;
+  z-index: 0;
+  top: -26px;
+  opacity: 90%;
+}
+.charsheet .skills input.if-has-specialty[value="1"]+button:hover+span>input.if[value="0"]+.skill_specialty>input[type="text"] {
+  box-shadow: none;
+  --webkit-box-shadow: none;
+}
+
+.charsheet .skills div:has(>input.if-has-specialty) {
+  position: relative;
+}
+
+.charsheet .if-has-specialty {
+  text-decoration: none;
 }
 
 .charsheet .subheader {
