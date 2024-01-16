@@ -649,7 +649,7 @@
   padding: 0 15px;
 }
 
-.charsheet .input-group {
+.charsheet .sheet-input-group {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -664,8 +664,8 @@
   text-overflow: ellipsis;
 }
 
-.charsheet .input-group > input[type="text"],
-.charsheet .input-group > button.toggle {
+.charsheet .sheet-input-group > input[type="text"],
+.charsheet .sheet-input-group > button.toggle {
   width: 0;
   flex-grow: 1;
 }
@@ -782,4 +782,8 @@
 
 .charsheet .preserve-whitespace {
   white-space: pre;
+}
+
+.charsheet .repcontainer.editmode .repitem .itemcontrol {
+  z-index: 100;
 }
