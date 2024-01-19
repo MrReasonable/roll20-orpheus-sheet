@@ -1,87 +1,137 @@
 <div class="background">
-    <input type="radio" name="attr_tab" class="tab tab1" value="1" title="Sheet" checked="checked" />
-    <input type="radio" name="attr_tab" class="tab tab2" value="2" title="Horrors/Items" />
-    <input type="radio" name="attr_tab" class="tab tab3" value="3" title="Expanded Merits" />
-    <input type="radio" name="attr_tab" class="tab tab4" value="4" title="Background" />
-    <input type="radio" name="attr_tab" class="tab tab5" value="5" title="Settings" />
+    <input type="radio" name="attr_tab" class="tab tab1" value="1" data-i18n-title="sheet" title="Sheet"
+        checked="checked" />
+    <input type="radio" name="attr_tab" class="tab tab2" value="2" data-i18n-title="horrors-items" title="Horrors/Items" />
+    <input type="radio" name="attr_tab" class="tab tab3" value="3" title="Expanded Merits"
+        data-i18n-title="expanded-merits" />
+    <input type="radio" name="attr_tab" class="tab tab4" value="4" title="Background" data-i18n-title="background" />
+    <input type="radio" name="attr_tab" class="tab tab5" value="5" title="Settings" data-i18n-title="settings" />
     <div class="tab-br"></div>
     <div class="tab-content tab1">
+        <div class="diceroller">
+            <input type="hidden" class="rollstyle" name="attr_rollstyle" value="sheet" />
+            <input type="hidden" class="rolltype-select" name="attr_rolltype_select" value="normal" />
+            <div class="diceroller-grid">
+                <input id="collapsible" class="toggle" type="checkbox" name="attr_rolltoggle">
+                <label for="collapsible" class="lbl-toggle subheader" data-i18n="dice-roller-u">DICE ROLLER</label>
+                <div class="span collapsible-content">
+                    <button type="roll" class="inline-flex" name="roll_initiative"
+                        value="&{template:wod-initiative} {{name=@{character_name}}} {{dexterity=@{dexterity}}} {{composure=@{composure}}} {{fastReflexes=@{fast_reflexes}}} {{initiativePenalty=@{initiative_penalty}}} {{result=[[1d10 + @{dexterity} + @{composure} + @{fast_reflexes} + @{initiative_penalty} &{tracker}]]}}"
+                        data-i18n="initiative"> Initiative </button>
+                </div>
+                <div class="rollcontainer collapsible-content">
+                    <button type="roll" class="rollstyle sheet" name="roll_sheet"
+                        value="&{template:wod} {{name=@{character_name}}} {{dicePool=@{dice_pool}}} {{dicePoolHtml=@{dice_pool_html}}} {{mod=[[?{@{modifiers}|0}]]}} {{woundpenalty=[[@{wound_penalty}]]}} {{result=[[{((?{@{modifiers}|0}+@{wound_penalty}+@{dice_pool})@{rolltype}"></button>
+                    <button type="roll" class="rollstyle attack" name="roll_attack"
+                        value="&{template:wod-attack} {{name=@{character_name}}} {{strength=@{strength}}} {{dexterity=@{dexterity}}} {{brawl=@{brawl}}} {{weaponry=@{weaponry}}} {{firearms=@{firearms}}} {{athletics=@{athletics}}} {{mod=[[?{@{modifiers}|0}]]}} {{woundpenalty=[[@{wound_penalty}]]}} {{wpen=[[@{weapon_penalty}]]}} {{apen=[[@{armor_penalty}]]}} @{attack}@{rolltype}"></button>
+                    <button type="roll" class="rollstyle simple" name="roll_simple"
+                        value="&{template:wod-simple} {{name=@{character_name}}} {{option=?{@{dice-pool}|0}}} {{result=[[{(?{@{dice-pool}|1}@{rolltype}"></button>
+                </div>
+                <div class="diceroller-options collapsible-content">
+                    <button type="action" class="toggle rollstyle-sheet" name="act_rollstyle_sheet" data-i18n="sheet-roll">Sheet
+                        Roll</button>
+                    <button type="action" class="toggle rollstyle-attack" name="act_rollstyle_attack"
+                        data-i18n="attack-roll">Attack Roll</button>
+                    <button type="action" class="toggle rollstyle-simple" name="act_rollstyle_simple"
+                        data-i18n="simple-roll">Simple Roll</button>
+                </div>
+                <div class="rolldisplay collapsible-content">
+                    <textarea type="text" class="rollstyle sheet" name="attr_rolldisplay"></textarea>
+                    <div class="rollstyle attack" data-i18n="attack">Attack</div>
+                    <div class="rollstyle simple" data-i18n="simple">Simple</div>
+                </div>
+                <div class="diceroller-options collapsible-content">
+                    <button type="action" class="toggle rolltype-chance" name="act_rolltype_select_chance"
+                        data-i18n="chance">Chance</button>
+                    <button type="action" class="toggle rolltype-normal" name="act_rolltype_select_normal"
+                        data-i18n="normal">Normal</button>
+                    <button type="action" class="toggle rolltype-9-again" name="act_rolltype_select_9-again"
+                        data-i18n="9-again">9-Again</button>
+                    <button type="action" class="toggle rolltype-8-again" name="act_rolltype_select_8-again"
+                        data-i18n="8-again">8-Again</button>
+                    <button type="action" class="toggle rolltype-chance-rote" name="act_rolltype_select_chance-rote"
+                        data-i18n="chance-rote">Chance Rote</button>
+                    <button type="action" class="toggle rolltype-rote" name="act_rolltype_select_rote"
+                        data-i18n="rote">Rote</button>
+                </div>
+            </div>
+        </div>
         <div class="tabbed-panel">
             <div>
                 <div class="info-grid">
                     <!-- Row 1 -->
                     <div class="input-label">
-                        <span>Name</span>:
+                        <span data-i18n="name">Name</span>:
                     </div>
                     <input type="text" name="attr_character_name">
                     <div class="spacer"></div>
                     <div class="input-label">
-                        <span>Virtue</span>:
+                        <span data-i18n="virtue">Virtue</span>:
                     </div>
                     <input type="text" name="attr_virtue">
                     <div class="spacer"></div>
                     <div class="input-label">
-                        <span>Shade</span>:
+                        <span data-i18n="shade">Shade</span>:
                     </div>
                     <select name="attr_shade" class="select">
                         <option value="none" selected>---</option>
-                        <option value="banshee">Banshee</option>
-                        <option value="haunter">Haunter</option>
-                        <option value="orphan_grinder">Orphan Grinder</option>
-                        <option value="phantasm">Phantasm</option>
-                        <option value="poltergeist">Poltergeist</option>
-                        <option value="skinrider">Skinrider</option>
-                        <option value="wisp">Wisp</option>
-                        <option value="spectre">Spectre</option>
+                        <option value="banshee" data-i18n="banshee">Banshee</option>
+                        <option value="haunter" data-i18n="haunter">Haunter</option>
+                        <option value="orphan_grinder" data-i18n="orphan-grinder">Orphan Grinder</option>
+                        <option value="phantasm" data-i18n="phantasm">Phantasm</option>
+                        <option value="poltergeist" data-i18n="poltergeist">Poltergeist</option>
+                        <option value="skinrider" data-i18n="skinrider">Skinrider</option>
+                        <option value="wisp" data-i18n="wisp">Wisp</option>
+                        <option value="spectre" data-i18n="spectre">Spectre</option>
                     </select>
                     <!-- Row 2 -->
                     <div class="input-label">
-                        <span>Player</span>:
+                        <span data-i18n="player">Player</span>:
                     </div>
                     <input type="text" name="attr_player_name">
                     <div class="spacer"></div>
                     <div class="input-label">
-                        <span>Vice</span>:
+                        <span data-i18n="vice">Vice</span>:
                     </div>
                     <input type="text" name="attr_vice">
                     <div class="spacer"></div>
                     <div class="input-label">
-                        <span>Company</span>:
+                        <span data-i18n="company">Company</span>:
                     </div>
                     <input type="text" name="attr_company">
                     <!-- Row 3 -->
                     <div class="input-label">
-                        <span>Crucible</span>:
+                        <span data-i18n="crucible">Crucible</span>:
                     </div>
                     <input type="text" name="attr_crucible">
                     <div class="spacer"></div>
                     <div class="input-label">
-                        <span>Concept</span>:
+                        <span data-i18n="concept">Concept</span>:
                     </div>
                     <input type="text" name="attr_concept">
                     <div class="spacer"></div>
                     <div class="input-label">
-                        <span>Lament</span>:
+                        <span data-i18n="lament">Lament</span>:
                     </div>
                     <select name="attr_lament" class="select">
                         <option value="none" selected>---</option>
-                        <option value="skimmer">Skimmer</option>
-                        <option value="sleeper">Sleeper</option>
-                        <option value="spirit">Spirit</option>
-                        <option value="hue">Hue</option>
+                        <option value="skimmer" data-i18n="skimmer">Skimmer</option>
+                        <option value="sleeper" data-i18n="sleeper">Sleeper</option>
+                        <option value="spirit" data-i18n="spirit">Spirit</option>
+                        <option value="hue" data-i18n="hue">Hue</option>
                     </select>
                 </div>
                 <div class="section-header">
-                    <h2><span>Attributes</span></h2>
+                    <h2><span data-i18n="attributes-u">Attributes</span></h2>
                 </div>
                 <div class="attributes">
-                    <div class="attributes-category power">Power</div>
-                    <div class="attributes-category finesse">Finesse</div>
-                    <div class="attributes-category resistance">Resistance</div>
+                    <div class="attributes-category power" data-i18n="power">Power</div>
+                    <div class="attributes-category finesse" data-i18n="finesse">Finesse</div>
+                    <div class="attributes-category resistance" data-i18n="resistance">Resistance</div>
                     <div class="mental border"></div>
                     <div class="power mental label">
                         <input type="hidden" class="flag" name="attr_intelligence_flag" value="0" />
-                        <button type="action" class="toggle" name="act_intelligence">Intelligence</button>
+                        <button type="action" class="toggle" name="act_intelligence" data-i18n="intelligence">Intelligence</button>
                     </div>
                     <div class="power mental dots">
                         <input type="hidden" name="attr_intelligence" value="1" />
@@ -94,7 +144,7 @@
                     </div>
                     <div class="finesse mental label">
                         <input type="hidden" class="flag" name="attr_wits_flag" value="0" />
-                        <button type="action" class="toggle" name="act_wits">Wits</button>
+                        <button type="action" class="toggle" name="act_wits" data-i18n="wits">Wits</button>
                     </div>
                     <div class="finesse mental dots">
                         <input type="hidden" name="attr_wits" value="1" />
@@ -107,7 +157,7 @@
                     </div>
                     <div class="resistance mental label">
                         <input type="hidden" class="flag" name="attr_resolve_flag" value="0" />
-                        <button type="action" class="toggle" name="act_resolve">Resolve</button>
+                        <button type="action" class="toggle" name="act_resolve" data-i18n="resolve">Resolve</button>
                     </div>
                     <div class="resistance mental dots">
                         <input type="hidden" name="attr_resolve" value="1" />
@@ -121,7 +171,7 @@
                     <div class="physical border"></div>
                     <div class="power physical label">
                         <input type="hidden" class="flag" name="attr_strength_flag" value="0" />
-                        <button type="action" class="toggle" name="act_strength">Strength</button>
+                        <button type="action" class="toggle" name="act_strength" data-i18n="strength">Strength</button>
                     </div>
                     <div class="power physical dots">
                         <input type="hidden" name="attr_strength" value="1" />
@@ -134,7 +184,7 @@
                     </div>
                     <div class="finesse physical label">
                         <input type="hidden" class="flag" name="attr_dexterity_flag" value="0" />
-                        <button type="action" class="toggle" name="act_dexterity">Dexterity</button>
+                        <button type="action" class="toggle" name="act_dexterity" data-i18n="dexterity">Dexterity</button>
                     </div>
                     <div class="finesse physical dots">
                         <input type="hidden" name="attr_dexterity" value="1" />
@@ -147,7 +197,7 @@
                     </div>
                     <div class="resistance physical label">
                         <input type="hidden" class="flag" name="attr_stamina_flag" value="0" />
-                        <button type="action" class="toggle" name="act_stamina">Stamina</button>
+                        <button type="action" class="toggle" name="act_stamina" data-i18n="stamina">Stamina</button>
                     </div>
                     <div class="resistance physical dots">
                         <input type="hidden" name="attr_stamina" value="1" />
@@ -161,7 +211,7 @@
                     <div class="social border"></div>
                     <div class="power social label">
                         <input type="hidden" class="flag" name="attr_presence_flag" value="0" />
-                        <button type="action" class="toggle" name="act_presence">Presence</button>
+                        <button type="action" class="toggle" name="act_presence" data-i18n="presence">Presence</button>
                     </div>
                     <div class="power social dots">
                         <input type="hidden" name="attr_presence" value="1" />
@@ -174,7 +224,7 @@
                     </div>
                     <div class="finesse social label">
                         <input type="hidden" class="flag" name="attr_manipulation_flag" value="0" />
-                        <button type="action" class="toggle" name="act_manipulation">Manipulation</button>
+                        <button type="action" class="toggle" name="act_manipulation" data-i18n="manipulation">Manipulation</button>
                     </div>
                     <div class="finesse social dots">
                         <input type="hidden" name="attr_manipulation" value="1" />
@@ -187,7 +237,7 @@
                     </div>
                     <div class="resistance social label">
                         <input type="hidden" class="flag" name="attr_composure_flag" value="0" />
-                        <button type="action" class="toggle" name="act_composure">Composure</button>
+                        <button type="action" class="toggle" name="act_composure" data-i18n="composure">Composure</button>
                     </div>
                     <div class="resistance social dots">
                         <input type="hidden" name="attr_composure" value="1" />
@@ -205,12 +255,12 @@
                     <input type="hidden" class="widen-if" name="attr_enable_specialties">
                     <div class="skills">
                         <div class="section-header">
-                            <h2><span>SKILLS</span></h2>
+                            <h2><span data-i18n="skills-u">SKILLS</span></h2>
                         </div>
                         <div class="subheader">
                             <h3>Mental</h3>
                         </div>
-                        <div class="subsubheader">(-3 unskilled)</div>
+                        <div class="subsubheader" data-i18n="unskilled-min3">(-3 unskilled)</div>
                         <div>
                             <input type="hidden" class="if" name="attr_enable_profession">
                             <span class="checkbox eq-1">
@@ -219,7 +269,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_academics_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_academics" value="0">
-                            <button type="action" class="toggle" name="act_academics">Academics<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_academics" data-i18n="academics">Academics<sup>(s)</sup></button>
                             <span>
                                 <input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
@@ -244,7 +294,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_computer_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_computer" value="0">
-                            <button type="action" class="toggle" name="act_computer">Computer<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_computer" data-i18n="computer">Computer<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_computer">
@@ -267,7 +317,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_crafts_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_crafts" value="0">
-                            <button type="action" class="toggle" name="act_crafts">Crafts<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_crafts" data-i18n="crafts">Crafts<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_crafts">
@@ -290,7 +340,8 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_investigation_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_investigation" value="0">
-                            <button type="action" class="toggle" name="act_investigation">Investigation<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_investigation"
+                                data-i18n="investigation">Investigation<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_investigation">
@@ -313,7 +364,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_medicine_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_medicine" value="0">
-                            <button type="action" class="toggle" name="act_medicine">Medicine<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_medicine" data-i18n="medicine">Medicine<sup>(s)</sup></button>
                             <span>
                                 <input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
@@ -337,7 +388,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_occult_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_occult" value="0">
-                            <button type="action" class="toggle" name="act_occult">Occult<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_occult" data-i18n="occult">Occult<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_occult">
@@ -360,7 +411,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_politics_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_politics" value="0">
-                            <button type="action" class="toggle" name="act_politics">Politics<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_politics" data-i18n="politics">Politics<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_politics">
@@ -383,7 +434,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_science_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_science" value="0">
-                            <button type="action" class="toggle" name="act_science">Science<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_science" data-i18n="science">Science<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_science">
@@ -410,7 +461,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_athletics_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_athletics" value="0">
-                            <button type="action" class="toggle" name="act_athletics">Athletics<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_athletics" data-i18n="athletics">Athletics<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_athletics">
@@ -433,7 +484,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_brawl_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_brawl" value="0">
-                            <button type="action" class="toggle" name="act_brawl">Brawl<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_brawl" data-i18n="brawl">Brawl<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_brawl">
@@ -456,7 +507,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_drive_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_drive" value="0">
-                            <button type="action" class="toggle" name="act_drive">Drive<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_drive" data-i18n="drive">Drive<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_drive">
@@ -479,7 +530,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_firearms_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_firearms" value="0">
-                            <button type="action" class="toggle" name="act_firearms">Firearms<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_firearms" data-i18n="firearms">Firearms<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_firearms">
@@ -502,7 +553,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_larceny_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_larceny" value="0">
-                            <button type="action" class="toggle" name="act_larceny">Larceny<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_larceny" data-i18n="larceny">Larceny<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_larceny">
@@ -525,7 +576,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_stealth_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_stealth" value="0">
-                            <button type="action" class="toggle" name="act_stealth">Stealth<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_stealth" data-i18n="stealth">Stealth<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_stealth">
@@ -548,7 +599,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_survival_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_survival" value="0">
-                            <button type="action" class="toggle" name="act_survival">Survival<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_survival" data-i18n="survival">Survival<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_survival">
@@ -571,7 +622,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_weaponry_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_weaponry" value="0">
-                            <button type="action" class="toggle" name="act_weaponry">Weaponry<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_weaponry" data-i18n="weaponry">Weaponry<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_weaponry">
@@ -598,7 +649,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_animalken_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_animalken" value="0">
-                            <button type="action" class="toggle" name="act_animalken">Animal Ken<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_animalken" data-i18n="animalken">Animal Ken<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_animalken">
@@ -621,7 +672,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_empathy_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_empathy" value="0">
-                            <button type="action" class="toggle" name="act_empathy">Empathy<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_empathy" data-i18n="empathy">Empathy<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_empathy">
@@ -644,7 +695,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_expression_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_expression" value="0">
-                            <button type="action" class="toggle" name="act_expression">Expression<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_expression" data-i18n="expression">Expression<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_expression">
@@ -667,7 +718,8 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_intimidation_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_intimidation" value="0">
-                            <button type="action" class="toggle" name="act_intimidation">Intimidation<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_intimidation"
+                                data-i18n="intimidation">Intimidation<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_intimidation">
@@ -690,7 +742,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_persuasion_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_persuasion" value="0">
-                            <button type="action" class="toggle" name="act_persuasion">Persuasion<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_persuasion" data-i18n="persuasion">Persuasion<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_persuasion">
@@ -713,7 +765,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_socialize_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_socialize" value="0">
-                            <button type="action" class="toggle" name="act_socialize">Socialize<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_socialize" data-i18n="socialize">Socialize<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_socialize">
@@ -736,7 +788,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_streetwise_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_streetwise" value="0">
-                            <button type="action" class="toggle" name="act_streetwise">Streetwise<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_streetwise" data-i18n="streetwise">Streetwise<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_streetwise">
@@ -759,7 +811,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_subterfuge_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_subterfuge" value="0">
-                            <button type="action" class="toggle" name="act_subterfuge">Subterfuge<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_subterfuge" data-i18n="subterfuge">Subterfuge<sup>(s)</sup></button>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_subterfuge">
@@ -779,7 +831,7 @@
                     <!-- OTHER TRAITS -->
                     <div class="grow">
                         <div class="section-header">
-                            <h2><span>Other Traits</span></h2>
+                            <h2><span data-i18n="other-traits-u">Other Traits</span></h2>
                         </div>
                         <div class="flex">
                             <div class="grow">
@@ -787,7 +839,7 @@
                                     <!-- MERITS -->
                                     <div>
                                         <div class="subheader">
-                                            <h3><span>Merits</span></h3>
+                                            <h3><span data-i18n="merits">Merits</span></h3>
                                         </div>
                                         <fieldset class="repeating_merit">
                                             <div class="sheet-input-group">
@@ -812,7 +864,7 @@
                                 <div class="columns">
                                     <div>
                                         <div class="subheader">
-                                            <h3>Horrors</h3>
+                                            <h3 data-i18n="horrors">Horrors</h3>
                                         </div>
                                         <fieldset class="repeating_horror">
                                             <div class="sheet-input-group">
@@ -823,7 +875,7 @@
                                     <div class="horizontal-spacer"></div>
                                     <div>
                                         <div class="subheader">
-                                            <h3>Stains</h3>
+                                            <h3 data-i18n="stains">Stains</h3>
                                         </div>
                                         <fieldset class="repeating_stain">
                                             <div class="sheet-input-group">
@@ -835,20 +887,20 @@
                                 <div>
                                     <div class="el_spacer"></div>
                                     <div class="subheader">
-                                        <h3>Weapons</h3>
+                                        <h3 data-i18n="weapons">Weapons</h3>
                                     </div>
                                     <input type="hidden" name="attr_attack"
                                         value="{{attack_name=@{attack_name0}}} {{weapon_damage=@{attack_damage0}}} {{range=@{attack_range0}}} @{attack_type0}">
                                     <div class="weapongrid">
                                         <div></div>
-                                        <div>Weapon/Attack</div>
-                                        <div>Type</div>
-                                        <div>Dmg</div>
-                                        <div>Range</div>
-                                        <div>Mag</div>
-                                        <div>Ini</div>
-                                        <div>Str</div>
-                                        <div>Sz</div>
+                                        <div data-i18n="weapon-attack">Weapon/Attack</div>
+                                        <div data-i18n="type">Type</div>
+                                        <div data-type="damage-short">Dmg</div>
+                                        <div data-i18n="range">Range</div>
+                                        <div data-i18n="magazine-short">Mag</div>
+                                        <div data-i18n="initiative-short">Ini</div>
+                                        <div data-i18n="strength-short">Str</div>
+                                        <div data-i18n="size-short">Sz</div>
                                         <div>
                                             <input type="hidden" name="attr_attack_0_value"
                                                 value="{{attack_name=@{attack_name0}}} {{weapon_damage=@{attack_damage0}}} {{range=@{attack_range0}}} @{attack_type0}">
@@ -863,23 +915,23 @@
                                         <div class="selectcontainer">
                                             <select name="attr_attack_type0">
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl</option>
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee</option>
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Gun</option>
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Thrown</option>
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage0" value="0" /></div>
@@ -913,23 +965,23 @@
                                                 <option value="{{result=[[{((?{modifiers|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl</option>
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee</option>
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Gun</option>
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Thrown</option>
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage1" /></div>
@@ -954,23 +1006,23 @@
                                                 <option value="{{result=[[{((?{modifiers|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl</option>
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee</option>
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Gun</option>
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Thrown</option>
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage2" class="weaponstat" /></div>
@@ -998,23 +1050,23 @@
                                                 <option value="{{result=[[{((?{modifiers|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl</option>
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee</option>
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Gun</option>
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Thrown</option>
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage3" class="weaponstat" /></div>
@@ -1042,23 +1094,23 @@
                                                 <option value="{{result=[[{((?{modifiers|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl</option>
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee</option>
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Gun</option>
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Thrown</option>
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage4" class="weaponstat" /></div>
@@ -1086,23 +1138,23 @@
                                                 <option value="{{result=[[{((?{modifiers|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl</option>
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee</option>
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Gun</option>
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Thrown</option>
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage5" class="weaponstat" /></div>
@@ -1130,23 +1182,23 @@
                                                 <option value="{{result=[[{((?{modifiers|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl</option>
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee</option>
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Gun</option>
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Thrown</option>
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Brawl* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})">
-                                                    Melee* (Fighting Finesse)</option>
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage6" class="weaponstat" /></div>
@@ -1161,16 +1213,16 @@
                                     </div>
                                     <div class="el_spacer"></div>
                                     <div class="subheader">
-                                        <h3>Armor</h3>
+                                        <h3 data-i18n="armor">Armor</h3>
                                     </div>
                                     <div class="armorgrid">
                                         <div></div>
-                                        <div>Armor</div>
-                                        <div>Rating</div>
-                                        <div>Str</div>
-                                        <div>Def</div>
-                                        <div>Spd</div>
-                                        <div>Description</div>
+                                        <div data-i18n="armor">Armor</div>
+                                        <div data-i18n="rating">Rating</div>
+                                        <div data-i18n="strength-short">Str</div>
+                                        <div data-i18n="defense-short">Def</div>
+                                        <div data-i18n="speed-short">Spd</div>
+                                        <div data-i18n="description">Description</div>
                                         <div class="checkbox">
                                             <input type="hidden" name="attr_armor_flag0">
                                             <button type="action" name="act_armor_flag0"></button>
@@ -1235,7 +1287,7 @@
                                 <input type="hidden" name="attr_lament" class="lament-if" value="" />
                                 <div class="ne-hue ne-spirit">
                                     <div class="subheader">
-                                        <h3>Health</h5>
+                                        <h3 data-i18n="health">Health</h5>
                                     </div>
                                     <div>
                                         <div class="healthboxes">
@@ -1346,7 +1398,7 @@
                                 </div>
                                 <div>
                                     <div class="subheader">
-                                        <h3>Willpower</h3>
+                                        <h3 data-i18n="willpower">Willpower</h3>
                                     </div>
                                     <div class="checkboxes">
                                         <input type="hidden" name="attr_willpower" class="if" value="0" />
@@ -1388,7 +1440,7 @@
                                 <input type="hidden" name="attr_shade" class="shade-if" value="spectre" />
                                 <div class="ne-spectre ne-mortal">
                                     <div class="subheader">
-                                        <h3>Vitality</h3>
+                                        <h3 data-i18n="vitality">Vitality</h3>
                                     </div>
                                     <div class="checkboxes">
                                         <input type="hidden" name="attr_vitality" class="highlighted-if" value="" />
@@ -1462,7 +1514,7 @@
                                 <input type="hidden" name="attr_shade" class="shade-if" value="spectre" />
                                 <div class="ne-mortal">
                                     <div class="subheader">
-                                        <h3>Spite</h3>
+                                        <h3 data-i18n="spite">Spite</h3>
                                     </div>
                                     <div class="healthboxes">
                                         <input type="hidden" name="attr_spite" />
@@ -1522,41 +1574,41 @@
                                 <div class="el-spacer"></div>
                                 <div>
                                     <div class="subheader">
-                                        <h3>Derived</h3>
+                                        <h3 data-i18n="derived">Derived</h3>
                                     </div>
                                     <div class="derived">
-                                        <span>Size</span>:<input type="number" name="attr_size"
+                                        <span data-i18n="size">Size</span>:<input type="number" name="attr_size"
                                             value="@{base_size}+@{giant}-@{small_framed}" disabled="disabled" />
                                     </div>
                                     <div class="derived">
-                                        <span>Speed</span>:<input type="number" name="attr_speed"
+                                        <span data-i18n="speed">Speed</span>:<input type="number" name="attr_speed"
                                             value="@{species_factor}+@{speed_base}+@{speed_penalty}+@{fleet_of_foot}"
                                             disabled="disabled" />
                                     </div>
                                     <div class="derived">
-                                        <span>Defense</span>:<input type="number" name="attr_defense"
+                                        <span data-i18n="defense">Defense</span>:<input type="number" name="attr_defense"
                                             value="@{defense_base}+@{defense_penalty}" disabled="disabled" />
                                     </div>
                                     <div class="derived">
-                                        <span>Armor</span>:<input type="number" name="attr_balistic_armor_display"
-                                            value="@{balistic_armor}" disabled="disabled" />/<input type="number"
+                                        <span data-i18n="armor">Armor</span>:<input type="number" name="attr_balistic_armor_display" value="@{balistic_armor}"
+                                            disabled="disabled" />/<input type="number"
                                             name="attr_general_armor_display" value="@{general_armor}"
                                             disabled="disabled" />
                                     </div>
                                     <div class="derived">
-                                        <span>Initiative</span>:<input type="number" name="attr_initiative"
+                                        <span data-i18n="initiative">Initiative</span>:<input type="number" name="attr_initiative"
                                             value="@{initiative_base}+@{initiative_penalty}+@{fast_reflexes}"
                                             disabled="disabled" />
                                     </div>
                                 </div>
                                 <div class="sheet-input-group">
-                                    <span>Experience</span>
+                                    <span data-i18n="experience">Experience</span>
                                     <span>:</span>
                                     <input type="text" name="attr_experience">
                                 </div>
                                 <div>
                                     <div class="subheader">
-                                        <h5><span>Aspirations</span></h5>
+                                        <h5><span data-i18n="aspirations">Aspirations</span></h5>
                                     </div>
                                     <div class="textboxes">
                                         <input type="text" name="attr_aspirations"><br>
@@ -1574,7 +1626,7 @@
     <div class="tab-content tab2">
         <div class="tabbed-panel">
             <div class="section-header">
-                <h2><span>Extra Traits</span></h2>
+                <h2><span data-i18n="extra-traits">Extra Traits</span></h2>
             </div>
             <div class="columns">
                 <div>
@@ -1696,15 +1748,15 @@
             </div>
             <div>
                 <div class="subheader">
-                    <h2><span>Horror Usage</span></h2>
+                    <h2><span data-i18n="horror-usage">Horror Usage</span></h2>
                 </div>
                 <div class='sheet-2colrow'>
                     <div class='sheet-col'>
                         <table class="devotions" style="width:100%">
                             <tr class="horror_use_desc">
-                                <td>Horror</td>
+                                <td data-i18n="horror">Horror</td>
                                 <td><input type="text" name="attr_horror_name_1" /></td>
-                                <td>Cost</td>
+                                <td data-i18n="cost">Cost</td>
                                 <td><input type="text" name="attr_horror_cost_1" /><br></td>
                             </tr>
                             <tr>
@@ -1712,24 +1764,24 @@
                                         style="width:97%" placeholder="Description"></textarea></td>
                             </tr>
                             <tr>
-                                <td>Dice Pool</td>
+                                <td data-i18n="dice-pool">Dice Pool</td>
                                 <td><input type="text" name="attr_horror_dice_pool_1" /></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Duration</td>
+                                <td data-i18n="duration">Duration</td>
                                 <td><input type="text" name="attr_horror_use_duration_1" /></td>
-                                <td>Action</td>
+                                <td data-i18n="action">Action</td>
                                 <td><input type="text" name="attr_horror_use_action_1" /></td>
                             </tr>
                         </table>
                         <br>
                         <table class="devotions" style="width:100%">
                             <tr class="horror_use_desc">
-                                <td>Horror</td>
+                                <td data-i18n="horror">Horror</td>
                                 <td><input type="text" name="attr_horror_name_2" /></td>
-                                <td>Cost</td>
+                                <td data-i18n="cost">Cost</td>
                                 <td><input type="text" name="attr_horror_cost_2" /><br></td>
                             </tr>
                             <tr>
@@ -1737,24 +1789,24 @@
                                         style="width:97%" placeholder="Description"></textarea></td>
                             </tr>
                             <tr>
-                                <td>Dice Pool</td>
+                                <td data-i18n="dice-pool">Dice Pool</td>
                                 <td><input type="text" name="attr_horror_dice_pool_2" /></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Duration</td>
+                                <td data-i18n="duration">Duration</td>
                                 <td><input type="text" name="attr_horror_use_duration_2" /></td>
-                                <td>Action</td>
+                                <td data-i18n="action">Action</td>
                                 <td><input type="text" name="attr_horror_use_action_2" /></td>
                             </tr>
                         </table>
                         <br>
                         <table class="devotions" style="width:100%">
                             <tr class="horror_use_desc">
-                                <td>Horror</td>
+                                <td data-i18n="horror">Horror</td>
                                 <td><input type="text" name="attr_horror_name_3" /></td>
-                                <td>Cost</td>
+                                <td data-i18n="cost">Cost</td>
                                 <td><input type="text" name="attr_horror_cost_3" /><br></td>
                             </tr>
                             <tr>
@@ -1762,15 +1814,15 @@
                                         style="width:97%" placeholder="Description"></textarea></td>
                             </tr>
                             <tr>
-                                <td>Dice Pool</td>
+                                <td data-i18n="dice-pool">Dice Pool</td>
                                 <td><input type="text" name="attr_horror_dice_pool_3" /></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Duration</td>
+                                <td data-i18n="duration">Duration</td>
                                 <td><input type="text" name="attr_horror_use_duration_3" /></td>
-                                <td>Action</td>
+                                <td data-i18n="action">Action</td>
                                 <td><input type="text" name="attr_horror_use_action_3" /></td>
                             </tr>
                         </table>
@@ -1778,9 +1830,9 @@
                     <div class='sheet-col'>
                         <table class="devotions" style="width:100%">
                             <tr class="horror_use_desc">
-                                <td>Horror</td>
+                                <td data-i18n="horror">Horror</td>
                                 <td><input type="text" name="attr_horror_name_4" /></td>
-                                <td>Cost</td>
+                                <td data-i18n="cost">Cost</td>
                                 <td><input type="text" name="attr_horror_cost_4" /></td>
                             </tr>
                             <tr>
@@ -1788,24 +1840,24 @@
                                         style="width:97%" placeholder="Description"></textarea></td>
                             </tr>
                             <tr>
-                                <td>Dice Pool</td>
+                                <td data-i18n="dice-pool">Dice Pool</td>
                                 <td><input type="text" name="attr_horror_dice_pool_4" /></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Duration</td>
+                                <td data-i18n="duration">Duration</td>
                                 <td><input type="text" name="attr_horror_use_duration_4" /></td>
-                                <td>Action</td>
+                                <td data-i18n="action">Action</td>
                                 <td><input type="text" name="attr_horror_use_action_4" /></td>
                             </tr>
                         </table>
                         <br>
                         <table class="devotions" style="width:100%">
                             <tr class="horror_use_desc">
-                                <td>Horror</td>
+                                <td data-i18n="horror">Horror</td>
                                 <td><input type="text" name="attr_horror_name_5" /></td>
-                                <td>Cost</td>
+                                <td data-i18n="cost">Cost</td>
                                 <td><input type="text" name="attr_horror_cost_5" /><br></td>
                             </tr>
                             <tr>
@@ -1813,24 +1865,24 @@
                                         style="width:97%" placeholder="Description"></textarea></td>
                             </tr>
                             <tr>
-                                <td>Dice Pool</td>
+                                <td data-i18n="dice-pool">Dice Pool</td>
                                 <td><input type="text" name="attr_horror_dice_pool_5" /></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Duration</td>
+                                <td data-i18n="duration">Duration</td>
                                 <td><input type="text" name="attr_horror_use_duration_5" /></td>
-                                <td>Action</td>
+                                <td data-i18n="action">Action</td>
                                 <td><input type="text" name="attr_horror_use_action_5" /></td>
                             </tr>
                         </table>
                         <br>
                         <table class="devotions" style="width:100%">
                             <tr class="horror_use_desc">
-                                <td>Horror</td>
+                                <td data-i18n="horror">Horror</td>
                                 <td><input type="text" name="attr_horror_name_6" /></td>
-                                <td>Cost</td>
+                                <td data-i18n="cost">Cost</td>
                                 <td><input type="text" name="attr_horror_cost_6" /><br></td>
                             </tr>
                             <tr>
@@ -1838,15 +1890,15 @@
                                         style="width:97%" placeholder="Description"></textarea></td>
                             </tr>
                             <tr>
-                                <td>Dice Pool</td>
+                                <td data-i18n="dice-pool">Dice Pool</td>
                                 <td><input type="text" name="attr_horror_dice_pool_6" /></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr>
-                                <td>Duration</td>
+                                <td data-i18n="duration">Duration</td>
                                 <td><input type="text" name="attr_horror_use_duration_6" /></td>
-                                <td>Action</td>
+                                <td data-i18n="action">Action</td>
                                 <td><input type="text" name="attr_horror_use_action_6" /></td>
                             </tr>
                         </table>
@@ -1854,7 +1906,7 @@
                 </div>
             </div>
             <div class="section-header">
-                <h2><span>Artifacts</span></h2>
+                <h2><span data-i18n="artifacts">Artifacts</span></h2>
             </div>
             <div class="columns">
                 <div>
@@ -1980,30 +2032,30 @@
         <div class="tabbed-panel">
             <div class="row-panel">
                 <div class="center">
-                    <h2><span>Expanded Merits</span></h2>
+                    <h2><span data-i18n="expanded-merits">Expanded Merits</span></h2>
                 </div>
                 <div class='sheet-2colrow'>
                     <div class='sheet-col'>
                         <div class="center">
-                            <h3>Allies</h3>
+                            <h3 data-i18n="allies">Allies</h3>
                         </div>
                         <textarea name="attr_allies_1" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_allies_2" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_allies_3" rows="3" wrap="soft" style="width:100%"></textarea>
                         <div class="center">
-                            <h3>Contacts</h3>
+                            <h3 data-i18n="contacts">Contacts</h3>
                         </div>
                         <textarea name="attr_contacts_1" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_contacts_2" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_contacts_3" rows="3" wrap="soft" style="width:100%"></textarea>
                         <div class="center">
-                            <h3>Mystery Cult</h3>
+                            <h3 data-i18n="mystery-cult">Mystery Cult</h3>
                         </div>
                         <textarea name="attr_cult_1" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_cult_2" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_cult_3" rows="3" wrap="soft" style="width:100%"></textarea>
                         <div class="center">
-                            <h3>Mentor</h3>
+                            <h3 data-i18n="mentor">Mentor</h3>
                         </div>
                         <textarea name="attr_mentor_1" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_mentor_2" rows="3" wrap="soft" style="width:100%"></textarea>
@@ -2011,19 +2063,19 @@
                     </div>
                     <div class='sheet-col'>
                         <div class="center">
-                            <h3>Resources</h3>
+                            <h3 data-i18n="resources">Resources</h3>
                         </div>
                         <textarea name="attr_resources_1" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_resources_2" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_resources_3" rows="3" wrap="soft" style="width:100%"></textarea>
                         <div class="center">
-                            <h3>Retainer</h3>
+                            <h3 data-i18n="retainer">Retainer</h3>
                         </div>
                         <textarea name="attr_retainer_1" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_retainer_2" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_retainer_3" rows="3" wrap="soft" style="width:100%"></textarea>
                         <div class="center">
-                            <h3>Status</h3>
+                            <h3 data-i18n="status">Status</h3>
                         </div>
                         <textarea name="attr_status_1" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_status_2" rows="3" wrap="soft" style="width:100%"></textarea>
@@ -2036,37 +2088,37 @@
                     </div>
                 </div>
                 <div class="center">
-                    <h2><span>Possessions</span></h2>
+                    <h2><span data-i18n="possessions">Possessions</span></h2>
                 </div>
                 <div class='sheet-2colrow'>
                     <div class='sheet-col'>
                         <div class="center">
-                            <h3>Gear (carried)</h3>
+                            <h3 data-i18n="gear-carried">Gear (carried)</h3>
                         </div>
                         <textarea name="attr_gear_1" rows="3" wrap="soft" style="width:100%"></textarea>
                         <div class="center">
-                            <h3>Vehicles</h3>
+                            <h3 data-i18n="vehicles">Vehicles</h3>
                         </div>
                         <textarea name="attr_vehicles_1" rows="3" wrap="soft" style="width:100%"></textarea>
                     </div>
                     <div class='sheet-col'>
                         <div class="center">
-                            <h3>Equipment (owned)</h3>
+                            <h3 data-i18n="equipment-owned">Equipment (owned)</h3>
                         </div>
                         <textarea name="attr_equipment_1" rows="3" wrap="soft" style="width:100%"></textarea>
                         <div class="center">
-                            <h3>Misc</h3>
+                            <h3 data-i18n="misc">Misc</h3>
                         </div>
                         <textarea name="attr_misc_1" rows="3" wrap="soft" style="width:100%"></textarea>
                     </div>
                 </div>
                 <div class="center">
-                    <h2><span>Sanctuary</span></h2>
+                    <h2><span data-i18n="sanctuary">Sanctuary</span></h2>
                 </div>
                 <table style="width:70%">
                     <tr>
-                        <th class="center">Location</th>
-                        <th colspan="4" class="left">Description</th>
+                        <th class="center" data-i18n="location">Location</th>
+                        <th colspan="4" class="left" data-i18n="description">Description</th>
                     </tr>
                     <tr>
                         <td><input type="text" name="attr_location_1" /></td>
@@ -2088,62 +2140,62 @@
         <div class="tabbed-panel">
             <div class="row-panel">
                 <div class="center">
-                    <h2><span>History</span></h2>
+                    <h2><span data-i18n="history">History</span></h2>
                 </div>
                 <textarea name="attr_history" rows="3" wrap="soft" style="width:99%"></textarea>
                 <br>
                 <div class="center">
-                    <h2><span>Description</span></h2>
+                    <h2><span data-i18n="description">Description</span></h2>
                 </div>
                 <textarea name="attr_description" rows="3" wrap="soft" style="width:99%"></textarea>
                 <br>
                 <table class="grid">
                     <tr>
-                        <th class="right">Age</th>
+                        <th class="right" data-i18n="age">Age</th>
                         <td><input type="text" name="attr_age" /></td>
                     </tr>
                     <tr>
-                        <th class="right">Apparent Age</th>
+                        <th class="right" data-i18n="apparent-age">Apparent Age</th>
                         <td><input type="text" name="attr_apparent-age" /></td>
                     </tr>
                     <tr>
-                        <th class="right">Date of Birth</th>
+                        <th class="right" data-i18n="date-of-birth">Date of Birth</th>
                         <td><input type="text" name="attr_date_of_birth" /></td>
                     </tr>
                     <tr>
-                        <th class="right">R.I.P.</th>
+                        <th class="right" data-i18n="rip">R.I.P.</th>
                         <td><input type="text" name="attr_rip" /></td>
                     </tr>
                     <tr>
-                        <th class="right">Hair</th>
+                        <th class="right" data-i18n="hair">Hair</th>
                         <td><input type="text" name="attr_hair" /></td>
                     </tr>
                     <tr>
-                        <th class="right">Eyes</th>
+                        <th class="right" data-i18n="eyes">Eyes</th>
                         <td><input type="text" name="attr_eyes" /></td>
                     </tr>
                     <tr>
-                        <th class="right">Race</th>
+                        <th class="right" data-i18n="race">Race</th>
                         <td><input type="text" name="attr_race" /></td>
                     </tr>
                     <tr>
-                        <th class="right">Nationality</th>
+                        <th class="right" data-i18n="nationality">Nationality</th>
                         <td><input type="text" name="attr_nationality" /></td>
                     </tr>
                     <tr>
-                        <th class="right">Height</th>
+                        <th class="right" data-i18n="height">Height</th>
                         <td><input type="text" name="attr_height" /></td>
                     </tr>
                     <tr>
-                        <th class="right">Weight</th>
+                        <th class="right" data-i18n="weight">Weight</th>
                         <td><input type="text" name="attr_weight" /></td>
                     </tr>
                     <tr>
-                        <th class="right">Gender</th>
+                        <th class="right" data-i18n="gender">Gender</th>
                         <td><input type="text" name="attr_gender" /></td>
                     </tr>
                     <tr>
-                        <th class="right">Sexual Orientation</th>
+                        <th class="right" data-i18n="sexual-orientation">Sexual Orientation</th>
                         <td><input type="text" name="attr_sexual_orientation" /></td>
                     </tr>
                 </table>
@@ -2154,72 +2206,74 @@
         <div class="tabbed-panel">
             <div class="row-panel">
                 <div class="center">
-                    <h2><span>Settings</span></h2>
+                    <h2><span data-i18n="settings">Settings</span></h2>
                 </div>
                 <div>
-                    <h3>Defense Settings</h3>
-                    <span>Defense Trait</span>: <select name="attr_defense_attr">
-                        <option value="lowest" selected>Lowest</option>
-                        <option value="highest">Highest</option>
-                        <option value="wits">Wits</option>
-                        <option value="dexterity">Dexterity</option>
+                    <h3 data-i18n="defense-settings">Defense Settings</h3>
+                    <span data-i18n="defense-trait">Defense Trait</span>: <select name="attr_defense_attr">
+                        <option value="lowest" selected data-i18n="lowest">Lowest</option>
+                        <option value="highest" data-i18n="highest">Highest</option>
+                        <option value="wits" data-i18n="wits">Wits</option>
+                        <option value="dexterity" data-i18n="dexterity">Dexterity</option>
                     </select>
                     <select name="attr_defense_skill">
                         <option value="nothing"></option>
-                        <option value="athletics" selected>+ Athletics</option>
-                        <option value="brawl">+ Brawl</option>
-                        <option value="weaponry">+ Weaponry</option>
+                        <option value="athletics" selected data-i18n="athletics">+ Athletics</option>
+                        <option value="brawl" data-i18n="brawl">+ Brawl</option>
+                        <option value="weaponry" data-i18n="weaponry">+ Weaponry</option>
                     </select>
-                    <span>Defense Bonus</span>: <input type="number" name="attr_defense_bonus" value="0" />
+                    <span data-i18n="defense-bonus">Defense Bonus</span>: <input type="number" name="attr_defense_bonus" value="0" />
                     <div>
-                        <h3>Health Settings</h3>
-                        <span>Base Size</span>: <input type="number" name="attr_base_size" value="5" />
+                        <h3 data-i18n="health-settings">Health Settings</h3>
+                        <span data-i18n="base-size">Base Size</span>: <input type="number" name="attr_base_size" value="5" />
                         <span class="checkbox">
                             <input type="hidden" class="flag" name="attr_giant" value="0">
                             <button type="action" name="act_giant"></button>
-                            <button type="action" class="toggle" name="act_giant">Giant</button>
+                            <button type="action" class="toggle" name="act_giant" data-i18n="giant">Giant</button>
                         </span>
                         <span class="checkbox">
                             <input type="hidden" class="flag" name="attr_small_framed" value="0">
                             <button type="action" name="act_small_framed"></button>
-                            <button type="action" class="toggle" name="act_small_framed">Small Framed</button>
+                            <button type="action" class="toggle" name="act_small_framed" data-i18n="small-framed">Small Framed</button>
                         </span>
                         <br>
-                        <span>Iron Stamina</span>: <input type="number" name="attr_iron_stamina" value="0" />
+                        <span data-i18n="iron-stamina">Iron Stamina</span>: <input type="number" name="attr_iron_stamina" value="0" />
                     </div>
                     <div>
-                        <h3>Speed Settings</h3>
-                        <span>Species Factor</span>:<input type="number" name="attr_species_factor" value="5" />
-                        <span>Fleet of Foot</span>: <input type="number" name="attr_fleet_of_foot" style="width: 55px;"
-                            value="0" />
+                        <h3 data-i18n="speed-settings">Speed Settings</h3>
+                        <span data-i18n="species-factor">Species Factor</span>:<input type="number" name="attr_species_factor" value="5" />
+                        <span data-i18n="fleet-of-foot">Fleet of Foot</span>: <input type="number" name="attr_fleet_of_foot"
+                            style="width: 55px;" value="0" />
                     </div>
                     <div>
-                        <h3>Initiative Settings</h3>
-                        <span>Fast Reflexes</span>: <input type="number" name="attr_fast_reflexes" value="0" />
+                        <h3 data-i18n="initiative-settings">Initiative Settings</h3>
+                        <span data-i18n="fast-reflexes">Fast Reflexes</span>: <input type="number" name="attr_fast_reflexes" value="0" />
                         <span class="checkbox">
                             <input type="hidden" class="flag" name="attr_shoot_first" value="0">
                             <button type="action" name="act_shoot_first"></button>
-                            <button type="action" class="toggle" name="act_shoot_first">Shoot First</button>
+                            <button type="action" class="toggle" name="act_shoot_first" data-i18n="shoot-first">Shoot First</button>
                         </span>
-                        <span>Initiative Bonus</span>: <input type="number" name="attr_initiative_bonus" value="0" />
+                        <span data-i18n="initiative-bonus">Initiative Bonus</span>: <input type="number" name="attr_initiative_bonus"
+                            value="0" />
                     </div>
                     <div>
-                        <h3>Vitality Settings</h3>
-                        <span>Vitality Rating</span>: <input type="number" name="attr_vitality" value="6" />
-                        <span>Luminous</span>: <input type="number" name="attr_luminous" value="0" />
+                        <h3 data-i18n="vitality-settings">Vitality Settings</h3>
+                        <span data-i18n="vitality-rating">Vitality Rating</span>: <input type="number" name="attr_vitality" value="6" />
+                        <span data-i18n="luminous">Luminous</span>: <input type="number" name="attr_luminous" value="0" />
                     </div>
                     <div>
-                        <h3>Sheet Settings</h3>
+                        <h3 data-i18n="sheet-settings">Sheet Settings</h3>
                         <span class="checkbox">
                             <input type="hidden" class="flag" name="attr_enable_profession" value="0">
                             <button type="action" name="act_enable_profession"></button>
-                            <button type="action" class="toggle" name="act_enable_profession">Enable checkboxes next to
-                                skills (Normally used for professions, rote skills, etc)</button>
+                            <button type="action" class="toggle" name="act_enable_profession" data-i18n="enable-checkbox-for-rote-msg">Enable
+                                checkboxes next to skills (Normally used for professions, rote skills, etc)</button>
                         </span>
                         <span class="checkbox">
                             <input type="hidden" class="flag" name="attr_enable_specialties" value="0">
                             <button type="action" name="act_enable_specialties"></button>
-                            <button type="action" class="toggle" name="act_enable_specialties">Display specialty input field next to
+                            <button type="action" class="toggle" name="act_enable_specialties" data-i18n="enable-specialty-edit-msg">Display
+                                specialty input field next to
                                 skills</button>
                     </div>
                 </div>
@@ -2247,6 +2301,10 @@
 <input type="hidden" name="attr_initiative_penalty" value="0" />
 <input type="hidden" name="attr_weapon_penalty" value="0" />
 <input type="hidden" name="attr_armor_penalty" value="0" />
+<input type="hidden" name="attr_dice_pool_attributes" value="" />
+<input type="hidden" name="attr_dice_pool_html" value="" />
+<input type="hidden" name="attr_dice_pool" value="0" />
+<input type="hidden" name="attr_rolltype" value=")d10!cs>10}>8]]}}" />
 <script type="text/worker">
   const attributes = ["intelligence", "wits", "resolve", "strength", "dexterity", "stamina", "presence", "manipulation", "composure"]
   const mentalSkills = ["academics", "computer", "crafts", "investigation", "medicine", "occult", "politics", "science"]
@@ -2278,18 +2336,22 @@
 
   allStats.forEach((attr) => {
     on(`change:${attr}`, (eventInfo) => {
-      const statUpdaters = [
-        [derivedHealthStats, updateHealth],
-        [derivedSpeedStats, updateSpeed],
-        [derivedDefenseStats, updateDefense],
-        [derivedInitiativeStats, updateInitiative],
-        [derivedWillpowerStats, updateWillpower],
-        [derivedWoundPenaltyStats, updateWoundPenalties],
-        [skillsSpecializations, updateSpecializationVisible],
-      ]
-      const source = eventInfo.sourceAttribute
-      fixMaxOverflow(eventInfo)
-      updateStats(statUpdaters, source)
+        const statUpdaters = [
+            [derivedHealthStats, updateHealth],
+            [derivedSpeedStats, updateSpeed],
+            [derivedDefenseStats, updateDefense],
+            [derivedInitiativeStats, updateInitiative],
+            [derivedWillpowerStats, updateWillpower],
+            [derivedWoundPenaltyStats, updateWoundPenalties],
+            [skillsSpecializations, updateSpecializationVisible],
+        ]
+        const source = eventInfo.sourceAttribute
+        fixMaxOverflow(eventInfo)
+        updateDicePool()
+        updateStats(statUpdaters, source)
+    })
+    on(`clicked:${attr}`, () => {
+        updateDicePoolAttributes(attr)
     })
   })
 
@@ -2331,10 +2393,8 @@
 
   // Set hidden attr on dot button click
   dotAttrs.forEach(attr => {
-    console.log(attr)
     new Array(16).fill(1).forEach((_, dot) => {
         on(`clicked:${attr}-${dot}`, () => {
-            console.log(`clicked:${attr}-${dot}`)
             setAttrs({
                 [attr.replace(":","_")]: dot
             })
@@ -2596,6 +2656,125 @@
     });
 }
 
+const updateDicePoolAttributes = (attribute) => {
+    attribute = attribute.toLowerCase();
+    getAttrs([...allStats, "dice_pool_attributes"], (v) => {
+        let poolAttributes = v["dice_pool_attributes"]
+            .split(",")
+            .filter((poolAttribute) => poolAttribute);
+
+        if (poolAttributes.includes(attribute)) {
+            // Remove attribute from roll
+            poolAttributes = poolAttributes.filter((poolAttribute) => poolAttribute !== attribute);
+        } else {
+            // Add attribute to roll
+            poolAttributes = poolAttributes.concat(attribute);
+
+            // Cap stats by type
+            const poolAttributeTypes = poolAttributes.map(
+                (poolAttribute) => ({ poolAttribute, type: getAttributeType(poolAttribute) })
+            )
+            poolAttributes = poolAttributeTypes
+                .filter((x) => x.type === "attribute")
+                .reverse()
+                .slice(0, 2)
+                .reverse()
+                .concat(
+                    poolAttributeTypes
+                        .filter((x) => x.type === "skill")
+                        .reverse()
+                        .slice(0, 1)
+                        .reverse()
+                )
+                .map((x) => x.poolAttribute)
+        }
+        // Create HTML for roll template
+        const dicePoolHtml = getSheetDicePoolHtml(poolAttributes, v);
+
+        // Create dice pool for roll
+        const dicePool = getSheetDicePool(poolAttributes, v);
+
+        // Create display for dice roller
+        const rollDisplay = poolAttributes
+            .map((poolAttribute) => v[`${poolAttribute}_name`])
+            .join(" +\n");
+
+        // Determine flag values
+        const flags = [...allStats]
+            .map((flagAttribute) => ({
+                "flag": `${flagAttribute}_flag`,
+                "value": poolAttributes.includes(flagAttribute) ? 1 : 0
+            }))
+            .reduce((all, next) => ({ ...all, [next.flag]: next.value }), {});
+
+        setAttrs({
+            ["dice_pool_attributes"]: poolAttributes.join(","),
+            ["dice_pool_html"]: dicePoolHtml,
+            ["dice_pool"]: dicePool,
+            ["rolldisplay"]: rollDisplay,
+            ...flags,
+        });
+    })
+}
+
+const updateDicePool = () => {
+    getAttrs([...allStats, "dice_pool_attributes"], (values) => {
+        const poolAttributes = values["dice_pool_attributes"]
+            .split(",")
+            .filter(poolAttribute => poolAttribute);
+        const dicePoolHtml = getSheetDicePoolHtml(poolAttributes, values);
+        const dicePool = getSheetDicePool(poolAttributes, values);
+
+        setAttrs({
+            ["dice_pool_html"]: dicePoolHtml,
+            ["dice_pool"]: dicePool
+        })
+    })
+}
+
+const getSheetDicePoolHtml = (poolAttributes, values) => {
+    return poolAttributes
+        .map((poolAttribute) => ({
+            label: values[`${poolAttribute}_name`],
+            value: getAttributePool(poolAttribute, values)
+        }))
+        .map((stat) => `<div>${stat.label} (${stat.value})</div>`)
+        .join("");
+}
+
+var getSheetDicePool = function(poolAttributes, values) {
+    const sum = poolAttributes
+        .map((poolAttribute) => getAttributePool(poolAttribute, values))
+        .reduce((sum, value) => sum + value, 0)
+
+    return Math.max(sum, 1);
+}
+
+const getAttributeType = function(attribute) {
+    if (attributes.includes(attribute)) {
+        return "attribute";
+    }
+    if (skills.includes(attribute)) {
+        return "skill";
+    }
+}
+
+const getAttributePool = (attribute, values) => {
+    return Number(values[attribute]) || getUnskilledPenalty(attribute);
+}
+
+const getUnskilledPenalty = (attribute) => {
+    if (mentalSkills.includes(attribute)) {
+        return -3;
+    }
+    if (physicalSkills.includes(attribute)) {
+        return -1;
+    }
+    if (socialSkills.includes(attribute)) {
+        return -1;
+    }
+    return 0;
+}
 
 const extraTraitCount = 9;
 const weaponCount = 6;

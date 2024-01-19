@@ -453,6 +453,21 @@
 .charsheet input.widen-if[value="on"] ~ .skills {
   min-width: 30em;
 }
+
+input.rollstyle[value="sheet"] ~ * button.rollstyle-sheet,
+input.rollstyle[value="attack"] ~ * button.rollstyle-attack,
+input.rollstyle[value="simple"] ~ * button.rollstyle-simple,
+input.rolltype-select[value="chance"] ~ * button.rolltype-chance,
+input.rolltype-select[value="normal"] ~ * button.rolltype-normal,
+input.rolltype-select[value="9-again"] ~ * button.rolltype-9-again,
+input.rolltype-select[value="8-again"] ~ * button.rolltype-8-again,
+input.rolltype-select[value="chance-rote"] ~ * button.rolltype-chance-rote,
+input.rolltype-select[value="rote"] ~ * button.rolltype-rote {
+    color: black;
+    text-shadow: 0px 0px 10px black;
+    font-weight: bold;
+}
+
 .charsheet .diceroller-grid > .span,
 .charsheet .skills > .section-header,
 .charsheet .diceroller-grid > .subheader,
@@ -497,6 +512,10 @@
   line-height: 1em;
   font-size: 1.4em;
   font-weight: bolder;
+  text-align: center;
+}
+
+.charsheet .span {
   text-align: center;
 }
 
@@ -746,7 +765,7 @@
   -moz-appearance: textfield;
 }
 
-.sheet-derived input[type=number] {
+.derived input[type=number] {
   width: 18px;
   padding: 0px;
   background: none;
@@ -787,3 +806,145 @@
 .charsheet .repcontainer.editmode .repitem .itemcontrol {
   z-index: 100;
 }
+
+.charsheet .rollcontainer > button[type=roll],
+button.sheet-toggle {
+    /* Resetting user-agent styling */
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+    overflow: visible;
+    text-transform: none;
+    border-style: none;
+
+    padding: 0 4px;
+    background: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.diceroller {
+  position: fixed;
+  top: 10px;
+  right: 30px;
+  background: white;
+  z-index: 999;
+}
+
+.diceroller-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+}
+
+.diceroller-grid > * {
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.diceroller-grid > .diceroller-options {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.diceroller-grid > .diceroller-options > * {
+  padding: 2px 3px;
+}
+
+.rolldisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.diceroller > input.rollstyle[value="sheet"] ~ * .rollstyle:not(.sheet),
+.diceroller > input.rollstyle[value="attack"] ~ * .rollstyle:not(.attack),
+.diceroller > input.rollstyle[value="simple"] ~ * .rollstyle:not(.simple) {
+  display: none;
+}
+
+.charsheet .rollcontainer {
+  position: relative;
+}
+
+.charsheet .rollcontainer > button:before {
+  display: none;
+}
+
+.charsheet .rollcontainer > button[type=roll] {
+  background: url('https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Chronicles%20of%20Darkness/images/die.png') no-repeat center;
+  background-size: contain;
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+  width: 100%;
+  padding: 0;
+}
+
+.diceroller .rolldisplay > * {
+  resize: none;
+  overflow: hidden;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  border: none;
+  padding: 0px;
+  text-align: center;
+  height: 70px;
+  pointer-events: none;
+  width: 120px;
+  margin: 0;
+  font-weight: normal;
+}
+
+.charsheet input.toggle[type='checkbox'] {
+  display: none;
+}
+
+.charsheet label.lbl-toggle {
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+  color: black
+}
+
+.charsheet label.lbl-toggle:hover {
+  color: #888;
+}
+
+.charsheet .lbl-toggle::before {
+  content: ' ';
+  display: inline-block;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentColor;
+  vertical-align: middle;
+  margin-right: .7rem;
+  transform: translateY(-2px);
+  transition: transform .2s ease-out;
+}
+
+.charsheet .toggle:checked+.lbl-toggle::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.charsheet .collapsible-content {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height .25s ease-in-out;
+}
+
+.charsheet .toggle:checked + .lbl-toggle ~ .collapsible-content {
+  max-height: 350px;
+}
+
+.charsheet .toggle:checked+.lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+
