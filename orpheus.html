@@ -2766,7 +2766,6 @@
 
   ["_initiative0","_initiative1","_initiative2","_initiative3","_initiative4","_strength0","_strength1","_strength2","_strength3","_strength4","_0_flag","_1_flag","_2_flag","_3_flag",].forEach((attr) => {
         on(`change:attack${attr}`, (eventInfo) => {
-            console.log("updating attack")
             updateAttacks();
         });
     });
@@ -2894,7 +2893,6 @@ rollstyles.forEach((rollstyle) => {
 const rolltypes = ["chance", "normal", "9-again", "8-again", "rote", "chance-rote"];
 rolltypes.forEach((rolltype) => {
     on(`clicked:rolltype_select_${rolltype}`, () => {
-        console.log(rolltype)
         setAttrs({
             "rolltype_select": rolltype
         });
