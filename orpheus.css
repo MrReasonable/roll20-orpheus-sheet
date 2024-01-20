@@ -947,4 +947,130 @@ button.sheet-toggle {
   border-bottom-left-radius: 0;
 }
 
+.sheet-rolltemplate-wod table,
+.sheet-rolltemplate-wod-attack table,
+.sheet-rolltemplate-wod-simple table,
+.sheet-rolltemplate-wod-3part table,
+.sheet-rolltemplate-wod-initiative table
+{
+    width: 189px;
+    height: 100%;
+    background: url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Chronicles%20of%20Darkness/images/roll.jpg) no-repeat top left;
+    background-size: 189px 100%;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    border-spacing: 0;
+}
 
+.sheet-rolltemplate-wod th.sheet-always-light,
+.sheet-rolltemplate-wod-attack th.sheet-always-light,
+.sheet-rolltemplate-wod-simple th.sheet-always-light,
+.sheet-rolltemplate-wod-3part th.sheet-always-light,
+.sheet-rolltemplate-wod-initiative th.sheet-always-light
+{
+    color: rgb(112, 0, 0) !important;
+    padding: 20px 20px 2px 20px;
+    line-height: 1.2em;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+
+.sheet-rolltemplate-wod td,
+.sheet-rolltemplate-wod-attack td,
+.sheet-rolltemplate-wod-simple td,
+.sheet-rolltemplate-wod-3part td ,
+.sheet-rolltemplate-wod-initiative td
+{
+    padding: 2px 20px 2px 20px;
+    font-size: 1.0em;
+    vertical-align: top;
+}
+
+.sheet-rolltemplate-wod td span,
+.sheet-rolltemplate-wod-attack td span,
+.sheet-rolltemplate-wod-simple td span,
+.sheet-rolltemplate-wod-3part td span ,
+.sheet-rolltemplate-wod-initiative td span,
+.sheet-rolltemplate-wod td div,
+.sheet-rolltemplate-wod-attack td div,
+.sheet-rolltemplate-wod-simple td div,
+.sheet-rolltemplate-wod-3part td div ,
+.sheet-rolltemplate-wod-initiative td div {
+ color: #404040;
+}
+
+.sheet-rolltemplate-wod td .sheet-result,
+.sheet-rolltemplate-wod-attack td .sheet-result,
+.sheet-rolltemplate-wod-simple .sheet-result,
+.sheet-rolltemplate-wod-3part .sheet-result ,
+.sheet-rolltemplate-wod-initiative .sheet-result
+{
+    font-size: 1.2em;
+    text-align: center;
+    color: rgb(112, 0, 0);
+    padding: 2px 20px 2px 20px;
+}
+
+
+.sheet-rolltemplate-wod .inlinerollresult,
+.sheet-rolltemplate-wod-attack .sheet-result .inlinerollresult,
+.sheet-rolltemplate-wod-simple .inlinerollresult,
+.sheet-rolltemplate-wod-3part .inlinerollresult,
+.sheet-rolltemplate-wod-initiative .inlinerollresult
+{
+    background-color: transparent;
+    color: #404040;
+    border: none;
+}
+
+.sheet-rolltemplate-wod-attack .inlinerollresult
+ {
+    background-color: transparent;
+    color: #404040;
+    border: none;
+    font-size: 1em;
+    padding: 0px;
+}
+
+.sheet-rolltemplate-wod .inlinerollresult.fullcrit,
+.sheet-rolltemplate-wod-attack .sheet-result .inlinerollresult.fullcrit,
+.sheet-rolltemplate-wod-simple .inlinerollresult.fullcrit,
+.sheet-rolltemplate-wod-3part .inlinerollresult.fullcrit,
+.sheet-rolltemplate-wod-initiative .inlinerollresult.fullcrit
+{
+    color: #404040;
+    border: none;
+}
+
+.sheet-rolltemplate-wod .inlinerollresult.fullfail,
+.sheet-rolltemplate-wod-attack .sheet-result .inlinerollresult.fullfail,
+.sheet-rolltemplate-wod-simple .inlinerollresult.fullfail,
+.sheet-rolltemplate-wod-3part .inlinerollresult.fullfail,
+.sheet-rolltemplate-wod-initiative .inlinerollresult.fullfail
+{
+    color: #404040;
+    border: none;
+}
+
+.sheet-rolltemplate-wod .inlinerollresult.importantroll,
+.sheet-rolltemplate-wod-attack .inlinerollresult.importantroll,
+.sheet-rolltemplate-wod-simple .inlinerollresult.importantroll,
+.sheet-rolltemplate-wod-3part .inlinerollresult.importantroll,
+.sheet-rolltemplate-wod-initiative .inlinerollresult.importantroll
+{
+    color: #404040;
+    border: none;
+}
+
+.sheet-rolltemplate-wod .sheet-specialrollflag,
+.sheet-rolltemplate-wod-attack .sheet-specialrollflag,
+.sheet-rolltemplate-wod-simple .sheet-specialrollflag,
+.sheet-rolltemplate-wod-3part .sheet-specialrollflag ,
+.sheet-rolltemplate-wod-initiative .sheet-specialrollflag
+{
+    color: #404040;
+    height: 30px;
+    text-align: right;
+    vertical-align: top;
+}

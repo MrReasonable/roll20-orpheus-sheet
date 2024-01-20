@@ -7,55 +7,55 @@
     <input type="radio" name="attr_tab" class="tab tab4" value="4" title="Background" data-i18n-title="background" />
     <input type="radio" name="attr_tab" class="tab tab5" value="5" title="Settings" data-i18n-title="settings" />
     <div class="tab-br"></div>
-    <div class="tab-content tab1">
-        <div class="diceroller">
-            <input type="hidden" class="rollstyle" name="attr_rollstyle" value="sheet" />
-            <input type="hidden" class="rolltype-select" name="attr_rolltype_select" value="normal" />
-            <div class="diceroller-grid">
-                <input id="collapsible" class="toggle" type="checkbox" name="attr_rolltoggle">
-                <label for="collapsible" class="lbl-toggle subheader" data-i18n="dice-roller-u">DICE ROLLER</label>
-                <div class="span collapsible-content">
-                    <button type="roll" class="inline-flex" name="roll_initiative"
-                        value="&{template:wod-initiative} {{name=@{character_name}}} {{dexterity=@{dexterity}}} {{composure=@{composure}}} {{fastReflexes=@{fast_reflexes}}} {{initiativePenalty=@{initiative_penalty}}} {{result=[[1d10 + @{dexterity} + @{composure} + @{fast_reflexes} + @{initiative_penalty} &{tracker}]]}}"
-                        data-i18n="initiative"> Initiative </button>
-                </div>
-                <div class="rollcontainer collapsible-content">
-                    <button type="roll" class="rollstyle sheet" name="roll_sheet"
-                        value="&{template:wod} {{name=@{character_name}}} {{dicePool=@{dice_pool}}} {{dicePoolHtml=@{dice_pool_html}}} {{mod=[[?{@{modifiers}|0}]]}} {{woundpenalty=[[@{wound_penalty}]]}} {{result=[[{((?{@{modifiers}|0}+@{wound_penalty}+@{dice_pool})@{rolltype}"></button>
-                    <button type="roll" class="rollstyle attack" name="roll_attack"
-                        value="&{template:wod-attack} {{name=@{character_name}}} {{strength=@{strength}}} {{dexterity=@{dexterity}}} {{brawl=@{brawl}}} {{weaponry=@{weaponry}}} {{firearms=@{firearms}}} {{athletics=@{athletics}}} {{mod=[[?{@{modifiers}|0}]]}} {{woundpenalty=[[@{wound_penalty}]]}} {{wpen=[[@{weapon_penalty}]]}} {{apen=[[@{armor_penalty}]]}} @{attack}@{rolltype}"></button>
-                    <button type="roll" class="rollstyle simple" name="roll_simple"
-                        value="&{template:wod-simple} {{name=@{character_name}}} {{option=?{@{dice-pool}|0}}} {{result=[[{(?{@{dice-pool}|1}@{rolltype}"></button>
-                </div>
-                <div class="diceroller-options collapsible-content">
-                    <button type="action" class="toggle rollstyle-sheet" name="act_rollstyle_sheet" data-i18n="sheet-roll">Sheet
-                        Roll</button>
-                    <button type="action" class="toggle rollstyle-attack" name="act_rollstyle_attack"
-                        data-i18n="attack-roll">Attack Roll</button>
-                    <button type="action" class="toggle rollstyle-simple" name="act_rollstyle_simple"
-                        data-i18n="simple-roll">Simple Roll</button>
-                </div>
-                <div class="rolldisplay collapsible-content">
-                    <textarea type="text" class="rollstyle sheet" name="attr_rolldisplay"></textarea>
-                    <div class="rollstyle attack" data-i18n="attack">Attack</div>
-                    <div class="rollstyle simple" data-i18n="simple">Simple</div>
-                </div>
-                <div class="diceroller-options collapsible-content">
-                    <button type="action" class="toggle rolltype-chance" name="act_rolltype_select_chance"
-                        data-i18n="chance">Chance</button>
-                    <button type="action" class="toggle rolltype-normal" name="act_rolltype_select_normal"
-                        data-i18n="normal">Normal</button>
-                    <button type="action" class="toggle rolltype-9-again" name="act_rolltype_select_9-again"
-                        data-i18n="9-again">9-Again</button>
-                    <button type="action" class="toggle rolltype-8-again" name="act_rolltype_select_8-again"
-                        data-i18n="8-again">8-Again</button>
-                    <button type="action" class="toggle rolltype-chance-rote" name="act_rolltype_select_chance-rote"
-                        data-i18n="chance-rote">Chance Rote</button>
-                    <button type="action" class="toggle rolltype-rote" name="act_rolltype_select_rote"
-                        data-i18n="rote">Rote</button>
-                </div>
+    <div class="diceroller">
+        <input type="hidden" class="rollstyle" name="attr_rollstyle" value="sheet" />
+        <input type="hidden" class="rolltype-select" name="attr_rolltype_select" value="normal" />
+        <div class="diceroller-grid">
+            <input id="collapsible" class="toggle" type="checkbox" name="attr_rolltoggle">
+            <label for="collapsible" class="lbl-toggle subheader" data-i18n="dice-roller-u">DICE ROLLER</label>
+            <div class="span collapsible-content">
+                <button type="roll" class="inline-flex" name="roll_initiative"
+                    value="&{template:wod-initiative} {{name=@{character_name}}} {{dexterity=@{dexterity}}} {{composure=@{composure}}} {{fastReflexesVal=@{fast_reflexes}}} {{fastReflexes=[[@{fast_reflexes}]]}} {{initiativePenaltyVal=@{initiative_penalty}}} {{initiativePenalty=[[@{initiative_penalty}]]}} {{initiativeBonusVal=@{initiative_bonus}}} {{initiativeBonus=[[@{initiative_bonus}]]}} {{shootFirst=[[@{shoot_first}]]}} {{firearms=@{firearms}}} {{result=[[1d10 + @{initiative} &{tracker}]]}}"
+                    data-i18n="initiative">Initiative</button>
+            </div>
+            <div class="rollcontainer collapsible-content">
+                <button type="roll" class="rollstyle sheet" name="roll_sheet"
+                    value="&{template:wod} {{name=@{character_name}}} {{dicePool=@{dice_pool}}} {{dicePoolHtml=@{dice_pool_html}}} {{mod=[[?{@{modifiermacro}|0}]]}} {{woundpenalty=[[@{wound_penalty}]]}} {{result=[[{((?{@{modifiermacro}|0}+@{wound_penalty}+@{dice_pool})@{rolltype}"></button>
+                <button type="roll" class="rollstyle attack" name="roll_attack"
+                    value="&{template:wod-attack} {{name=@{character_name}}} {{strength=@{strength}}} {{dexterity=@{dexterity}}} {{brawl=@{brawl}}} {{weaponry=@{weaponry}}} {{firearms=@{firearms}}} {{athletics=@{athletics}}} {{mod=[[?{@{modifiermacro}|0}]]}} {{woundpenalty=[[@{wound_penalty}]]}} {{wpen=[[@{weapon_penalty}]]}} {{apen=[[@{armor_penalty}]]}} @{attack}@{rolltype}"></button>
+                <button type="roll" class="rollstyle simple" name="roll_simple"
+                    value="&{template:wod-simple} {{name=@{character_name}}} {{option=?{@{dicepoolmacro}|0}}} {{result=[[{(?{@{dicepoolmacro}|1}@{rolltype}"></button>
+            </div>
+            <div class="diceroller-options collapsible-content">
+                <button type="action" class="toggle rollstyle-sheet" name="act_rollstyle_sheet" data-i18n="sheet-roll">Sheet
+                    Roll</button>
+                <button type="action" class="toggle rollstyle-attack" name="act_rollstyle_attack"
+                    data-i18n="attack-roll">Attack Roll</button>
+                <button type="action" class="toggle rollstyle-simple" name="act_rollstyle_simple"
+                    data-i18n="simple-roll">Simple Roll</button>
+            </div>
+            <div class="rolldisplay collapsible-content">
+                <textarea type="text" class="rollstyle sheet" name="attr_rolldisplay"></textarea>
+                <div class="rollstyle attack" data-i18n="attack">Attack</div>
+                <div class="rollstyle simple" data-i18n="simple">Simple</div>
+            </div>
+            <div class="diceroller-options collapsible-content">
+                <button type="action" class="toggle rolltype-chance" name="act_rolltype_select_chance"
+                    data-i18n="chance">Chance</button>
+                <button type="action" class="toggle rolltype-normal" name="act_rolltype_select_normal"
+                    data-i18n="normal">Normal</button>
+                <button type="action" class="toggle rolltype-9-again" name="act_rolltype_select_9-again"
+                    data-i18n="9-again">9-Again</button>
+                <button type="action" class="toggle rolltype-8-again" name="act_rolltype_select_8-again"
+                    data-i18n="8-again">8-Again</button>
+                <button type="action" class="toggle rolltype-chance-rote" name="act_rolltype_select_chance-rote"
+                    data-i18n="chance-rote">Chance Rote</button>
+                <button type="action" class="toggle rolltype-rote" name="act_rolltype_select_rote"
+                    data-i18n="rote">Rote</button>
             </div>
         </div>
+    </div>
+    <div class="tab-content tab1">
         <div class="tabbed-panel">
             <div>
                 <div class="info-grid">
@@ -910,27 +910,27 @@
                                         <div>
                                             <input type="hidden" class="flag" name="attr_attack_0_flag" value="1">
                                             <input type="text" name="attr_attack_name0" class="toggle"
-                                                disabled="disabled" value="unarmed" />
+                                                disabled="disabled" value="@{unarmedmacro}" />
                                         </div>
                                         <div class="selectcontainer">
                                             <select name="attr_attack_type0">
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
@@ -962,25 +962,25 @@
                                         </div>
                                         <div class="selectcontainer">
                                             <select name="attr_attack_type1">
-                                                <option value="{{result=[[{((?{modifiers|0})" checked="checked">
+                                                <option value="{{result=[[{((?{@{modifiermacro}|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
@@ -1003,25 +1003,25 @@
                                         </div>
                                         <div class="selectcontainer">
                                             <select name="attr_attack_type2">
-                                                <option value="{{result=[[{((?{modifiers|0})" checked="checked">
+                                                <option value="{{result=[[{((?{@{modifiermacro}|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
@@ -1047,25 +1047,25 @@
                                         </div>
                                         <div class="selectcontainer">
                                             <select name="attr_attack_type3">
-                                                <option value="{{result=[[{((?{modifiers|0})" checked="checked">
+                                                <option value="{{result=[[{((?{@{modifiermacro}|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
@@ -1091,25 +1091,25 @@
                                         </div>
                                         <div class="selectcontainer">
                                             <select name="attr_attack_type4">
-                                                <option value="{{result=[[{((?{modifiers|0})" checked="checked">
+                                                <option value="{{result=[[{((?{@{modifiermacro}|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
@@ -1135,25 +1135,25 @@
                                         </div>
                                         <div class="selectcontainer">
                                             <select name="attr_attack_type5">
-                                                <option value="{{result=[[{((?{modifiers|0})" checked="checked">
+                                                <option value="{{result=[[{((?{@{modifiermacro}|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
@@ -1179,25 +1179,25 @@
                                         </div>
                                         <div class="selectcontainer">
                                             <select name="attr_attack_type6">
-                                                <option value="{{result=[[{((?{modifiers|0})" checked="checked">
+                                                <option value="{{result=[[{((?{@{modifiermacro}|0})" checked="checked">
                                                 </option>
                                                 <option
-                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{bra=1}} {{result=[[{((@{strength}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl"> Brawl</option>
                                                 <option
-                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{str=1}} {{wea=1}} {{result=[[{((@{strength}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee"> Melee</option>
                                                 <option
-                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{fir=1}} {{result=[[{((@{dexterity}+@{firearms}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="gun"> Gun</option>
                                                 <option
-                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{ath=1}} {{result=[[{((@{dexterity}+@{athletics}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="thrown"> Thrown</option>
                                                 <option
-                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{bra=1}} {{result=[[{((@{dexterity}+@{brawl}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="brawl-fight-finesse"> Brawl* (Fighting Finesse)</option>
                                                 <option
-                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{modifiers|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
+                                                    value="{{dex=1}} {{wea=1}} {{result=[[{((@{dexterity}+@{weaponry}+?{@{modifiermacro}|0}+@{wound_penalty}+@{weapon_penalty}+@{armor_penalty})"
                                                     data-i18n="melee-fight-finesse"> Melee* (Fighting Finesse)</option>
                                             </select>
                                         </div>
@@ -1597,7 +1597,7 @@
                                     </div>
                                     <div class="derived">
                                         <span data-i18n="initiative">Initiative</span>:<input type="number" name="attr_initiative"
-                                            value="@{initiative_base}+@{initiative_penalty}+@{fast_reflexes}"
+                                            value="@{initiative_base}+@{initiative_penalty}+@{fast_reflexes}+@{shoot_first_bonus}+@{initiative_bonus}"
                                             disabled="disabled" />
                                     </div>
                                 </div>
@@ -2285,11 +2285,14 @@
 <input type="hidden" name="attr_version" value="0" />
 <input type="hidden" name="attr_health" value="0" />
 <input type="hidden" name="attr_speed_base" value="0" />
-<input type="hidden" name="attr_speed_penalty" value="" />
+<input type="hidden" name="attr_speed_penalty" value="0" />
 <input type="hidden" name="attr_defense_base" value="0" />
 <input type="hidden" name="attr_defense_penalty" value="0" />
 <input type="hidden" name="attr_initiative_penalty" value="0" />
 <input type="hidden" name="attr_initiative_base" value="0" />
+<input type="hidden" name="attr_shoot_first_bonus" value="0" />
+<input type="hidden" name="attr_initiative_bonus" value="0" />
+<input type="hidden" name="attr_shoot_first" value="0" />
 <input type="hidden" name="attr_balistic_armor"
     value="((@{armor_ballistic0}+0)*@{armor_flag0})+((@{armor_ballistic1}+0)*@{armor_flag1})+((@{armor_ballistic2}+0)*@{armor_flag2})+((@{armor_ballistic3}+0)*@{armor_flag3})" />
 <input type="hidden" name="attr_general_armor"
@@ -2298,13 +2301,172 @@
     value="((@{armor_defense0}+0)*@{armor_flag0})+((@{armor_defense1}+0)*@{armor_flag1})+((@{armor_defense2}+0)*@{armor_flag2})+((@{armor_defense3}+0)*@{armor_flag3})" />
 <input type="hidden" name="attr_speed_penalty"
     value="((@{armor_speed0}+0)*@{armor_flag0})+((@{armor_speed1}+0)*@{armor_flag1})+((@{armor_speed2}+0)*@{armor_flag2})+((@{armor_speed3}+0)*@{armor_flag3})" />
-<input type="hidden" name="attr_initiative_penalty" value="0" />
 <input type="hidden" name="attr_weapon_penalty" value="0" />
 <input type="hidden" name="attr_armor_penalty" value="0" />
 <input type="hidden" name="attr_dice_pool_attributes" value="" />
 <input type="hidden" name="attr_dice_pool_html" value="" />
 <input type="hidden" name="attr_dice_pool" value="0" />
 <input type="hidden" name="attr_rolltype" value=")d10!cs>10}>8]]}}" />
+<!-- Roll Templates -->
+<div class="rolltemplates">
+    <rolltemplate class="sheet-rolltemplate-wod">
+        <table>
+            <tr><th class="sheet-always-light">{{name}} <span data-i18n="rolls">rolls</span> {{dicePool}}</th></tr>
+            <tr>
+                <td>
+                    {{dicePoolHtml}}
+                    {{#^rollTotal() woundpenalty 0}}
+                    <div>
+                        <span data-i18n="wound">Wound</span> <span data-i18n="penalty">Penalty</span><span>({{woundpenalty}})</span>
+                    </div>
+                    {{/^rollTotal() woundpenalty 0}}
+                    {{#^rollTotal() mod 0}}
+                    <div>
+                        <span data-i18n="modifiers">Modifiers</span><span>({{mod}})</span>
+                    </div>
+                    {{/^rollTotal() mod 0}}
+                </td>
+            </tr>
+            <tr>
+                <td class="sheet-result"><span>{{result}} </span><span data-i18n="successes">Successes</span></td>
+            </tr>
+            <tr>
+                <td class="sheet-specialrollflag">
+                    {{#chance}}
+                        <span>0C</span>
+                    {{/chance}}
+                    {{#9again}}
+                       <span>9A</span>
+                    {{/9again}}
+                    {{#8again}}
+                        <span>8A</span>
+                    {{/8again}}
+                </td>
+            </tr>
+        </table>
+    </rolltemplate>
+
+    <rolltemplate class="sheet-rolltemplate-wod-simple">
+        <table>
+            <tr><th class="sheet-always-light">{{name}} <span data-i18n="rolls">rolls</span></th></tr>
+            <tr><td>
+                <span>{{option}}</span> <span data-i18n="dice-for">dice for</span><br>
+            </td></tr>
+            <tr>
+                <td class="sheet-result">{{result}} <span data-i18n="successes">Successes</span></td>
+            </tr>
+            <tr>
+                <td class="sheet-specialrollflag">
+                    {{#chance}}
+                        <span>0C</span>
+                    {{/chance}}
+                    {{#9again}}
+                        <span>9A</span>
+                    {{/9again}}
+                    {{#8again}}
+                        <span>8A</span>
+                    {{/8again}}
+                </td>
+            </tr>
+        </table>
+    </rolltemplate>
+
+    <rolltemplate class="sheet-rolltemplate-wod-initiative">
+        <table>
+            <tr>
+                <th class="sheet-always-light">{{name}} <span data-i18n="rolls">rolls</span> <span data-i18n="initiative">Initiative</span></th>
+            </tr>
+            <tr>
+                <td class="sheet-always-light">
+                    <span data-i18n="dexterity">Dexterity</span><span>({{dexterity}})</span>,
+                    <span data-i18n="composure">Composure</span><span>({{composure}})</span>
+                    {{#rollGreater() fastReflexes 0}}
+                        <span data-i18n="fast-reflexes">Fast Reflexes Bonus</span> <span>({{fastReflexesVal}}</span>)<br>
+                    {{/rollGreater() fastReflexes 0}}
+                    {{#rollGreater() shootFirst 0}}
+                        <span data-i18n="shoot-first">Shoot First Bonus</span> <span>({{firearms}})</span><br>
+                    {{/rollGreater() shootFirst 0}}
+                    {{#^rollTotal() initiativeBonus 0}}
+                        <span data-i18n="initiative-bonus">Initiative Bonus</span> <span>({{initiativeBonusVal}})</span><br>
+                    {{/^rollTotal() initiativeBonus 0}}
+                    {{#rollLess() initiativePenalty 0}}
+                        <span data-i18n="initiative-penalty">Initiative Penalty</span> <span>({{initiativePenaltyVal}})</span><br>
+                    {{/rollLess() initiativePenalty 0}}
+                </td>
+            </tr>
+            <tr>
+                <td class="sheet-result"><span data-i18n="initiative">Initiative</span> {{result}}</td>
+            </tr>
+            <tr>
+                <td class="sheet-specialrollflag"></td>
+            </tr>
+        </table>
+    </rolltemplate>
+
+    <rolltemplate class="sheet-rolltemplate-wod-attack">
+        <table>
+            <tr><th class="sheet-always-light">{{name}} <span data-i18n="makes-a">makes a</span> {{attack_name}} <span data-i18n="attack">attack</span></th></tr>
+            <tr><td>
+                {{#str}}
+                    <span data-i18n="strength">Strength</span><span>({{strength}})</span><br>
+                {{/str}}
+                {{#dex}}
+                    <span data-i18n="dexterity">Dexterity</span><span>({{dexterity}})</span><br>
+                {{/dex}}
+                {{#bra}}
+                    <span data-i18n="brawl">Brawl</span><span>({{brawl}})</span><br>
+                {{/bra}}
+                {{#wea}}
+                    <span data-i18n="weaponry">Weaponry</span><span>({{weaponry}})</span><br>
+                {{/wea}}
+                {{#fir}}
+                    <span data-i18n="firearms">Firearms</span><span>({{firearms}})</span><br>
+                {{/fir}}
+                {{#ath}}
+                    <span data-i18n="athletics">Athletics</span><span>({{athletics}})</span><br>
+                {{/ath}}
+                {{#^rollTotal() apen 0}}
+                    <span data-i18n="armor">Armor</span> <span data-i18n="penalty">Penalty</span><span>({{apen}})</span><br>
+                {{/^rollTotal() apen 0}}
+                {{#^rollTotal() wpen 0}}
+                    <span data-i18n="weapon">Weapon</span> <span data-i18n="penalty">Penalty</span><span>({{wpen}})</span><br>
+                {{/^rollTotal() wpen 0}}
+                {{#^rollTotal() woundpenalty 0}}
+                    <span data-i18n="wound">Wound</span> <span data-i18n="penalty">Penalty</span><span>({{woundpenalty}})</span>
+                {{/^rollTotal() woundpenalty 0}}
+                {{#^rollTotal() mod 0}}
+                    <span data-i18n="modifiers">Modifiers</span>({{mod}})<br>
+                {{/^rollTotal() mod 0}}
+                {{#rollTotal() result 0}}
+                    <span data-i18n="and-misses-with">and misses with</span><span>...</span><br>
+                    <tr>
+                        <td class="sheet-result sheet-hit">{{result}} <span data-i18n="successes">Successes</span></td>
+                    </tr>
+                {{/rollTotal() result 0}}
+                {{#rollGreater() result 0}}
+                    <span data-i18n="and-hits-for">and hits for</span><br>
+                    <tr>
+                        <td class="sheet-result sheet-miss">{{result}} <span>+ {{weapon_damage}}</span> <span data-i18n="damage">Damage</span></td>
+                    </tr>
+                {{/rollGreater() result 0}}
+            </td></tr>
+            <tr>
+                <td class="sheet-specialrollflag">
+                    {{#chance}}
+                        <span>0C</span>
+                    {{/chance}}
+                    {{#9again}}
+                        <span>9A</span>
+                    {{/9again}}
+                    {{#8again}}
+                        <span>8A</span>
+                    {{/8again}}
+                </td>
+            </tr>
+        </table>
+    </rolltemplate>
+</div>
+
 <script type="text/worker">
   const attributes = ["intelligence", "wits", "resolve", "strength", "dexterity", "stamina", "presence", "manipulation", "composure"]
   const mentalSkills = ["academics", "computer", "crafts", "investigation", "medicine", "occult", "politics", "science"]
@@ -2524,10 +2686,11 @@
     getAttrs(["dexterity", "composure", "shoot_first", "firearms"], (v) => {
       const initiativeBase =
         (parseInt(v.dexterity) || 0) +
-        (parseInt(v.composure) || 0) +
-        (v.shoot_first === "1" ? (parseInt(v.firearms) || 0) : 0)
+        (parseInt(v.composure) || 0)
+      const shootFirstBonus = (v.shoot_first === "1" ? (parseInt(v.firearms) || 0) : 0)
       setAttrs({
-        initiative_base: initiativeBase
+        initiative_base: initiativeBase,
+        shoot_first_bonus: shootFirstBonus
       })
     })
   }
@@ -2658,7 +2821,7 @@
 
 const updateDicePoolAttributes = (attribute) => {
     attribute = attribute.toLowerCase();
-    getAttrs([...allStats, "dice_pool_attributes"], (v) => {
+    getAttrs([...normalStats, "dice_pool_attributes"], (v) => {
         let poolAttributes = v["dice_pool_attributes"]
             .split(",")
             .filter((poolAttribute) => poolAttribute);
@@ -2686,6 +2849,7 @@ const updateDicePoolAttributes = (attribute) => {
                         .slice(0, 1)
                         .reverse()
                 )
+                .slice(-2)
                 .map((x) => x.poolAttribute)
         }
         // Create HTML for roll template
@@ -2696,11 +2860,11 @@ const updateDicePoolAttributes = (attribute) => {
 
         // Create display for dice roller
         const rollDisplay = poolAttributes
-            .map((poolAttribute) => v[`${poolAttribute}_name`])
+            .map((poolAttribute) => v[`${poolAttribute}_name`] || getTranslationByKey(poolAttribute))
             .join(" +\n");
 
         // Determine flag values
-        const flags = [...allStats]
+        const flags = [...normalStats]
             .map((flagAttribute) => ({
                 "flag": `${flagAttribute}_flag`,
                 "value": poolAttributes.includes(flagAttribute) ? 1 : 0
@@ -2717,8 +2881,28 @@ const updateDicePoolAttributes = (attribute) => {
     })
 }
 
+const rollstyles = ["sheet", "attack", "simple"];
+rollstyles.forEach((rollstyle) => {
+    on(`clicked:rollstyle_${rollstyle}`, () => {
+        setAttrs({
+            "rollstyle": rollstyle
+        });
+    });
+});
+
+
+const rolltypes = ["chance", "normal", "9-again", "8-again", "rote", "chance-rote"];
+rolltypes.forEach((rolltype) => {
+    on(`clicked:rolltype_select_${rolltype}`, () => {
+        console.log(rolltype)
+        setAttrs({
+            "rolltype_select": rolltype
+        });
+    });
+});
+
 const updateDicePool = () => {
-    getAttrs([...allStats, "dice_pool_attributes"], (values) => {
+    getAttrs([...normalStats, "dice_pool_attributes"], (values) => {
         const poolAttributes = values["dice_pool_attributes"]
             .split(",")
             .filter(poolAttribute => poolAttribute);
@@ -2735,7 +2919,7 @@ const updateDicePool = () => {
 const getSheetDicePoolHtml = (poolAttributes, values) => {
     return poolAttributes
         .map((poolAttribute) => ({
-            label: values[`${poolAttribute}_name`],
+            label: values[`${poolAttribute}_name`] || getTranslationByKey(poolAttribute),
             value: getAttributePool(poolAttribute, values)
         }))
         .map((stat) => `<div>${stat.label} (${stat.value})</div>`)
@@ -2748,6 +2932,36 @@ var getSheetDicePool = function(poolAttributes, values) {
         .reduce((sum, value) => sum + value, 0)
 
     return Math.max(sum, 1);
+}
+
+on("change:rolltype_select", function() {
+    updateRollType();
+});
+
+const updateRollType = () => {
+    getAttrs(["rolltype_select"], (v) => {
+        const selectedRolltype = v.rolltype_select || "normal"
+        setAttrs({
+            rolltype: getRolltypeDiceString(selectedRolltype)
+        })
+    })
+}
+
+const getRolltypeDiceString = (rolltype) => {
+    switch (rolltype) {
+        case "chance":
+            return "*0+1)d10cf<1}>10]]}} {{chance=1}}";
+        case "normal":
+            return ")d10!cs>10}>8]]}}";
+        case "9-again":
+            return ")d10!>9cs>9}>8]]}} {{9again=1}}";
+        case "8-again":
+            return ")d10!>8cs>8}>8]]}} {{8again=1}}";
+        case "rote":
+            return ")d10ro<7}>8]]}}";
+        case "chance-rote":
+            return "*0+1)d10ro<7cf<1}>10]]}} {{chance=1}}";
+    }
 }
 
 const getAttributeType = function(attribute) {
@@ -2774,6 +2988,22 @@ const getUnskilledPenalty = (attribute) => {
         return -1;
     }
     return 0;
+}
+
+const resetRollFlags = () => {
+    const flagValues = normalStats
+        .map((attribute) => `${attribute}_flag`)
+        .reduce((attrs, flag) => ({ ...attrs, [flag]: "" }), {});
+
+    return {
+        "dice_pool_attributes": "",
+        "dice_pool_html": "",
+        "dice_pool": 0,
+        "rolldisplay": "",
+        "rollstyle": "sheet",
+        "rolltype_select": "normal",
+        ...flagValues
+    };
 }
 
 const extraTraitCount = 9;
@@ -2901,5 +3131,14 @@ const v1AttrMap = {
     updateInitiative()
     updateWillpower()
     updateSpecializationVisible()
+    updateRollType()
+    const resetRollFlagAttrs = resetRollFlags();
+
+    setAttrs({
+        dicepoolmacro: getTranslationByKey("dice-pool"),
+        modifiermacro: getTranslationByKey("modifiers"),
+        unarmedmacro: getTranslationByKey("unarmed"),
+        ...resetRollFlagAttrs
+    }, {silent: true})
   })
 </script>
