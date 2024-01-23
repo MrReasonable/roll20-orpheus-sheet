@@ -10,8 +10,6 @@
     <div class="diceroller">
         <input type="hidden" class="rollstyle" name="attr_rollstyle" value="sheet" />
         <input type="hidden" class="rolltype-select" name="attr_rolltype_select" value="normal" />
-        <input type="hidden" class="rollmodify-select-rote" name="attr_rollmodify_rote" value="0" />
-        <input type="hidden" class="rollmodify-select-willpower" name="attr_rollmodify_willpower" value="0" />
         <div class="diceroller-grid">
             <input id="collapsible" class="toggle" type="checkbox" name="attr_rolltoggle">
             <label for="collapsible" class="lbl-toggle subheader" data-i18n="dice-roller-u">DICE ROLLER</label>
@@ -43,14 +41,25 @@
                 <div class="rollstyle simple" data-i18n="simple">Simple</div>
             </div>
             <div class="diceroller-options collapsible-content">
-                <button type="action" class="toggle rolltype-normal" name="act_rolltype_select_normal"
-                    data-i18n="normal">Normal</button>
-                <button type="action" class="toggle rolltype-9-again" name="act_rolltype_select_9-again"
-                    data-i18n="9-again">9-Again</button>
-                <button type="action" class="toggle rolltype-8-again" name="act_rolltype_select_8-again"
-                    data-i18n="8-again">8-Again</button>
-                <button type="action" class="toggle rollmodify-rote"  name="act_rollmodify_select_rote" data-i18n="rote">Rote</button>
-                <button type="action" class="toggle rollmodify-willpower" name="act_rollmodify_select_willpower" data-i18n="willpower">Willpower</button>
+                <div class="flex rows">
+                    <div class="flex columns">
+                        <button type="action" class="toggle rolltype-normal" name="act_rolltype_select_normal"
+                            data-i18n="normal">Normal</button>
+                        <button type="action" class="toggle rolltype-9-again" name="act_rolltype_select_9-again"
+                            data-i18n="9-again">9-Again</button>
+                        <button type="action" class="toggle rolltype-8-again" name="act_rolltype_select_8-again"
+                            data-i18n="8-again">8-Again</button>
+                    </div>
+                    <div class="horizontal-spacer"></div>
+                    <div class="flex columns">
+                        <input type="hidden" class="highlight-next" name="attr_rollmodify_rote" value="0" />
+                        <button type="action" class="toggle rollmodify-rote"  name="act_rollmodify_select_rote" data-i18n="rote">Rote</button>
+                        <input type="hidden" class="highlight-next" name="attr_rollmodify_willpower" value="0" />
+                        <button type="action" class="toggle rollmodify-willpower" name="act_rollmodify_select_willpower" data-i18n="willpower">Willpower</button>
+                        <input type="hidden" class="highlight-next" name="attr_rollmodify_specialty" value="0" />
+                        <button type="action" class="toggle rollmodify-specialty" name="act_rollmodify_select_specialty" data-i18n="use-specialty">Use Specialty</button>
+                    </div>
+                </div>
             </div>
             <div class="diceroller-modifiers collapsible-content flex">
                 <label for="rollmodify_modifier" data-i18n="modifiers">Modifiers</label><input type="number" for="rollmodify_modifier" id="rollmodify_modifier" name="attr_rollmodify_modifier" value="0" />
@@ -2911,7 +2920,7 @@ rolltypes.forEach((rolltype) => {
     })
 })
 
-const rollmodifiers = ["rote", "willpower"]
+const rollmodifiers = ["rote", "willpower", "specialty"]
 rollmodifiers.forEach((rollmodifier) => {
     on(`clicked:rollmodify_select_${rollmodifier}`, () => {
         getAttrs([`rollmodify_${rollmodifier}`], (v) => {
@@ -2940,6 +2949,34 @@ _.keys(rollmodifierRestrictedValues).forEach((restrictedModifier) => {
         })
     })
 })
+
+on(`change:rollmodify_specialty`, ({newValue: specialtyEnabled}) => {
+    if (!specialtyEnabled) {
+        return
+    }
+    updateUseSpecialty()
+})
+
+on(`change:dice_pool_attributes`, () => {
+    updateUseSpecialty()
+})
+
+const updateUseSpecialty = () => {
+    getAttrs(["dice_pool_attributes"], (v) => {
+        const dicePoolAttributes = v["dice_pool_attributes"]
+            .split(",")
+            .filter((poolAttribute) => poolAttribute);
+        const specializations = dicePoolAttributes.map((attr) => `has_specialization_${attr}`)
+        getAttrs(specializations, (specializationValues) => {
+            const hasSpecialization = _.contains(specializationValues, "1")
+            if (!hasSpecialization) {
+                setAttrs({
+                    ["rollmodify_specialty"]: "0"
+                })
+            }
+        })
+    })
+}
 
 const updateDicePool = () => {
     getAttrs([...normalStats, "dice_pool_attributes"], (values) => {
@@ -3052,6 +3089,7 @@ const resetRollFlags = () => {
         "rollmodify_rote": "0",
         "rollmodify_willpower": "0",
         "rollmodify_modifier": "0",
+        "rollmodify_specialty": "0",
         "rollreason": "",
         "full_pool_html": "",
         ...flagValues,
@@ -3064,6 +3102,14 @@ const getWillpowerHtml = (useWillpower, willpower) => {
     }
 
     return `<div>${getTranslationByKey('willpower')} (+3)</div>`;
+}
+
+const getSpecialtyHtml = (useSpecialty) => {
+    if (!useSpecialty) {
+        return "";
+    }
+
+    return `<div>${getTranslationByKey('use-specialty')} (+1)</div>`;
 }
 
 const getWoundPenaltyHtml = (woundPenalties) => {
@@ -3082,9 +3128,10 @@ const getModifiersHtml = (modifier) => {
     return `<div>${getTranslationByKey('modifiers')} (${modifier})</div>`;
 }
 
-const getDicePoolHtml = (dicePoolAttributes, values, useWillpower, woundPenalties, modifiers) => {
+const getDicePoolHtml = (dicePoolAttributes, values, useSpecialty, useWillpower, woundPenalties, modifiers) => {
     return [
         getSheetDicePoolHtml(dicePoolAttributes, values),
+        getSpecialtyHtml(useSpecialty),
         getWillpowerHtml(useWillpower),
         getWoundPenaltyHtml(woundPenalties),
         getModifiersHtml(modifiers)
@@ -3112,7 +3159,7 @@ const getSuccessType = (totalSuccesses, isChanceRoll, diceResults) => {
     return "failure";
 }
 
-const dicePoolAttributes = [...normalStats, "dice_pool_attributes", "dice_pool", "rolltype_select", "rollmodify_rote", "rollmodify_willpower", "rollmodify_modifier", "rollreason", "rollstyle", "current_willpower", "wound_penalty", "character_name"];
+const dicePoolAttributes = [...normalStats, "dice_pool_attributes", "dice_pool", "rolltype_select", "rollmodify_rote", "rollmodify_willpower", "rollmodify_modifier", "rollmodify_specialty", "rollreason", "rollstyle", "current_willpower", "wound_penalty", "character_name"];
 
 on("clicked:roll", () => {
     getAttrs(dicePoolAttributes, (v) => {
@@ -3121,10 +3168,11 @@ on("clicked:roll", () => {
         const dicePool = parseInt(v.dice_pool) || 0
         const willpower = parseInt(v.current_willpower) || 0
         const useWillpower = (parseInt(v.rollmodify_willpower) || 0) === 1 && willpower > 0
+        const useSpecialty = (parseInt(v.rollmodify_specialty) || 0) === 1
         const woundPenalties = parseInt(v.wound_penalty) || 0
         const isRote = parseInt(v.rollmodify_rote) === 1
         const rollType = v.rolltype_select || ""
-        const totalDiceToRoll = Math.max(dicePool + (useWillpower ? 3 : 0) + modifier + woundPenalties, 0)
+        const totalDiceToRoll = Math.max(dicePool + useSpecialty + (useWillpower ? 3 : 0) + modifier + woundPenalties, 0)
         const isChanceRoll = totalDiceToRoll <= 0
         const diceString = generateDiceString(totalDiceToRoll, rollType, isChanceRoll, isRote)
 
@@ -3132,7 +3180,7 @@ on("clicked:roll", () => {
         const rollString = `${template} {{name=@{character_name}}} {{dicePool=[[${totalDiceToRoll}]]}} {{dicePoolHtml=@{full_pool_html}}} {{result=[[${diceString}]]}}{{reason=@{rollreason}}} {{rollstyle=@{rollstyle}}} {{isRote=${isRote ? 'rote' : ""}}} {{successType=[[0]]}} {{9again=${!isChanceRoll && rollType === "9-again" ? "9again" : ""}}} {{8again=${!isChanceRoll && rollType === "8-again" ? "8again" : ""}}} {{chance=${isChanceRoll ? "chance" : ""}}}`
 
         setAttrs({
-            "full_pool_html": getDicePoolHtml(attributes, v, useWillpower, woundPenalties, modifier)
+            "full_pool_html": getDicePoolHtml(attributes, v, useSpecialty, useWillpower, woundPenalties, modifier)
         }, {}, () => {
             startRoll(rollString, (results) => {
                 if (useWillpower) {

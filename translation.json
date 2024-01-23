@@ -215,5 +215,6 @@
     "dramatic-success": "Dramatically succeeds with",
     "failure": "Fails",
     "dramatic-failure": "Dramatically fails",
-    "tries-to": "tries to"
+    "tries-to": "tries to",
+    "use-specialty": "Use specialty"
 }

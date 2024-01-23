@@ -461,8 +461,7 @@ input.rolltype-select[value="chance"] ~ * button.rolltype-chance,
 input.rolltype-select[value="normal"] ~ * button.rolltype-normal,
 input.rolltype-select[value="9-again"] ~ * button.rolltype-9-again,
 input.rolltype-select[value="8-again"] ~ * button.rolltype-8-again,
-input.rollmodify-select-rote[value="1"] ~ * button.rollmodify-rote,
-input.rollmodify-select-willpower[value="1"] ~ * button.rollmodify-willpower {
+input.highlight-next[value="1"] + button {
     color: black;
     text-shadow: 0px 0px 10px black;
     font-weight: bold;
@@ -658,6 +657,12 @@ input.rollmodify-select-willpower[value="1"] ~ * button.rollmodify-willpower {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1.5em;
+  flex-direction: column;
+}
+
+.charsheet .rows {
+  display: flex;
+  flex-direction: row;
 }
 
 .charsheet .columns > :not(.horizontal-spacer) {
