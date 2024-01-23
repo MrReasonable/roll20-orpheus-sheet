@@ -173,6 +173,7 @@
     "beat":"Beat",
     "dice-pool":"Dicepool",
     "modifiers":"Modifiers",
+    "reason": "Reason",
     "unarmed":"Unarmed",
     "rolls":"rolls",
     "wound":"Wound",
@@ -204,5 +205,15 @@
     "weight": "Weight",
     "height": "Height",
     "gender": "Gender",
-    "sexual-orientation": "Sexual Orientation"
+    "sexual-orientation": "Sexual Orientation",
+    "dice": "dice",
+    "die": "die",
+    "a-chance-die": "a chance die",
+    "with-rote-quality": "with rote quality",
+    "wound-penalty": "Wound Penalty",
+    "success": "Succeeds with",
+    "dramatic-success": "Dramatically succeeds with",
+    "failure": "Fails",
+    "dramatic-failure": "Dramatically fails",
+    "tries-to": "tries to"
 }

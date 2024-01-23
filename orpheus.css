@@ -461,8 +461,8 @@ input.rolltype-select[value="chance"] ~ * button.rolltype-chance,
 input.rolltype-select[value="normal"] ~ * button.rolltype-normal,
 input.rolltype-select[value="9-again"] ~ * button.rolltype-9-again,
 input.rolltype-select[value="8-again"] ~ * button.rolltype-8-again,
-input.rolltype-select[value="chance-rote"] ~ * button.rolltype-chance-rote,
-input.rolltype-select[value="rote"] ~ * button.rolltype-rote {
+input.rollmodify-select-rote[value="1"] ~ * button.rollmodify-rote,
+input.rollmodify-select-willpower[value="1"] ~ * button.rollmodify-willpower {
     color: black;
     text-shadow: 0px 0px 10px black;
     font-weight: bold;
@@ -476,7 +476,7 @@ input.rolltype-select[value="rote"] ~ * button.rolltype-rote {
   grid-column: 1 / span 2;
 }
 
-.charsheet .skills input.if-has-specialty[value="0"]+button.toggle > sup {
+.charsheet .skills input.if-has-specialty[value="0"]+button.toggle ~ sup {
   display: none;
 }
 
@@ -484,7 +484,7 @@ input.rolltype-select[value="rote"] ~ * button.rolltype-rote {
   content: "+";
 }
 
-.charsheet .skills input.if-has-specialty[value="1"]+button:hover+span>input.if[value="0"]+.skill_specialty {
+.charsheet .skills input.if-has-specialty[value="1"]+button:hover~span>input.if[value="0"]+.skill_specialty {
   position: absolute;
   display: block;
   background-color: #DDD;
@@ -495,7 +495,7 @@ input.rolltype-select[value="rote"] ~ * button.rolltype-rote {
   top: -26px;
   opacity: 90%;
 }
-.charsheet .skills input.if-has-specialty[value="1"]+button:hover+span>input.if[value="0"]+.skill_specialty>input[type="text"] {
+.charsheet .skills input.if-has-specialty[value="1"]+button:hover~span>input.if[value="0"]+.skill_specialty>input[type="text"] {
   box-shadow: none;
   --webkit-box-shadow: none;
 }
@@ -808,6 +808,7 @@ input.rolltype-select[value="rote"] ~ * button.rolltype-rote {
 }
 
 .charsheet .rollcontainer > button[type=roll],
+.charsheet .rollcontainer > button[name="act_roll"],
 button.sheet-toggle {
     /* Resetting user-agent styling */
     font-family: inherit;
@@ -850,6 +851,29 @@ button.sheet-toggle {
   align-items: start;
 }
 
+.diceroller-grid > .diceroller-modifiers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1 / -1;
+}
+
+.diceroller-grid > .diceroller-modifiers label {
+  color: #404040;
+  margin: 0 5px;
+  font-weight: normal;
+  font-size: 1em;
+}
+
+.diceroller-grid > .diceroller-modifiers input {
+  color: #404040;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 1em;
+}
+
+
 .diceroller-grid > .diceroller-options > * {
   padding: 2px 3px;
 }
@@ -874,7 +898,8 @@ button.sheet-toggle {
   display: none;
 }
 
-.charsheet .rollcontainer > button[type=roll] {
+.charsheet .rollcontainer > button[type=roll],
+.charsheet .rollcontainer > button[name="act_roll"] {
   background: url('https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Chronicles%20of%20Darkness/images/die.png') no-repeat center;
   background-size: contain;
   position: absolute;
@@ -1012,16 +1037,24 @@ button.sheet-toggle {
     padding: 2px 20px 2px 20px;
 }
 
-
-.sheet-rolltemplate-wod .inlinerollresult,
+.sheet-rolltemplate-wod .sheet-result .inlinerollresult,
 .sheet-rolltemplate-wod-attack .sheet-result .inlinerollresult,
-.sheet-rolltemplate-wod-simple .inlinerollresult,
-.sheet-rolltemplate-wod-3part .inlinerollresult,
-.sheet-rolltemplate-wod-initiative .inlinerollresult
-{
+.sheet-rolltemplate-wod-simple .sheet-result .inlinerollresult,
+.sheet-rolltemplate-wod-3part .sheet-result .inlinerollresult,
+.sheet-rolltemplate-wod-initiative .sheet-result .inlinerollresult,
+.sheet-rolltemplate-wod th.sheet-always-light .inlinerollresult {
     background-color: transparent;
     color: #404040;
     border: none;
+    padding: 0;
+    margin: 0;
+    cursor: text;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.sheet-rolltemplate-wod th.sheet-always-light .inlinerollresult {
+  color: rgb(112, 0, 0);
 }
 
 .sheet-rolltemplate-wod-attack .inlinerollresult

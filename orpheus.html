@@ -10,6 +10,8 @@
     <div class="diceroller">
         <input type="hidden" class="rollstyle" name="attr_rollstyle" value="sheet" />
         <input type="hidden" class="rolltype-select" name="attr_rolltype_select" value="normal" />
+        <input type="hidden" class="rollmodify-select-rote" name="attr_rollmodify_rote" value="0" />
+        <input type="hidden" class="rollmodify-select-willpower" name="attr_rollmodify_willpower" value="0" />
         <div class="diceroller-grid">
             <input id="collapsible" class="toggle" type="checkbox" name="attr_rolltoggle">
             <label for="collapsible" class="lbl-toggle subheader" data-i18n="dice-roller-u">DICE ROLLER</label>
@@ -19,8 +21,9 @@
                     data-i18n="initiative">Initiative</button>
             </div>
             <div class="rollcontainer collapsible-content">
-                <button type="roll" class="rollstyle sheet" name="roll_sheet"
-                    value="&{template:wod} {{name=@{character_name}}} {{dicePool=@{dice_pool}}} {{dicePoolHtml=@{dice_pool_html}}} {{mod=[[?{@{modifiermacro}|0}]]}} {{woundpenalty=[[@{wound_penalty}]]}} {{result=[[{((?{@{modifiermacro}|0}+@{wound_penalty}+@{dice_pool})@{rolltype}"></button>
+                <button type="action" name="act_roll" class="rollstyle sheet"></button>
+                <!-- <button type="roll" class="rollstyle sheet" name="roll_sheet"
+                    value="&{template:wod} {{name=@{character_name}}} {{dicePool=@{dice_pool}}} {{dicePoolHtml=@{dice_pool_html}}} {{mod=[[?{@{modifiermacro}|0}]]}} {{woundpenalty=[[@{wound_penalty}]]}} {{result=[[{((?{@{modifiermacro}|0}+@{wound_penalty}+@{dice_pool})@{rolltype}"></button> -->
                 <button type="roll" class="rollstyle attack" name="roll_attack"
                     value="&{template:wod-attack} {{name=@{character_name}}} {{strength=@{strength}}} {{dexterity=@{dexterity}}} {{brawl=@{brawl}}} {{weaponry=@{weaponry}}} {{firearms=@{firearms}}} {{athletics=@{athletics}}} {{mod=[[?{@{modifiermacro}|0}]]}} {{woundpenalty=[[@{wound_penalty}]]}} {{wpen=[[@{weapon_penalty}]]}} {{apen=[[@{armor_penalty}]]}} @{attack}@{rolltype}"></button>
                 <button type="roll" class="rollstyle simple" name="roll_simple"
@@ -40,18 +43,18 @@
                 <div class="rollstyle simple" data-i18n="simple">Simple</div>
             </div>
             <div class="diceroller-options collapsible-content">
-                <button type="action" class="toggle rolltype-chance" name="act_rolltype_select_chance"
-                    data-i18n="chance">Chance</button>
                 <button type="action" class="toggle rolltype-normal" name="act_rolltype_select_normal"
                     data-i18n="normal">Normal</button>
                 <button type="action" class="toggle rolltype-9-again" name="act_rolltype_select_9-again"
                     data-i18n="9-again">9-Again</button>
                 <button type="action" class="toggle rolltype-8-again" name="act_rolltype_select_8-again"
                     data-i18n="8-again">8-Again</button>
-                <button type="action" class="toggle rolltype-chance-rote" name="act_rolltype_select_chance-rote"
-                    data-i18n="chance-rote">Chance Rote</button>
-                <button type="action" class="toggle rolltype-rote" name="act_rolltype_select_rote"
-                    data-i18n="rote">Rote</button>
+                <button type="action" class="toggle rollmodify-rote"  name="act_rollmodify_select_rote" data-i18n="rote">Rote</button>
+                <button type="action" class="toggle rollmodify-willpower" name="act_rollmodify_select_willpower" data-i18n="willpower">Willpower</button>
+            </div>
+            <div class="diceroller-modifiers collapsible-content flex">
+                <label for="rollmodify_modifier" data-i18n="modifiers">Modifiers</label><input type="number" for="rollmodify_modifier" id="rollmodify_modifier" name="attr_rollmodify_modifier" value="0" />
+                <label for="rollreason" data-i18n="reason">Reason</label><input type="text" id="rollreason" name="attr_rollreason" value="" />
             </div>
         </div>
     </div>
@@ -269,7 +272,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_academics_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_academics" value="0">
-                            <button type="action" class="toggle" name="act_academics" data-i18n="academics">Academics<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_academics" data-i18n="academics">Academics</button><sup>(s)</sup>
                             <span>
                                 <input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
@@ -294,7 +297,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_computer_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_computer" value="0">
-                            <button type="action" class="toggle" name="act_computer" data-i18n="computer">Computer<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_computer" data-i18n="computer">Computer</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_computer">
@@ -317,7 +320,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_crafts_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_crafts" value="0">
-                            <button type="action" class="toggle" name="act_crafts" data-i18n="crafts">Crafts<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_crafts" data-i18n="crafts">Crafts</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_crafts">
@@ -341,7 +344,7 @@
                             <input type="hidden" class="flag" name="attr_investigation_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_investigation" value="0">
                             <button type="action" class="toggle" name="act_investigation"
-                                data-i18n="investigation">Investigation<sup>(s)</sup></button>
+                                data-i18n="investigation">Investigation</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_investigation">
@@ -364,7 +367,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_medicine_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_medicine" value="0">
-                            <button type="action" class="toggle" name="act_medicine" data-i18n="medicine">Medicine<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_medicine" data-i18n="medicine">Medicine</button><sup>(s)</sup>
                             <span>
                                 <input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
@@ -388,7 +391,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_occult_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_occult" value="0">
-                            <button type="action" class="toggle" name="act_occult" data-i18n="occult">Occult<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_occult" data-i18n="occult">Occult</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_occult">
@@ -411,7 +414,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_politics_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_politics" value="0">
-                            <button type="action" class="toggle" name="act_politics" data-i18n="politics">Politics<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_politics" data-i18n="politics">Politics</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_politics">
@@ -434,7 +437,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_science_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_science" value="0">
-                            <button type="action" class="toggle" name="act_science" data-i18n="science">Science<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_science" data-i18n="science">Science</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_science">
@@ -461,7 +464,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_athletics_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_athletics" value="0">
-                            <button type="action" class="toggle" name="act_athletics" data-i18n="athletics">Athletics<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_athletics" data-i18n="athletics">Athletics</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_athletics">
@@ -484,7 +487,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_brawl_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_brawl" value="0">
-                            <button type="action" class="toggle" name="act_brawl" data-i18n="brawl">Brawl<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_brawl" data-i18n="brawl">Brawl</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_brawl">
@@ -507,7 +510,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_drive_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_drive" value="0">
-                            <button type="action" class="toggle" name="act_drive" data-i18n="drive">Drive<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_drive" data-i18n="drive">Drive</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_drive">
@@ -530,7 +533,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_firearms_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_firearms" value="0">
-                            <button type="action" class="toggle" name="act_firearms" data-i18n="firearms">Firearms<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_firearms" data-i18n="firearms">Firearms</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_firearms">
@@ -553,7 +556,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_larceny_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_larceny" value="0">
-                            <button type="action" class="toggle" name="act_larceny" data-i18n="larceny">Larceny<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_larceny" data-i18n="larceny">Larceny</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_larceny">
@@ -576,7 +579,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_stealth_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_stealth" value="0">
-                            <button type="action" class="toggle" name="act_stealth" data-i18n="stealth">Stealth<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_stealth" data-i18n="stealth">Stealth</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_stealth">
@@ -599,7 +602,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_survival_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_survival" value="0">
-                            <button type="action" class="toggle" name="act_survival" data-i18n="survival">Survival<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_survival" data-i18n="survival">Survival</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_survival">
@@ -622,7 +625,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_weaponry_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_weaponry" value="0">
-                            <button type="action" class="toggle" name="act_weaponry" data-i18n="weaponry">Weaponry<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_weaponry" data-i18n="weaponry">Weaponry</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_weaponry">
@@ -649,7 +652,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_animalken_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_animalken" value="0">
-                            <button type="action" class="toggle" name="act_animalken" data-i18n="animalken">Animal Ken<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_animalken" data-i18n="animalken">Animal Ken</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_animalken">
@@ -672,7 +675,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_empathy_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_empathy" value="0">
-                            <button type="action" class="toggle" name="act_empathy" data-i18n="empathy">Empathy<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_empathy" data-i18n="empathy">Empathy</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_empathy">
@@ -695,7 +698,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_expression_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_expression" value="0">
-                            <button type="action" class="toggle" name="act_expression" data-i18n="expression">Expression<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_expression" data-i18n="expression">Expression</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_expression">
@@ -719,7 +722,7 @@
                             <input type="hidden" class="flag" name="attr_intimidation_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_intimidation" value="0">
                             <button type="action" class="toggle" name="act_intimidation"
-                                data-i18n="intimidation">Intimidation<sup>(s)</sup></button>
+                                data-i18n="intimidation">Intimidation</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_intimidation">
@@ -742,7 +745,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_persuasion_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_persuasion" value="0">
-                            <button type="action" class="toggle" name="act_persuasion" data-i18n="persuasion">Persuasion<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_persuasion" data-i18n="persuasion">Persuasion</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_persuasion">
@@ -765,7 +768,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_socialize_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_socialize" value="0">
-                            <button type="action" class="toggle" name="act_socialize" data-i18n="socialize">Socialize<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_socialize" data-i18n="socialize">Socialize</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_socialize">
@@ -788,7 +791,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_streetwise_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_streetwise" value="0">
-                            <button type="action" class="toggle" name="act_streetwise" data-i18n="streetwise">Streetwise<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_streetwise" data-i18n="streetwise">Streetwise</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_streetwise">
@@ -811,7 +814,7 @@
                             </span>
                             <input type="hidden" class="flag" name="attr_subterfuge_flag" value="0" />
                             <input type="hidden" class="if-has-specialty" name="attr_has_specialization_subterfuge" value="0">
-                            <button type="action" class="toggle" name="act_subterfuge" data-i18n="subterfuge">Subterfuge<sup>(s)</sup></button>
+                            <button type="action" class="toggle" name="act_subterfuge" data-i18n="subterfuge">Subterfuge</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_subterfuge">
@@ -2311,36 +2314,33 @@
 <div class="rolltemplates">
     <rolltemplate class="sheet-rolltemplate-wod">
         <table>
-            <tr><th class="sheet-always-light">{{name}} <span data-i18n="rolls">rolls</span> {{dicePool}}</th></tr>
+            <tr><th class="sheet-always-light">{{name}}
+                {{#reason}}
+                    <span data-i18n="tries-to">tries to </span>{{reason}}
+                {{/reason}}
+        </th></tr>
             <tr>
                 <td>
                     {{dicePoolHtml}}
-                    {{#^rollTotal() woundpenalty 0}}
-                    <div>
-                        <span data-i18n="wound">Wound</span> <span data-i18n="penalty">Penalty</span><span>({{woundpenalty}})</span>
-                    </div>
-                    {{/^rollTotal() woundpenalty 0}}
-                    {{#^rollTotal() mod 0}}
-                    <div>
-                        <span data-i18n="modifiers">Modifiers</span><span>({{mod}})</span>
-                    </div>
-                    {{/^rollTotal() mod 0}}
                 </td>
             </tr>
             <tr>
-                <td class="sheet-result"><span>{{result}} </span><span data-i18n="successes">Successes</span></td>
+                <td class="sheet-result"><span>{{computed::successType}} </span><span>[{{result}}]</span></td>
             </tr>
             <tr>
                 <td class="sheet-specialrollflag">
-                    {{#chance}}
-                        <span>0C</span>
-                    {{/chance}}
                     {{#9again}}
                        <span>9A</span>
                     {{/9again}}
                     {{#8again}}
                         <span>8A</span>
                     {{/8again}}
+                    {{#isRote}}
+                        <span data-i18n="rote">Rote</span>
+                    {{/isRote}}
+                    {{#chance}}
+                        <span>0C</span>
+                    {{/chance}}
                 </td>
             </tr>
         </table>
@@ -2709,6 +2709,18 @@
     })
   }
 
+  on("change:current_willpower", () => {
+    getAttrs(["current_willpower", "rollmodify_willpower"], (v) => {
+      const currentWillpower = parseInt(v.current_willpower) || 0
+      const rollmodifyWillpower = parseInt(v.rollmodify_willpower) || 0
+      if (currentWillpower <= 0 && rollmodifyWillpower > 0) {
+        setAttrs({
+          rollmodify_willpower: 0
+        })
+      }
+    })
+  })
+
   const updateSpecializationVisible = () => {
     getAttrs(skillsSpecializations, (v) => {
         const specializationVisibility = skillsSpecializations.reduce((acc, skill) => ({
@@ -2890,14 +2902,44 @@ rollstyles.forEach((rollstyle) => {
 });
 
 
-const rolltypes = ["chance", "normal", "9-again", "8-again", "rote", "chance-rote"];
+const rolltypes = ["normal", "9-again", "8-again"]
 rolltypes.forEach((rolltype) => {
     on(`clicked:rolltype_select_${rolltype}`, () => {
         setAttrs({
             "rolltype_select": rolltype
-        });
-    });
-});
+        })
+    })
+})
+
+const rollmodifiers = ["rote", "willpower"]
+rollmodifiers.forEach((rollmodifier) => {
+    on(`clicked:rollmodify_select_${rollmodifier}`, () => {
+        getAttrs([`rollmodify_${rollmodifier}`], (v) => {
+            setAttrs({
+                [`rollmodify_${rollmodifier}`]: v[`rollmodify_${rollmodifier}`] === "1" ? "0" : "1"
+            })
+        })
+    })
+})
+
+const rollmodifierRestrictedValues = {
+    "willpower": "current_willpower"
+}
+_.keys(rollmodifierRestrictedValues).forEach((restrictedModifier) => {
+    const rollModifier = `rollmodify_${restrictedModifier}`
+    on(`change:${rollModifier}`, () => {
+        const modifierSource = rollmodifierRestrictedValues[restrictedModifier]
+        getAttrs([rollModifier, modifierSource], (v) => {
+            const value = parseInt(v[modifierSource]) || 0
+            const modifierEnabled = (parseInt(v[rollModifier]) || 0) === "1"
+            if (value <= 0) {
+                setAttrs({
+                    [rollModifier]: "0"
+                })
+            }
+        })
+    })
+})
 
 const updateDicePool = () => {
     getAttrs([...normalStats, "dice_pool_attributes"], (values) => {
@@ -2924,45 +2966,52 @@ const getSheetDicePoolHtml = (poolAttributes, values) => {
         .join("");
 }
 
-var getSheetDicePool = function(poolAttributes, values) {
-    const sum = poolAttributes
+const getSheetDicePool = (poolAttributes, values) => {
+    return poolAttributes
         .map((poolAttribute) => getAttributePool(poolAttribute, values))
         .reduce((sum, value) => sum + value, 0)
-
-    return Math.max(sum, 1);
 }
 
-on("change:rolltype_select", function() {
-    updateRollType();
-});
+const getExplodingDiceTarget = (rollType, isChanceRoll) => {
+    if (isChanceRoll) {
+        return 10;
+    }
 
-const updateRollType = () => {
-    getAttrs(["rolltype_select"], (v) => {
-        const selectedRolltype = v.rolltype_select || "normal"
-        setAttrs({
-            rolltype: getRolltypeDiceString(selectedRolltype)
-        })
-    })
-}
-
-const getRolltypeDiceString = (rolltype) => {
-    switch (rolltype) {
-        case "chance":
-            return "*0+1)d10cf<1}>10]]}} {{chance=1}}";
-        case "normal":
-            return ")d10!cs>10}>8]]}}";
+    switch (rollType) {
         case "9-again":
-            return ")d10!>9cs>9}>8]]}} {{9again=1}}";
+            return 9;
         case "8-again":
-            return ")d10!>8cs>8}>8]]}} {{8again=1}}";
-        case "rote":
-            return ")d10ro<7}>8]]}}";
-        case "chance-rote":
-            return "*0+1)d10ro<7cf<1}>10]]}} {{chance=1}}";
+            return 8;
+        default:
+            return 10;
     }
 }
 
-const getAttributeType = function(attribute) {
+const getTargetDifficulty = (isChanceRoll) => {
+    if (isChanceRoll) {
+        return 10;
+    }
+    return 8;
+}
+
+const getRerollFailures = (isRote, targetDifficulty) => {
+    if (!isRote) {
+        return "";
+    }
+
+    if(isRote) {
+        return `ro<${targetDifficulty-1}`;
+    }
+}
+
+const getCriticalFail = (isChanceRoll) => {
+    if (isChanceRoll) {
+        return "cf<1";
+    }
+    return "cf<0";
+}
+
+const getAttributeType = (attribute) => {
     if (attributes.includes(attribute)) {
         return "attribute";
     }
@@ -2991,7 +3040,7 @@ const getUnskilledPenalty = (attribute) => {
 const resetRollFlags = () => {
     const flagValues = normalStats
         .map((attribute) => `${attribute}_flag`)
-        .reduce((attrs, flag) => ({ ...attrs, [flag]: "" }), {});
+        .reduce((attrs, flag) => ({ ...attrs, [flag]: "" }), {})
 
     return {
         "dice_pool_attributes": "",
@@ -3000,9 +3049,107 @@ const resetRollFlags = () => {
         "rolldisplay": "",
         "rollstyle": "sheet",
         "rolltype_select": "normal",
-        ...flagValues
+        "rollmodify_rote": "0",
+        "rollmodify_willpower": "0",
+        "rollmodify_modifier": "0",
+        "rollreason": "",
+        "full_pool_html": "",
+        ...flagValues,
     };
 }
+
+const getWillpowerHtml = (useWillpower, willpower) => {
+    if (!useWillpower) {
+        return "";
+    }
+
+    return `<div>${getTranslationByKey('willpower')} (+3)</div>`;
+}
+
+const getWoundPenaltyHtml = (woundPenalties) => {
+    if (woundPenalties <= 0) {
+        return "";
+    }
+
+    return `<div>${getTranslationByKey('wound-penalty')} Penalty (${woundPenalties})</div>`;
+}
+
+const getModifiersHtml = (modifier) => {
+    if (modifier === 0) {
+        return "";
+    }
+
+    return `<div>${getTranslationByKey('modifiers')} (${modifier})</div>`;
+}
+
+const getDicePoolHtml = (dicePoolAttributes, values, useWillpower, woundPenalties, modifiers) => {
+    return [
+        getSheetDicePoolHtml(dicePoolAttributes, values),
+        getWillpowerHtml(useWillpower),
+        getWoundPenaltyHtml(woundPenalties),
+        getModifiersHtml(modifiers)
+    ].join("");
+}
+
+const generateDiceString = (totalDiceToRoll, rollType, isChanceRoll, isRote) => {
+    const targetDifficulty = getTargetDifficulty(isChanceRoll)
+    const rerollFailures = getRerollFailures(isRote, targetDifficulty)
+    const explodingDice = getExplodingDiceTarget(rollType, isChanceRoll)
+    const criticalFail = getCriticalFail(isChanceRoll)
+    return `${totalDiceToRoll <= 0 ? 1 : totalDiceToRoll}d10!>${explodingDice}cs>${targetDifficulty}${rerollFailures}${criticalFail}>${targetDifficulty}`
+}
+
+const getSuccessType = (totalSuccesses, isChanceRoll, diceResults) => {
+    if (totalSuccesses >= 5) {
+        return "dramatic-success";
+    }
+    if (totalSuccesses >= 1) {
+        return "success";
+    }
+    if(isChanceRoll && _.every(diceResults, (result) => result === 1)) {
+        return "dramatic-failure"
+    }
+    return "failure";
+}
+
+const dicePoolAttributes = [...normalStats, "dice_pool_attributes", "dice_pool", "rolltype_select", "rollmodify_rote", "rollmodify_willpower", "rollmodify_modifier", "rollreason", "rollstyle", "current_willpower", "wound_penalty", "character_name"];
+
+on("clicked:roll", () => {
+    getAttrs(dicePoolAttributes, (v) => {
+        const attributes = (v.dice_pool_attributes || "").split(",")
+        const modifier = parseInt(v.rollmodify_modifier) || 0
+        const dicePool = parseInt(v.dice_pool) || 0
+        const willpower = parseInt(v.current_willpower) || 0
+        const useWillpower = (parseInt(v.rollmodify_willpower) || 0) === 1 && willpower > 0
+        const woundPenalties = parseInt(v.wound_penalty) || 0
+        const isRote = parseInt(v.rollmodify_rote) === 1
+        const rollType = v.rolltype_select || ""
+        const totalDiceToRoll = Math.max(dicePool + (useWillpower ? 3 : 0) + modifier + woundPenalties, 0)
+        const isChanceRoll = totalDiceToRoll <= 0
+        const diceString = generateDiceString(totalDiceToRoll, rollType, isChanceRoll, isRote)
+
+        const template = "&{template:wod}"
+        const rollString = `${template} {{name=@{character_name}}} {{dicePool=[[${totalDiceToRoll}]]}} {{dicePoolHtml=@{full_pool_html}}} {{result=[[${diceString}]]}}{{reason=@{rollreason}}} {{rollstyle=@{rollstyle}}} {{isRote=${isRote ? 'rote' : ""}}} {{successType=[[0]]}} {{9again=${!isChanceRoll && rollType === "9-again" ? "9again" : ""}}} {{8again=${!isChanceRoll && rollType === "8-again" ? "8again" : ""}}} {{chance=${isChanceRoll ? "chance" : ""}}}`
+
+        setAttrs({
+            "full_pool_html": getDicePoolHtml(attributes, v, useWillpower, woundPenalties, modifier)
+        }, {}, () => {
+            startRoll(rollString, (results) => {
+                if (useWillpower) {
+                    setAttrs({
+                        current_willpower: willpower - 1
+                    })
+                }
+                const countSuccesses = results.results.result.result
+                const rolls = results.results.result.dice
+
+                finishRoll(results.rollId, {
+                    successType: getTranslationByKey(getSuccessType(countSuccesses, isChanceRoll, rolls)),
+                })
+            })
+        })
+    })
+})
 
 const extraTraitCount = 9;
 const weaponCount = 6;
@@ -3129,7 +3276,6 @@ const v1AttrMap = {
     updateInitiative()
     updateWillpower()
     updateSpecializationVisible()
-    updateRollType()
     const resetRollFlagAttrs = resetRollFlags();
 
     setAttrs({
