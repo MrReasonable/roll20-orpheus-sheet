@@ -1,7 +1,8 @@
 <div class="background">
     <input type="radio" name="attr_tab" class="tab tab1" value="1" data-i18n-title="sheet" title="Sheet"
         checked="checked" />
-    <input type="radio" name="attr_tab" class="tab tab2" value="2" data-i18n-title="horrors-items" title="Horrors/Items" />
+    <input type="radio" name="attr_tab" class="tab tab2" value="2" data-i18n-title="horrors-items"
+        title="Horrors/Items" />
     <input type="radio" name="attr_tab" class="tab tab3" value="3" title="Expanded Merits"
         data-i18n-title="expanded-merits" />
     <input type="radio" name="attr_tab" class="tab tab4" value="4" title="Background" data-i18n-title="background" />
@@ -28,7 +29,8 @@
                     value="&{template:wod-simple} {{name=@{character_name}}} {{option=?{@{dicepoolmacro}|0}}} {{result=[[{(?{@{dicepoolmacro}|1}@{rolltype}"></button>
             </div>
             <div class="diceroller-options collapsible-content">
-                <button type="action" class="toggle rollstyle-sheet" name="act_rollstyle_sheet" data-i18n="sheet-roll">Sheet
+                <button type="action" class="toggle rollstyle-sheet" name="act_rollstyle_sheet"
+                    data-i18n="sheet-roll">Sheet
                     Roll</button>
                 <button type="action" class="toggle rollstyle-attack" name="act_rollstyle_attack"
                     data-i18n="attack-roll">Attack Roll</button>
@@ -53,17 +55,22 @@
                     <div class="horizontal-spacer"></div>
                     <div class="flex columns">
                         <input type="hidden" class="highlight-next" name="attr_rollmodify_rote" value="0" />
-                        <button type="action" class="toggle rollmodify-rote"  name="act_rollmodify_select_rote" data-i18n="rote">Rote</button>
+                        <button type="action" class="toggle rollmodify-rote" name="act_rollmodify_select_rote"
+                            data-i18n="rote">Rote</button>
                         <input type="hidden" class="highlight-next" name="attr_rollmodify_willpower" value="0" />
-                        <button type="action" class="toggle rollmodify-willpower" name="act_rollmodify_select_willpower" data-i18n="willpower">Willpower</button>
+                        <button type="action" class="toggle rollmodify-willpower" name="act_rollmodify_select_willpower"
+                            data-i18n="willpower">Willpower</button>
                         <input type="hidden" class="highlight-next" name="attr_rollmodify_specialty" value="0" />
-                        <button type="action" class="toggle rollmodify-specialty" name="act_rollmodify_select_specialty" data-i18n="use-specialty">Use Specialty</button>
+                        <button type="action" class="toggle rollmodify-specialty" name="act_rollmodify_select_specialty"
+                            data-i18n="use-specialty">Use Specialty</button>
                     </div>
                 </div>
             </div>
             <div class="diceroller-modifiers collapsible-content flex">
-                <label for="rollmodify_modifier" data-i18n="modifiers">Modifiers</label><input type="number" for="rollmodify_modifier" id="rollmodify_modifier" name="attr_rollmodify_modifier" value="0" />
-                <label for="rollreason" data-i18n="reason">Reason</label><input type="text" id="rollreason" name="attr_rollreason" value="" />
+                <label for="rollmodify_modifier" data-i18n="modifiers">Modifiers</label><input type="number"
+                    for="rollmodify_modifier" id="rollmodify_modifier" name="attr_rollmodify_modifier" value="0" />
+                <label for="rollreason" data-i18n="reason">Reason</label><input type="text" id="rollreason"
+                    name="attr_rollreason" value="" />
             </div>
         </div>
     </div>
@@ -143,7 +150,8 @@
                     <div class="mental border"></div>
                     <div class="power mental label">
                         <input type="hidden" class="flag" name="attr_intelligence_flag" value="0" />
-                        <button type="action" class="toggle" name="act_intelligence" data-i18n="intelligence">Intelligence</button>
+                        <button type="action" class="toggle" name="act_intelligence"
+                            data-i18n="intelligence">Intelligence</button>
                     </div>
                     <div class="power mental dots">
                         <input type="hidden" name="attr_intelligence" value="1" />
@@ -196,7 +204,8 @@
                     </div>
                     <div class="finesse physical label">
                         <input type="hidden" class="flag" name="attr_dexterity_flag" value="0" />
-                        <button type="action" class="toggle" name="act_dexterity" data-i18n="dexterity">Dexterity</button>
+                        <button type="action" class="toggle" name="act_dexterity"
+                            data-i18n="dexterity">Dexterity</button>
                     </div>
                     <div class="finesse physical dots">
                         <input type="hidden" name="attr_dexterity" value="1" />
@@ -236,7 +245,8 @@
                     </div>
                     <div class="finesse social label">
                         <input type="hidden" class="flag" name="attr_manipulation_flag" value="0" />
-                        <button type="action" class="toggle" name="act_manipulation" data-i18n="manipulation">Manipulation</button>
+                        <button type="action" class="toggle" name="act_manipulation"
+                            data-i18n="manipulation">Manipulation</button>
                     </div>
                     <div class="finesse social dots">
                         <input type="hidden" name="attr_manipulation" value="1" />
@@ -249,7 +259,8 @@
                     </div>
                     <div class="resistance social label">
                         <input type="hidden" class="flag" name="attr_composure_flag" value="0" />
-                        <button type="action" class="toggle" name="act_composure" data-i18n="composure">Composure</button>
+                        <button type="action" class="toggle" name="act_composure"
+                            data-i18n="composure">Composure</button>
                     </div>
                     <div class="resistance social dots">
                         <input type="hidden" name="attr_composure" value="1" />
@@ -280,8 +291,10 @@
                                 <button type="action" name="act_academics_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_academics_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_academics" value="0">
-                            <button type="action" class="toggle" name="act_academics" data-i18n="academics">Academics</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_academics"
+                                value="0">
+                            <button type="action" class="toggle" name="act_academics"
+                                data-i18n="academics">Academics</button><sup>(s)</sup>
                             <span>
                                 <input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
@@ -305,8 +318,10 @@
                                 <button type="action" name="act_computer_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_computer_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_computer" value="0">
-                            <button type="action" class="toggle" name="act_computer" data-i18n="computer">Computer</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_computer"
+                                value="0">
+                            <button type="action" class="toggle" name="act_computer"
+                                data-i18n="computer">Computer</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_computer">
@@ -328,8 +343,10 @@
                                 <button type="action" name="act_crafts_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_crafts_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_crafts" value="0">
-                            <button type="action" class="toggle" name="act_crafts" data-i18n="crafts">Crafts</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_crafts"
+                                value="0">
+                            <button type="action" class="toggle" name="act_crafts"
+                                data-i18n="crafts">Crafts</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_crafts">
@@ -351,7 +368,8 @@
                                 <button type="action" name="act_investigation_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_investigation_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_investigation" value="0">
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_investigation"
+                                value="0">
                             <button type="action" class="toggle" name="act_investigation"
                                 data-i18n="investigation">Investigation</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
@@ -375,8 +393,10 @@
                                 <button type="action" name="act_medicine_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_medicine_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_medicine" value="0">
-                            <button type="action" class="toggle" name="act_medicine" data-i18n="medicine">Medicine</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_medicine"
+                                value="0">
+                            <button type="action" class="toggle" name="act_medicine"
+                                data-i18n="medicine">Medicine</button><sup>(s)</sup>
                             <span>
                                 <input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
@@ -399,8 +419,10 @@
                                 <button type="action" name="act_occult_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_occult_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_occult" value="0">
-                            <button type="action" class="toggle" name="act_occult" data-i18n="occult">Occult</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_occult"
+                                value="0">
+                            <button type="action" class="toggle" name="act_occult"
+                                data-i18n="occult">Occult</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_occult">
@@ -422,8 +444,10 @@
                                 <button type="action" name="act_politics_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_politics_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_politics" value="0">
-                            <button type="action" class="toggle" name="act_politics" data-i18n="politics">Politics</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_politics"
+                                value="0">
+                            <button type="action" class="toggle" name="act_politics"
+                                data-i18n="politics">Politics</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_politics">
@@ -445,8 +469,10 @@
                                 <button type="action" name="act_science_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_science_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_science" value="0">
-                            <button type="action" class="toggle" name="act_science" data-i18n="science">Science</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_science"
+                                value="0">
+                            <button type="action" class="toggle" name="act_science"
+                                data-i18n="science">Science</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_science">
@@ -472,8 +498,10 @@
                                 <button type="action" name="act_athletics_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_athletics_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_athletics" value="0">
-                            <button type="action" class="toggle" name="act_athletics" data-i18n="athletics">Athletics</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_athletics"
+                                value="0">
+                            <button type="action" class="toggle" name="act_athletics"
+                                data-i18n="athletics">Athletics</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_athletics">
@@ -495,8 +523,10 @@
                                 <button type="action" name="act_brawl_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_brawl_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_brawl" value="0">
-                            <button type="action" class="toggle" name="act_brawl" data-i18n="brawl">Brawl</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_brawl"
+                                value="0">
+                            <button type="action" class="toggle" name="act_brawl"
+                                data-i18n="brawl">Brawl</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_brawl">
@@ -518,8 +548,10 @@
                                 <button type="action" name="act_drive_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_drive_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_drive" value="0">
-                            <button type="action" class="toggle" name="act_drive" data-i18n="drive">Drive</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_drive"
+                                value="0">
+                            <button type="action" class="toggle" name="act_drive"
+                                data-i18n="drive">Drive</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_drive">
@@ -541,8 +573,10 @@
                                 <button type="action" name="act_firearms_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_firearms_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_firearms" value="0">
-                            <button type="action" class="toggle" name="act_firearms" data-i18n="firearms">Firearms</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_firearms"
+                                value="0">
+                            <button type="action" class="toggle" name="act_firearms"
+                                data-i18n="firearms">Firearms</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_firearms">
@@ -564,8 +598,10 @@
                                 <button type="action" name="act_larceny_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_larceny_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_larceny" value="0">
-                            <button type="action" class="toggle" name="act_larceny" data-i18n="larceny">Larceny</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_larceny"
+                                value="0">
+                            <button type="action" class="toggle" name="act_larceny"
+                                data-i18n="larceny">Larceny</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_larceny">
@@ -587,8 +623,10 @@
                                 <button type="action" name="act_stealth_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_stealth_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_stealth" value="0">
-                            <button type="action" class="toggle" name="act_stealth" data-i18n="stealth">Stealth</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_stealth"
+                                value="0">
+                            <button type="action" class="toggle" name="act_stealth"
+                                data-i18n="stealth">Stealth</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_stealth">
@@ -610,8 +648,10 @@
                                 <button type="action" name="act_survival_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_survival_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_survival" value="0">
-                            <button type="action" class="toggle" name="act_survival" data-i18n="survival">Survival</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_survival"
+                                value="0">
+                            <button type="action" class="toggle" name="act_survival"
+                                data-i18n="survival">Survival</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_survival">
@@ -633,8 +673,10 @@
                                 <button type="action" name="act_weaponry_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_weaponry_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_weaponry" value="0">
-                            <button type="action" class="toggle" name="act_weaponry" data-i18n="weaponry">Weaponry</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_weaponry"
+                                value="0">
+                            <button type="action" class="toggle" name="act_weaponry"
+                                data-i18n="weaponry">Weaponry</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_weaponry">
@@ -660,8 +702,10 @@
                                 <button type="action" name="act_animalken_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_animalken_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_animalken" value="0">
-                            <button type="action" class="toggle" name="act_animalken" data-i18n="animalken">Animal Ken</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_animalken"
+                                value="0">
+                            <button type="action" class="toggle" name="act_animalken" data-i18n="animalken">Animal
+                                Ken</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_animalken">
@@ -683,8 +727,10 @@
                                 <button type="action" name="act_empathy_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_empathy_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_empathy" value="0">
-                            <button type="action" class="toggle" name="act_empathy" data-i18n="empathy">Empathy</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_empathy"
+                                value="0">
+                            <button type="action" class="toggle" name="act_empathy"
+                                data-i18n="empathy">Empathy</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_empathy">
@@ -706,8 +752,10 @@
                                 <button type="action" name="act_expression_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_expression_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_expression" value="0">
-                            <button type="action" class="toggle" name="act_expression" data-i18n="expression">Expression</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_expression"
+                                value="0">
+                            <button type="action" class="toggle" name="act_expression"
+                                data-i18n="expression">Expression</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_expression">
@@ -729,7 +777,8 @@
                                 <button type="action" name="act_intimidation_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_intimidation_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_intimidation" value="0">
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_intimidation"
+                                value="0">
                             <button type="action" class="toggle" name="act_intimidation"
                                 data-i18n="intimidation">Intimidation</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
@@ -753,8 +802,10 @@
                                 <button type="action" name="act_persuasion_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_persuasion_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_persuasion" value="0">
-                            <button type="action" class="toggle" name="act_persuasion" data-i18n="persuasion">Persuasion</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_persuasion"
+                                value="0">
+                            <button type="action" class="toggle" name="act_persuasion"
+                                data-i18n="persuasion">Persuasion</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_persuasion">
@@ -776,8 +827,10 @@
                                 <button type="action" name="act_socialize_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_socialize_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_socialize" value="0">
-                            <button type="action" class="toggle" name="act_socialize" data-i18n="socialize">Socialize</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_socialize"
+                                value="0">
+                            <button type="action" class="toggle" name="act_socialize"
+                                data-i18n="socialize">Socialize</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_socialize">
@@ -799,8 +852,10 @@
                                 <button type="action" name="act_streetwise_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_streetwise_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_streetwise" value="0">
-                            <button type="action" class="toggle" name="act_streetwise" data-i18n="streetwise">Streetwise</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_streetwise"
+                                value="0">
+                            <button type="action" class="toggle" name="act_streetwise"
+                                data-i18n="streetwise">Streetwise</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_streetwise">
@@ -822,8 +877,10 @@
                                 <button type="action" name="act_subterfuge_box"></button>
                             </span>
                             <input type="hidden" class="flag" name="attr_subterfuge_flag" value="0" />
-                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_subterfuge" value="0">
-                            <button type="action" class="toggle" name="act_subterfuge" data-i18n="subterfuge">Subterfuge</button><sup>(s)</sup>
+                            <input type="hidden" class="if-has-specialty" name="attr_has_specialization_subterfuge"
+                                value="0">
+                            <button type="action" class="toggle" name="act_subterfuge"
+                                data-i18n="subterfuge">Subterfuge</button><sup>(s)</sup>
                             <span><input type="hidden" class="if" name="attr_enable_specialties">
                                 <span class="eq-1 skill_specialty">
                                     <input type="text" name="attr_specialization_subterfuge">
@@ -1298,8 +1355,19 @@
                             <div>
                                 <input type="hidden" name="attr_lament" class="lament-if" value="" />
                                 <div class="ne-hue ne-spirit">
+                                    <div class="flex rows flex-center">
+                                        <div class="subheader">
+                                            <button type="action" class="toggle" name="act_projected"
+                                                data-i18n="project">Project</button>
+                                        </div>
+                                        <span class="checkbox">
+                                            <input type="hidden" class="flag" name="attr_projected" value="0">
+                                            <button type="action" name="act_projected"></button>
+                                        </span>
+                                    </div>
+                                    <div class="el_spacer"></div>
                                     <div class="subheader">
-                                        <h3 data-i18n="health">Health</h5>
+                                        <h3 data-i18n="health">Health</h3>
                                     </div>
                                     <div>
                                         <div class="healthboxes">
@@ -1598,17 +1666,20 @@
                                             disabled="disabled" />
                                     </div>
                                     <div class="derived">
-                                        <span data-i18n="defense">Defense</span>:<input type="number" name="attr_defense"
-                                            value="@{defense_base}+@{defense_penalty}" disabled="disabled" />
+                                        <span data-i18n="defense">Defense</span>:<input type="number"
+                                            name="attr_defense" value="@{defense_base}+@{defense_penalty}"
+                                            disabled="disabled" />
                                     </div>
                                     <div class="derived">
-                                        <span data-i18n="armor">Armor</span>:<input type="number" name="attr_balistic_armor_display" value="@{balistic_armor}"
+                                        <span data-i18n="armor">Armor</span>:<input type="number"
+                                            name="attr_balistic_armor_display" value="@{balistic_armor}"
                                             disabled="disabled" />/<input type="number"
                                             name="attr_general_armor_display" value="@{general_armor}"
                                             disabled="disabled" />
                                     </div>
                                     <div class="derived">
-                                        <span data-i18n="initiative">Initiative</span>:<input type="number" name="attr_initiative"
+                                        <span data-i18n="initiative">Initiative</span>:<input type="number"
+                                            name="attr_initiative"
                                             value="@{initiative_base}+@{initiative_penalty}+@{fast_reflexes}+@{shoot_first_bonus}+@{initiative_bonus}"
                                             disabled="disabled" />
                                     </div>
@@ -1762,8 +1833,8 @@
                 <div class="subheader">
                     <h2><span data-i18n="horror-usage">Horror Usage</span></h2>
                 </div>
-                <div class='sheet-2colrow'>
-                    <div class='sheet-col'>
+                <div class="sheet-2colrow">
+                    <div class="sheet-col">
                         <table class="devotions" style="width:100%">
                             <tr class="horror_use_desc">
                                 <td data-i18n="horror">Horror</td>
@@ -1839,7 +1910,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div class='sheet-col'>
+                    <div class="sheet-col">
                         <table class="devotions" style="width:100%">
                             <tr class="horror_use_desc">
                                 <td data-i18n="horror">Horror</td>
@@ -2046,8 +2117,8 @@
                 <div class="center">
                     <h2><span data-i18n="expanded-merits">Expanded Merits</span></h2>
                 </div>
-                <div class='sheet-2colrow'>
-                    <div class='sheet-col'>
+                <div class="sheet-2colrow">
+                    <div class="sheet-col">
                         <div class="center">
                             <h3 data-i18n="allies">Allies</h3>
                         </div>
@@ -2073,7 +2144,7 @@
                         <textarea name="attr_mentor_2" rows="3" wrap="soft" style="width:100%"></textarea>
                         <textarea name="attr_mentor_3" rows="3" wrap="soft" style="width:100%"></textarea>
                     </div>
-                    <div class='sheet-col'>
+                    <div class="sheet-col">
                         <div class="center">
                             <h3 data-i18n="resources">Resources</h3>
                         </div>
@@ -2102,8 +2173,8 @@
                 <div class="center">
                     <h2><span data-i18n="possessions">Possessions</span></h2>
                 </div>
-                <div class='sheet-2colrow'>
-                    <div class='sheet-col'>
+                <div class="sheet-2colrow">
+                    <div class="sheet-col">
                         <div class="center">
                             <h3 data-i18n="gear-carried">Gear (carried)</h3>
                         </div>
@@ -2113,7 +2184,7 @@
                         </div>
                         <textarea name="attr_vehicles_1" rows="3" wrap="soft" style="width:100%"></textarea>
                     </div>
-                    <div class='sheet-col'>
+                    <div class="sheet-col">
                         <div class="center">
                             <h3 data-i18n="equipment-owned">Equipment (owned)</h3>
                         </div>
@@ -2234,10 +2305,12 @@
                         <option value="brawl" data-i18n="brawl">+ Brawl</option>
                         <option value="weaponry" data-i18n="weaponry">+ Weaponry</option>
                     </select>
-                    <span data-i18n="defense-bonus">Defense Bonus</span>: <input type="number" name="attr_defense_bonus" value="0" />
+                    <span data-i18n="defense-bonus">Defense Bonus</span>: <input type="number" name="attr_defense_bonus"
+                        value="0" />
                     <div>
                         <h3 data-i18n="health-settings">Health Settings</h3>
-                        <span data-i18n="base-size">Base Size</span>: <input type="number" name="attr_base_size" value="5" />
+                        <span data-i18n="base-size">Base Size</span>: <input type="number" name="attr_base_size"
+                            value="5" />
                         <span class="checkbox">
                             <input type="hidden" class="flag" name="attr_giant" value="0">
                             <button type="action" name="act_giant"></button>
@@ -2246,47 +2319,57 @@
                         <span class="checkbox">
                             <input type="hidden" class="flag" name="attr_small_framed" value="0">
                             <button type="action" name="act_small_framed"></button>
-                            <button type="action" class="toggle" name="act_small_framed" data-i18n="small-framed">Small Framed</button>
+                            <button type="action" class="toggle" name="act_small_framed" data-i18n="small-framed">Small
+                                Framed</button>
                         </span>
                         <br>
-                        <span data-i18n="iron-stamina">Iron Stamina</span>: <input type="number" name="attr_iron_stamina" value="0" />
+                        <span data-i18n="iron-stamina">Iron Stamina</span>: <input type="number"
+                            name="attr_iron_stamina" value="0" />
                     </div>
                     <div>
                         <h3 data-i18n="speed-settings">Speed Settings</h3>
-                        <span data-i18n="species-factor">Species Factor</span>:<input type="number" name="attr_species_factor" value="5" />
-                        <span data-i18n="fleet-of-foot">Fleet of Foot</span>: <input type="number" name="attr_fleet_of_foot"
-                            style="width: 55px;" value="0" />
+                        <span data-i18n="species-factor">Species Factor</span>:<input type="number"
+                            name="attr_species_factor" value="5" />
+                        <span data-i18n="fleet-of-foot">Fleet of Foot</span>: <input type="number"
+                            name="attr_fleet_of_foot" style="width: 55px;" value="0" />
                     </div>
                     <div>
                         <h3 data-i18n="initiative-settings">Initiative Settings</h3>
-                        <span data-i18n="fast-reflexes">Fast Reflexes</span>: <input type="number" name="attr_fast_reflexes" value="0" />
+                        <span data-i18n="fast-reflexes">Fast Reflexes</span>: <input type="number"
+                            name="attr_fast_reflexes" value="0" />
                         <span class="checkbox">
                             <input type="hidden" class="flag" name="attr_shoot_first" value="0">
                             <button type="action" name="act_shoot_first"></button>
-                            <button type="action" class="toggle" name="act_shoot_first" data-i18n="shoot-first">Shoot First</button>
+                            <button type="action" class="toggle" name="act_shoot_first" data-i18n="shoot-first">Shoot
+                                First</button>
                         </span>
-                        <span data-i18n="initiative-bonus">Initiative Bonus</span>: <input type="number" name="attr_initiative_bonus"
-                            value="0" />
+                        <span data-i18n="initiative-bonus">Initiative Bonus</span>: <input type="number"
+                            name="attr_initiative_bonus" value="0" />
                     </div>
                     <div>
                         <h3 data-i18n="vitality-settings">Vitality Settings</h3>
-                        <span data-i18n="vitality-rating">Vitality Rating</span>: <input type="number" name="attr_vitality" value="6" />
-                        <span data-i18n="luminous">Luminous</span>: <input type="number" name="attr_luminous" value="0" />
+                        <span data-i18n="vitality-rating">Vitality Rating</span>: <input type="number"
+                            name="attr_vitality" value="6" />
+                        <span data-i18n="luminous">Luminous</span>: <input type="number" name="attr_luminous"
+                            value="0" />
                     </div>
                     <div>
                         <h3 data-i18n="sheet-settings">Sheet Settings</h3>
                         <span class="checkbox">
                             <input type="hidden" class="flag" name="attr_enable_profession" value="0">
                             <button type="action" name="act_enable_profession"></button>
-                            <button type="action" class="toggle" name="act_enable_profession" data-i18n="enable-checkbox-for-rote-msg">Enable
+                            <button type="action" class="toggle" name="act_enable_profession"
+                                data-i18n="enable-checkbox-for-rote-msg">Enable
                                 checkboxes next to skills (Normally used for professions, rote skills, etc)</button>
                         </span>
                         <span class="checkbox">
                             <input type="hidden" class="flag" name="attr_enable_specialties" value="0">
                             <button type="action" name="act_enable_specialties"></button>
-                            <button type="action" class="toggle" name="act_enable_specialties" data-i18n="enable-specialty-edit-msg">Display
+                            <button type="action" class="toggle" name="act_enable_specialties"
+                                data-i18n="enable-specialty-edit-msg">Display
                                 specialty input field next to
                                 skills</button>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -2319,15 +2402,18 @@
 <input type="hidden" name="attr_dice_pool_html" value="" />
 <input type="hidden" name="attr_dice_pool" value="0" />
 <input type="hidden" name="attr_rolltype" value=")d10!cs>10}>8]]}}" />
+<input type="hidden" name="attr_incorporeal" value="0" />
 <!-- Roll Templates -->
 <div class="rolltemplates">
     <rolltemplate class="sheet-rolltemplate-wod">
         <table>
-            <tr><th class="sheet-always-light">{{name}}
-                {{#reason}}
+            <tr>
+                <th class="sheet-always-light">{{name}}
+                    {{#reason}}
                     <span data-i18n="tries-to">tries to </span>{{reason}}
-                {{/reason}}
-        </th></tr>
+                    {{/reason}}
+                </th>
+            </tr>
             <tr>
                 <td>
                     {{dicePoolHtml}}
@@ -2339,16 +2425,16 @@
             <tr>
                 <td class="sheet-specialrollflag">
                     {{#9again}}
-                       <span>9A</span>
+                    <span>9A</span>
                     {{/9again}}
                     {{#8again}}
-                        <span>8A</span>
+                    <span>8A</span>
                     {{/8again}}
                     {{#isRote}}
-                        <span data-i18n="rote">Rote</span>
+                    <span data-i18n="rote">Rote</span>
                     {{/isRote}}
                     {{#chance}}
-                        <span>0C</span>
+                    <span>0C</span>
                     {{/chance}}
                 </td>
             </tr>
@@ -2357,23 +2443,27 @@
 
     <rolltemplate class="sheet-rolltemplate-wod-simple">
         <table>
-            <tr><th class="sheet-always-light">{{name}} <span data-i18n="rolls">rolls</span></th></tr>
-            <tr><td>
-                <span>{{option}}</span> <span data-i18n="dice-for">dice for</span><br>
-            </td></tr>
+            <tr>
+                <th class="sheet-always-light">{{name}} <span data-i18n="rolls">rolls</span></th>
+            </tr>
+            <tr>
+                <td>
+                    <span>{{option}}</span> <span data-i18n="dice-for">dice for</span><br>
+                </td>
+            </tr>
             <tr>
                 <td class="sheet-result">{{result}} <span data-i18n="successes">Successes</span></td>
             </tr>
             <tr>
                 <td class="sheet-specialrollflag">
                     {{#chance}}
-                        <span>0C</span>
+                    <span>0C</span>
                     {{/chance}}
                     {{#9again}}
-                        <span>9A</span>
+                    <span>9A</span>
                     {{/9again}}
                     {{#8again}}
-                        <span>8A</span>
+                    <span>8A</span>
                     {{/8again}}
                 </td>
             </tr>
@@ -2383,23 +2473,25 @@
     <rolltemplate class="sheet-rolltemplate-wod-initiative">
         <table>
             <tr>
-                <th class="sheet-always-light">{{name}} <span data-i18n="rolls">rolls</span> <span data-i18n="initiative">Initiative</span></th>
+                <th class="sheet-always-light">{{name}} <span data-i18n="rolls">rolls</span> <span
+                        data-i18n="initiative">Initiative</span></th>
             </tr>
             <tr>
                 <td class="sheet-always-light">
                     <span data-i18n="dexterity">Dexterity</span><span>({{dexterity}})</span>,
                     <span data-i18n="composure">Composure</span><span>({{composure}})</span>
                     {{#rollGreater() fastReflexes 0}}
-                        <span data-i18n="fast-reflexes">Fast Reflexes Bonus</span> <span>({{fastReflexesVal}}</span>)<br>
+                    <span data-i18n="fast-reflexes">Fast Reflexes Bonus</span> <span>({{fastReflexesVal}}</span>)<br>
                     {{/rollGreater() fastReflexes 0}}
                     {{#rollGreater() shootFirst 0}}
-                        <span data-i18n="shoot-first">Shoot First Bonus</span> <span>({{firearms}})</span><br>
+                    <span data-i18n="shoot-first">Shoot First Bonus</span> <span>({{firearms}})</span><br>
                     {{/rollGreater() shootFirst 0}}
                     {{#^rollTotal() initiativeBonus 0}}
-                        <span data-i18n="initiative-bonus">Initiative Bonus</span> <span>({{initiativeBonusVal}})</span><br>
+                    <span data-i18n="initiative-bonus">Initiative Bonus</span> <span>({{initiativeBonusVal}})</span><br>
                     {{/^rollTotal() initiativeBonus 0}}
                     {{#rollLess() initiativePenalty 0}}
-                        <span data-i18n="initiative-penalty">Initiative Penalty</span> <span>({{initiativePenaltyVal}})</span><br>
+                    <span data-i18n="initiative-penalty">Initiative Penalty</span>
+                    <span>({{initiativePenaltyVal}})</span><br>
                     {{/rollLess() initiativePenalty 0}}
                 </td>
             </tr>
@@ -2414,61 +2506,70 @@
 
     <rolltemplate class="sheet-rolltemplate-wod-attack">
         <table>
-            <tr><th class="sheet-always-light">{{name}} <span data-i18n="makes-a">makes a</span> {{attack_name}} <span data-i18n="attack">attack</span></th></tr>
-            <tr><td>
-                {{#str}}
+            <tr>
+                <th class="sheet-always-light">{{name}} <span data-i18n="makes-a">makes a</span> {{attack_name}} <span
+                        data-i18n="attack">attack</span></th>
+            </tr>
+            <tr>
+                <td>
+                    {{#str}}
                     <span data-i18n="strength">Strength</span><span>({{strength}})</span><br>
-                {{/str}}
-                {{#dex}}
+                    {{/str}}
+                    {{#dex}}
                     <span data-i18n="dexterity">Dexterity</span><span>({{dexterity}})</span><br>
-                {{/dex}}
-                {{#bra}}
+                    {{/dex}}
+                    {{#bra}}
                     <span data-i18n="brawl">Brawl</span><span>({{brawl}})</span><br>
-                {{/bra}}
-                {{#wea}}
+                    {{/bra}}
+                    {{#wea}}
                     <span data-i18n="weaponry">Weaponry</span><span>({{weaponry}})</span><br>
-                {{/wea}}
-                {{#fir}}
+                    {{/wea}}
+                    {{#fir}}
                     <span data-i18n="firearms">Firearms</span><span>({{firearms}})</span><br>
-                {{/fir}}
-                {{#ath}}
+                    {{/fir}}
+                    {{#ath}}
                     <span data-i18n="athletics">Athletics</span><span>({{athletics}})</span><br>
-                {{/ath}}
-                {{#^rollTotal() apen 0}}
-                    <span data-i18n="armor">Armor</span> <span data-i18n="penalty">Penalty</span><span>({{apen}})</span><br>
-                {{/^rollTotal() apen 0}}
-                {{#^rollTotal() wpen 0}}
-                    <span data-i18n="weapon">Weapon</span> <span data-i18n="penalty">Penalty</span><span>({{wpen}})</span><br>
-                {{/^rollTotal() wpen 0}}
-                {{#^rollTotal() woundpenalty 0}}
-                    <span data-i18n="wound">Wound</span> <span data-i18n="penalty">Penalty</span><span>({{woundpenalty}})</span>
-                {{/^rollTotal() woundpenalty 0}}
-                {{#^rollTotal() mod 0}}
+                    {{/ath}}
+                    {{#^rollTotal() apen 0}}
+                    <span data-i18n="armor">Armor</span> <span
+                        data-i18n="penalty">Penalty</span><span>({{apen}})</span><br>
+                    {{/^rollTotal() apen 0}}
+                    {{#^rollTotal() wpen 0}}
+                    <span data-i18n="weapon">Weapon</span> <span
+                        data-i18n="penalty">Penalty</span><span>({{wpen}})</span><br>
+                    {{/^rollTotal() wpen 0}}
+                    {{#^rollTotal() woundpenalty 0}}
+                    <span data-i18n="wound">Wound</span> <span
+                        data-i18n="penalty">Penalty</span><span>({{woundpenalty}})</span>
+                    {{/^rollTotal() woundpenalty 0}}
+                    {{#^rollTotal() mod 0}}
                     <span data-i18n="modifiers">Modifiers</span>({{mod}})<br>
-                {{/^rollTotal() mod 0}}
-                {{#rollTotal() result 0}}
+                    {{/^rollTotal() mod 0}}
+                    {{#rollTotal() result 0}}
                     <span data-i18n="and-misses-with">and misses with</span><span>...</span><br>
-                    <tr>
-                        <td class="sheet-result sheet-hit">{{result}} <span data-i18n="successes">Successes</span></td>
-                    </tr>
-                {{/rollTotal() result 0}}
-                {{#rollGreater() result 0}}
-                    <span data-i18n="and-hits-for">and hits for</span><br>
-                    <tr>
-                        <td class="sheet-result sheet-miss">{{result}} <span>+ {{weapon_damage}}</span> <span data-i18n="damage">Damage</span></td>
-                    </tr>
-                {{/rollGreater() result 0}}
-            </td></tr>
+            <tr>
+                <td class="sheet-result sheet-hit">{{result}} <span data-i18n="successes">Successes</span></td>
+            </tr>
+            {{/rollTotal() result 0}}
+            {{#rollGreater() result 0}}
+            <span data-i18n="and-hits-for">and hits for</span><br>
+            <tr>
+                <td class="sheet-result sheet-miss">{{result}} <span>+ {{weapon_damage}}</span> <span
+                        data-i18n="damage">Damage</span></td>
+            </tr>
+            {{/rollGreater() result 0}}
+            </td>
+            </tr>
             <tr>
                 <td class="sheet-specialrollflag">
                     {{#chance}}
-                        <span>0C</span>
+                    <span>0C</span>
                     {{/chance}}
                     {{#9again}}
-                        <span>9A</span>
+                    <span>9A</span>
                     {{/9again}}
                     {{#8again}}
-                        <span>8A</span>
+                    <span>8A</span>
                     {{/8again}}
                 </td>
             </tr>
@@ -2485,7 +2586,7 @@
   const skillsSpecializations = skills.map((skill) => `specialization_${skill}`)
   const normalStats = [...attributes, ...skills]
   const sizeStats = ["base_size", "giant", "small_framed"]
-  const woundPenaltyStats = ["iron_stamina"]
+  const woundPenaltyStats = ["iron_stamina", "incorporeal"]
   const speedStats = ["species_factor", "fleet_of_foot"]
   const defenseStats = ["defense_attr", "defense_skill", "defense_bonus"]
   const initiativeStats = ["shoot_first"]
@@ -2521,6 +2622,7 @@
         updateDicePool()
         updateStats(statUpdaters, source)
     })
+
     on(`clicked:${attr}`, () => {
         updateDicePoolAttributes(attr)
     })
@@ -2583,8 +2685,9 @@
     "armor_flag1",
     "armor_flag2",
     "armor_flag3",
+    "projected",
     "academics_box","computer_box","crafts_box","investigation_box","medicine_box","occult_box","politics_box","science_box","athletics_box","brawl_box","drive_box","firearms_box","larceny_box","stealth_box","survival_box","weaponry_box",
-    "animalken_box","empathy_box","expression_box","intimidation_box","persuasion_box","socialize_box","streetwise_box","subterfuge_box"
+    "animalken_box","empathy_box","expression_box","intimidation_box","persuasion_box","socialize_box","streetwise_box","subterfuge_box",
   ]
   checkboxAttributes.forEach((checkboxAttribute) => {
     on(`clicked:${checkboxAttribute}`, () => {
@@ -2598,27 +2701,27 @@
     })
   })
 
-  const radioSeriesAttributes = ["attack"];
+  const radioSeriesAttributes = ["attack"]
   radioSeriesAttributes.forEach((radioSeriesAttribute) => {
       const radioAttributes = new Array(6)
           .fill(1)
-          .map((_, index) => `${radioSeriesAttribute}_${index}`);
+          .map((_, index) => `${radioSeriesAttribute}_${index}`)
 
       radioAttributes.forEach((radioAttribute) => {
           on(`clicked:${radioAttribute}`, () => {
               getAttrs([`${radioAttribute}_value`], (values) => {
                   const clearFlags = radioAttributes
                       .map((clearRadioAttribute) => `${clearRadioAttribute}_flag`)
-                      .reduce((acc, flag) => ({ ...acc, [flag]: "0" }), {});
+                      .reduce((acc, flag) => ({ ...acc, [flag]: "0" }), {})
                   setAttrs({
                       [radioSeriesAttribute]: values[`${radioAttribute}_value`],
                       ...clearFlags,
                       [`${radioAttribute}_flag`]: "1"
-                  });
-              });
-          });
-      });
-  });
+                  })
+              })
+          })
+      })
+  })
 
   const currentValueSeriesAttributes = ["willpower", "vitality", "spite"]
   const currentValueAttributes = [
@@ -2791,14 +2894,27 @@
         });
     });
 
-    ["","_flag0","_flag1","_flag2","_strength0","_strength1","_strength2"].forEach((attr) => {
-        on(`change:armor${attr}`, (eventInfo) => {
+    ["lament", "projected"].forEach((attr) => {
+        on(`change:${attr}`, () => {
+            updateIncorporeal()
+        })
+    })
+
+    const updateIncorporeal = () => {
+        getAttrs(["lament", "projected"], (v) => {
+            const lament = v.lament || ""
+            const projected = v.projected || ""
+            const incorporeal = lament === "spirit" || lament === "hue" || projected
+            setAttrs({
+                incorporeal,
+            })
+        })
+    }
+
+    ["health", "incorporeal"].forEach((attr) => {
+        on(`change:${attr}`, () => {
             updateAttacks();
         });
-    });
-
-    on("change:health", () => {
-        updateAttacks();
     });
 
     [...Array(16).keys()].forEach((attr) => {//healthbox nr. 1 through 16
@@ -2809,26 +2925,29 @@
     });
 
   const updateAttacks = () => {
-    getAttrs(["strength","attack","iron_stamina","attack_initiative0","attack_initiative1","attack_initiative2","attack_initiative3","attack_initiative4","attack_initiative5","attack_strength0","attack_strength1","attack_strength2","attack_strength3","attack_strength4","attack_strength5","armor_flag0","armor_flag1","armor_flag2","armor_flag3","armor_strength0","armor_strength1","armor_strength2","armor_strength3","health","healthbox_1","healthbox_2","healthbox_3","healthbox_4","healthbox_5","healthbox_6","healthbox_7","healthbox_8","healthbox_9","healthbox_10","healthbox_11","healthbox_12","healthbox_13","healthbox_14","healthbox_15","healthbox_16"], (v) => {
-        var str = parseInt(v.strength, 10);
-        var regex = /attack_type(.)/;
-        var atknum = v.attack.match(regex)[1];
-        var init = isNaN(v["attack_initiative" + atknum]) === false && v["attack_initiative" + atknum] != "" ? v["attack_initiative" + atknum] : 0;
-        var wpen = str < v["attack_strength" + atknum] ? str - v["attack_strength" + atknum] : 0;
-        var apen = 0;
+    getAttrs(["strength","attack","iron_stamina","incorporeal","attack_initiative0","attack_initiative1","attack_initiative2","attack_initiative3","attack_initiative4","attack_initiative5","attack_strength0","attack_strength1","attack_strength2","attack_strength3","attack_strength4","attack_strength5","armor_flag0","armor_flag1","armor_flag2","armor_flag3","armor_strength0","armor_strength1","armor_strength2","armor_strength3","health","healthbox_1","healthbox_2","healthbox_3","healthbox_4","healthbox_5","healthbox_6","healthbox_7","healthbox_8","healthbox_9","healthbox_10","healthbox_11","healthbox_12","healthbox_13","healthbox_14","healthbox_15","healthbox_16"], (v) => {
+        const str = parseInt(v.strength, 10);
+        const regex = /attack_type(.)/;
+        const corporeal = (v.incorporeal || 0) == 0 ? true : false;
+        const atknum = v.attack.match(regex)[1];
+        const init = isNaN(v["attack_initiative" + atknum]) === false && v["attack_initiative" + atknum] != "" ? v["attack_initiative" + atknum] : 0;
+        const wpen = str < v["attack_strength" + atknum] ? str - v["attack_strength" + atknum] : 0;
+        let apen = 0;
         if(v.armor_flag0 != 0 && str < parseInt(v.armor_strength0)) {apen = apen + (str - parseInt(v.armor_strength0));};
         if(v.armor_flag1 != 0 && str < parseInt(v.armor_strength1)) {apen = apen + (str - parseInt(v.armor_strength1));};
         if(v.armor_flag2 != 0 && str < parseInt(v.armor_strength2)) {apen = apen + (str - parseInt(v.armor_strength2));};
-        var wound_penalty = 0;
-        var ironStamina = parseInt(v.iron_stamina, 10);
-        if(v["healthbox_" + v.health] != 0) {
-            wound_penalty = -3 + Math.min(ironStamina, 3);
-        }
-        else if(v["healthbox_" + (v.health - 1)] != 0) {
-            wound_penalty = -2 + Math.min(ironStamina, 2);
-        }
-        else if(v["healthbox_" + (v.health - 2)] != 0) {
-            wound_penalty = -1 + Math.min(ironStamina, 1);
+        let wound_penalty = 0;
+        const ironStamina = parseInt(v.iron_stamina, 10);
+        if (corporeal) {
+            if(v["healthbox_" + v.health] != 0) {
+                wound_penalty = -3 + Math.min(ironStamina, 3);
+            }
+            else if(v["healthbox_" + (v.health - 1)] != 0) {
+                wound_penalty = -2 + Math.min(ironStamina, 2);
+            }
+            else if(v["healthbox_" + (v.health - 2)] != 0) {
+                wound_penalty = -1 + Math.min(ironStamina, 1);
+            }
         }
         setAttrs({
             weapon_penalty: wpen,
@@ -2873,15 +2992,15 @@ const updateDicePoolAttributes = (attribute) => {
                 .map((x) => x.poolAttribute)
         }
         // Create HTML for roll template
-        const dicePoolHtml = getSheetDicePoolHtml(poolAttributes, v);
+        const dicePoolHtml = getSheetDicePoolHtml(poolAttributes, v)
 
         // Create dice pool for roll
-        const dicePool = getSheetDicePool(poolAttributes, v);
+        const dicePool = getSheetDicePool(poolAttributes, v)
 
         // Create display for dice roller
         const rollDisplay = poolAttributes
             .map((poolAttribute) => v[`${poolAttribute}_name`] || getTranslationByKey(poolAttribute))
-            .join(" +\n");
+            .join(" +\n")
 
         // Determine flag values
         const flags = [...normalStats]
@@ -2889,7 +3008,7 @@ const updateDicePoolAttributes = (attribute) => {
                 "flag": `${flagAttribute}_flag`,
                 "value": poolAttributes.includes(flagAttribute) ? 1 : 0
             }))
-            .reduce((all, next) => ({ ...all, [next.flag]: next.value }), {});
+            .reduce((all, next) => ({ ...all, [next.flag]: next.value }), {})
 
         setAttrs({
             ["dice_pool_attributes"]: poolAttributes.join(","),
@@ -2897,18 +3016,18 @@ const updateDicePoolAttributes = (attribute) => {
             ["dice_pool"]: dicePool,
             ["rolldisplay"]: rollDisplay,
             ...flags,
-        });
+        })
     })
 }
 
-const rollstyles = ["sheet", "attack", "simple"];
+const rollstyles = ["sheet", "attack", "simple"]
 rollstyles.forEach((rollstyle) => {
     on(`clicked:rollstyle_${rollstyle}`, () => {
         setAttrs({
             "rollstyle": rollstyle
-        });
-    });
-});
+        })
+    })
+})
 
 
 const rolltypes = ["normal", "9-again", "8-again"]
@@ -2965,7 +3084,7 @@ const updateUseSpecialty = () => {
     getAttrs(["dice_pool_attributes"], (v) => {
         const dicePoolAttributes = v["dice_pool_attributes"]
             .split(",")
-            .filter((poolAttribute) => poolAttribute);
+            .filter((poolAttribute) => poolAttribute)
         const specializations = dicePoolAttributes.map((attr) => `has_specialization_${attr}`)
         getAttrs(specializations, (specializationValues) => {
             const hasSpecialization = _.contains(specializationValues, "1")
@@ -2982,9 +3101,9 @@ const updateDicePool = () => {
     getAttrs([...normalStats, "dice_pool_attributes"], (values) => {
         const poolAttributes = values["dice_pool_attributes"]
             .split(",")
-            .filter(poolAttribute => poolAttribute);
-        const dicePoolHtml = getSheetDicePoolHtml(poolAttributes, values);
-        const dicePool = getSheetDicePool(poolAttributes, values);
+            .filter(poolAttribute => poolAttribute)
+        const dicePoolHtml = getSheetDicePoolHtml(poolAttributes, values)
+        const dicePool = getSheetDicePool(poolAttributes, values)
 
         setAttrs({
             ["dice_pool_html"]: dicePoolHtml,
@@ -3000,7 +3119,7 @@ const getSheetDicePoolHtml = (poolAttributes, values) => {
             value: getAttributePool(poolAttribute, values)
         }))
         .map((stat) => `<div>${stat.label} (${stat.value})</div>`)
-        .join("");
+        .join("")
 }
 
 const getSheetDicePool = (poolAttributes, values) => {
@@ -3011,67 +3130,67 @@ const getSheetDicePool = (poolAttributes, values) => {
 
 const getExplodingDiceTarget = (rollType, isChanceRoll) => {
     if (isChanceRoll) {
-        return 10;
+        return 10
     }
 
     switch (rollType) {
         case "9-again":
-            return 9;
+            return 9
         case "8-again":
-            return 8;
+            return 8
         default:
-            return 10;
+            return 10
     }
 }
 
 const getTargetDifficulty = (isChanceRoll) => {
     if (isChanceRoll) {
-        return 10;
+        return 10
     }
-    return 8;
+    return 8
 }
 
 const getRerollFailures = (isRote, targetDifficulty) => {
     if (!isRote) {
-        return "";
+        return ""
     }
 
     if(isRote) {
-        return `ro<${targetDifficulty-1}`;
+        return `ro<${targetDifficulty-1}`
     }
 }
 
 const getCriticalFail = (isChanceRoll) => {
     if (isChanceRoll) {
-        return "cf<1";
+        return "cf<1"
     }
-    return "cf<0";
+    return "cf<0"
 }
 
 const getAttributeType = (attribute) => {
     if (attributes.includes(attribute)) {
-        return "attribute";
+        return "attribute"
     }
     if (skills.includes(attribute)) {
-        return "skill";
+        return "skill"
     }
 }
 
 const getAttributePool = (attribute, values) => {
-    return Number(values[attribute]) || getUnskilledPenalty(attribute);
+    return Number(values[attribute]) || getUnskilledPenalty(attribute)
 }
 
 const getUnskilledPenalty = (attribute) => {
     if (mentalSkills.includes(attribute)) {
-        return -3;
+        return -3
     }
     if (physicalSkills.includes(attribute)) {
-        return -1;
+        return -1
     }
     if (socialSkills.includes(attribute)) {
-        return -1;
+        return -1
     }
-    return 0;
+    return 0
 }
 
 const resetRollFlags = () => {
@@ -3093,39 +3212,39 @@ const resetRollFlags = () => {
         "rollreason": "",
         "full_pool_html": "",
         ...flagValues,
-    };
+    }
 }
 
 const getWillpowerHtml = (useWillpower, willpower) => {
     if (!useWillpower) {
-        return "";
+        return ""
     }
 
-    return `<div>${getTranslationByKey('willpower')} (+3)</div>`;
+    return `<div>${getTranslationByKey('willpower')} (+3)</div>`
 }
 
 const getSpecialtyHtml = (useSpecialty) => {
     if (!useSpecialty) {
-        return "";
+        return ""
     }
 
-    return `<div>${getTranslationByKey('use-specialty')} (+1)</div>`;
+    return `<div>${getTranslationByKey('use-specialty')} (+1)</div>`
 }
 
 const getWoundPenaltyHtml = (woundPenalties) => {
-    if (woundPenalties <= 0) {
-        return "";
+    if (woundPenalties >= 0) {
+        return ""
     }
 
-    return `<div>${getTranslationByKey('wound-penalty')} Penalty (${woundPenalties})</div>`;
+    return `<div>${getTranslationByKey('wound-penalty')} Penalty (${woundPenalties})</div>`
 }
 
 const getModifiersHtml = (modifier) => {
     if (modifier === 0) {
-        return "";
+        return ""
     }
 
-    return `<div>${getTranslationByKey('modifiers')} (${modifier})</div>`;
+    return `<div>${getTranslationByKey('modifiers')} (${modifier})</div>`
 }
 
 const getDicePoolHtml = (dicePoolAttributes, values, useSpecialty, useWillpower, woundPenalties, modifiers) => {
@@ -3135,7 +3254,7 @@ const getDicePoolHtml = (dicePoolAttributes, values, useSpecialty, useWillpower,
         getWillpowerHtml(useWillpower),
         getWoundPenaltyHtml(woundPenalties),
         getModifiersHtml(modifiers)
-    ].join("");
+    ].join("")
 }
 
 const generateDiceString = (totalDiceToRoll, rollType, isChanceRoll, isRote) => {
@@ -3148,18 +3267,18 @@ const generateDiceString = (totalDiceToRoll, rollType, isChanceRoll, isRote) => 
 
 const getSuccessType = (totalSuccesses, isChanceRoll, diceResults) => {
     if (totalSuccesses >= 5) {
-        return "dramatic-success";
+        return "dramatic-success"
     }
     if (totalSuccesses >= 1) {
-        return "success";
+        return "success"
     }
     if(isChanceRoll && _.every(diceResults, (result) => result === 1)) {
         return "dramatic-failure"
     }
-    return "failure";
+    return "failure"
 }
 
-const dicePoolAttributes = [...normalStats, "dice_pool_attributes", "dice_pool", "rolltype_select", "rollmodify_rote", "rollmodify_willpower", "rollmodify_modifier", "rollmodify_specialty", "rollreason", "rollstyle", "current_willpower", "wound_penalty", "character_name"];
+const dicePoolAttributes = [...normalStats, "dice_pool_attributes", "dice_pool", "rolltype_select", "rollmodify_rote", "rollmodify_willpower", "rollmodify_modifier", "rollmodify_specialty", "rollreason", "rollstyle", "current_willpower", "wound_penalty", "character_name"]
 
 on("clicked:roll", () => {
     getAttrs(dicePoolAttributes, (v) => {
@@ -3199,8 +3318,8 @@ on("clicked:roll", () => {
     })
 })
 
-const extraTraitCount = 9;
-const weaponCount = 6;
+const extraTraitCount = 9
+const weaponCount = 6
 const maxTraitCount = Math.max(extraTraitCount, weaponCount)
 const repeatingWeaponTraits = [
     "weapon_name_%d",
@@ -3299,7 +3418,7 @@ const v1AttrMap = {
                     ...attrs,
                     ...repeatingAttrMap
                 }
-        }, {});
+        }, {})
         //Set all attributes
         attrs = {
           ...attrs,
@@ -3324,7 +3443,7 @@ const v1AttrMap = {
     updateInitiative()
     updateWillpower()
     updateSpecializationVisible()
-    const resetRollFlagAttrs = resetRollFlags();
+    const resetRollFlagAttrs = resetRollFlags()
 
     setAttrs({
         dicepoolmacro: getTranslationByKey("dice-pool"),

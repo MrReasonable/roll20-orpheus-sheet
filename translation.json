@@ -216,5 +216,7 @@
     "failure": "Fails",
     "dramatic-failure": "Dramatically fails",
     "tries-to": "tries to",
-    "use-specialty": "Use specialty"
+    "use-specialty": "Use specialty",
+    "projection": "Projection",
+    "project": "Project"
 }

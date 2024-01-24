@@ -665,6 +665,11 @@ input.highlight-next[value="1"] + button {
   flex-direction: row;
 }
 
+.charsheet .flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
 .charsheet .columns > :not(.horizontal-spacer) {
   flex-grow: 1;
 }
@@ -939,7 +944,8 @@ button.sheet-toggle {
 .charsheet label.lbl-toggle {
   cursor: pointer;
   transition: all 0.25s ease-out;
-  color: black
+  color: black;
+  margin-bottom: 0;
 }
 
 .charsheet label.lbl-toggle:hover {
