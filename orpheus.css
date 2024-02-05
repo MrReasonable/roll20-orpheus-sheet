@@ -937,6 +937,19 @@ button.sheet-toggle {
   font-weight: normal;
 }
 
+.diceroller .rolldisplay .simple-roll {
+  pointer-events: all;
+  color: black;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+.charsheet .j-space-around {
+  justify-content: space-around;
+}
+
 .charsheet input.toggle[type='checkbox'] {
   display: none;
 }

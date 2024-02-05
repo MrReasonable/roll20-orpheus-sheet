@@ -125,6 +125,7 @@
     "magazine-short":"Mag",
     "initiative-short":"Ini",
     "strength-short":"Str",
+    "dexterity-short":"Dex",
     "size-short":"Sz",
     "melee":"Melee",
     "gun":"Gun",
@@ -218,5 +219,6 @@
     "tries-to": "tries to",
     "use-specialty": "Use specialty",
     "projection": "Projection",
-    "project": "Project"
+    "project": "Project",
+    "dice-tc": "Dice"
 }
