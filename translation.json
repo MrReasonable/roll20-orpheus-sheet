@@ -122,6 +122,7 @@
     "type":"Type",
     "damage-short":"Dmg",
     "range":"Range",
+    "range-short": "Rng",
     "magazine-short":"Mag",
     "initiative-short":"Ini",
     "strength-short":"Str",
@@ -180,6 +181,8 @@
     "wound":"Wound",
     "penalty":"Penalty",
     "initiative-penalty":"Initiative Penalty",
+    "armor-penalty":"Armor Strength Penalty",
+    "weapon-penalty":"Weapon Strength Penalty",
     "successes":"Successes",
     "dice-for":"dice for",
     "makes-a":"makes a",
@@ -220,5 +223,15 @@
     "use-specialty": "Use specialty",
     "projection": "Projection",
     "project": "Project",
-    "dice-tc": "Dice"
+    "dice-tc": "Dice",
+    "bashing": "Bashing",
+    "lethal": "Lethal",
+    "aggravated": "Aggravated",
+    "b-dmg": "Bashing",
+    "l-dmg": "Lethal",
+    "a-dmg": "Aggravated",
+    "bashing-short": "B",
+    "lethal-short": "L",
+    "aggravated-short": "A",
+    "damage-type-short": "Type"
 }

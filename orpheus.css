@@ -736,7 +736,7 @@ input.highlight-next[value="1"] + button {
 }
 
 .charsheet .weapongrid {
-  grid-template-columns: auto 1fr 4em 2em 4em 2em 2em 2em 2em;
+  grid-template-columns: auto 1fr 4em 2em 1em 2em 2em 2em 2em 2em;
 }
 
 .charsheet .armorgrid {
@@ -959,6 +959,7 @@ button.sheet-toggle {
   transition: all 0.25s ease-out;
   color: black;
   margin-bottom: 0;
+  width: auto;
 }
 
 .charsheet label.lbl-toggle:hover {

@@ -31,12 +31,14 @@
                 <button type="action" class="toggle rollstyle-simple" name="act_rollstyle_simple"
                     data-i18n="simple-roll">Simple Roll</button>
             </div>
-            <div class="rolldisplay collapsible-content flex columns flex-center">
-                <textarea class="rollstyle sheet" name="attr_rolldisplay"></textarea>
-                <textarea class="rollstyle attack" name="attr_active_attack_name"></textarea>
-                <div class="rollstyle simple flex flex-center j-space-around">
-                    <label for="attr_dice_pool" class="simple-roll" data-i18n="dice-tc">Dice</label>
-                    <input type="number" id="attr_dice_pool" class="simple-roll" name="attr_dice_pool" />
+            <div class="rolldisplay collapsible-content">
+                <div class=" flex columns flex-center">
+                    <textarea class="rollstyle sheet" name="attr_rolldisplay"></textarea>
+                    <textarea class="rollstyle attack" name="attr_active_attack_name"></textarea>
+                    <div class="rollstyle simple flex flex-center j-space-around">
+                        <label for="attr_dice_pool" class="simple-roll" data-i18n="dice-tc">Dice</label>
+                        <input type="number" id="attr_dice_pool" class="simple-roll" name="attr_dice_pool" />
+                    </div>
                 </div>
             </div>
             <div class="diceroller-options collapsible-content">
@@ -63,11 +65,13 @@
                     </div>
                 </div>
             </div>
-            <div class="diceroller-modifiers collapsible-content flex">
-                <label for="rollmodify_modifier" data-i18n="modifiers" class="rollstyle attack sheet">Modifiers</label><input type="number"
-                    class="rollstyle attack sheet" id="rollmodify_modifier" name="attr_rollmodify_modifier" value="0" />
-                <label for="rollreason" data-i18n="reason">Reason</label><input type="text" id="rollreason"
-                    name="attr_rollreason" value="" />
+            <div class="diceroller-modifiers collapsible-content">
+                <div class="flex">
+                    <label for="rollmodify_modifier" data-i18n="modifiers" class="rollstyle attack sheet">Modifiers</label><input type="number"
+                        class="rollstyle attack sheet" id="rollmodify_modifier" name="attr_rollmodify_modifier" value="0" />
+                    <label for="rollreason" data-i18n="reason">Reason</label><input type="text" id="rollreason"
+                        name="attr_rollreason" value="" />
+                </div>
             </div>
         </div>
     </div>
@@ -961,7 +965,8 @@
                                         <div data-i18n="weapon-attack">Weapon/Attack</div>
                                         <div data-i18n="type">Type</div>
                                         <div data-type="damage-short">Dmg</div>
-                                        <div data-i18n="range">Range</div>
+                                        <div></div>
+                                        <div data-i18n="range-short">Rng</div>
                                         <div data-i18n="magazine-short">Mag</div>
                                         <div data-i18n="initiative-short">Ini</div>
                                         <div data-i18n="strength-short">Str</div>
@@ -985,6 +990,13 @@
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage0" value="0" /></div>
+                                        <div class="selectcontainer">
+                                            <select name="attr_attack_damage_type0">
+                                                <option value="bashing" data-i18n="bashing-short">Bashing</option>
+                                                <option value="lethal" data-i18n="lethal-short">Lethal</option>
+                                                <option value="aggravated" data-i18n="aggravated-short">Aggravated</option>
+                                            </select>
+                                        </div>
                                         <div><input type="text" name="attr_attack_range0" disabled="disabled" value="-" />
                                         </div>
                                         <div><input type="text" name="attr_attack_magazine0" disabled="disabled" value="-" />
@@ -1015,6 +1027,13 @@
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage1" /></div>
+                                        <div class="selectcontainer">
+                                            <select name="attr_attack_damage_type1">
+                                                <option value="bashing" data-i18n="bashing-short"> Bashing</option>
+                                                <option value="lethal" data-i18n="lethal-short"> Lethal</option>
+                                                <option value="aggravated" data-i18n="aggravated-short"> Aggravated</option>
+                                            </select>
+                                        </div>
                                         <div><input type="text" name="attr_attack_range1" /></div>
                                         <div><input type="text" name="attr_attack_magazine1" /></div>
                                         <div><input type="text" name="attr_attack_initiative1" /></div>
@@ -1042,6 +1061,13 @@
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage2" class="weaponstat" /></div>
+                                        <div class="selectcontainer">
+                                            <select name="attr_attack_damage_type2">
+                                                <option value="bashing" data-i18n="bashing-short"> Bashing</option>
+                                                <option value="lethal" data-i18n="lethal-short"> Lethal</option>
+                                                <option value="aggravated" data-i18n="aggravated-short"> Aggravated</option>
+                                            </select>
+                                        </div>
                                         <div><input type="text" name="attr_attack_range2" class="weaponstat range" />
                                         </div>
                                         <div><input type="text" name="attr_attack_magazine2" class="weaponstat mag" />
@@ -1072,6 +1098,13 @@
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage3" class="weaponstat" /></div>
+                                        <div class="selectcontainer">
+                                            <select name="attr_attack_damage_type3">
+                                                <option value="bashing" data-i18n="bashing-short"> Bashing</option>
+                                                <option value="lethal" data-i18n="lethal-short"> Lethal</option>
+                                                <option value="aggravated" data-i18n="aggravated-short"> Aggravated</option>
+                                            </select>
+                                        </div>
                                         <div><input type="text" name="attr_attack_range3" class="weaponstat range" />
                                         </div>
                                         <div><input type="text" name="attr_attack_magazine3" class="weaponstat mag" />
@@ -1102,6 +1135,13 @@
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage4" class="weaponstat" /></div>
+                                        <div class="selectcontainer">
+                                            <select name="attr_attack_damage_type4">
+                                                <option value="bashing" data-i18n="bashing-short"> Bashing</option>
+                                                <option value="lethal" data-i18n="lethal-short"> Lethal</option>
+                                                <option value="aggravated" data-i18n="aggravated-short"> Aggravated</option>
+                                            </select>
+                                        </div>
                                         <div><input type="text" name="attr_attack_range4" class="weaponstat range" />
                                         </div>
                                         <div><input type="text" name="attr_attack_magazine4" class="weaponstat mag" />
@@ -1132,6 +1172,13 @@
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage5" class="weaponstat" /></div>
+                                        <div class="selectcontainer">
+                                            <select name="attr_attack_damage_type5">
+                                                <option value="bashing" data-i18n="bashing-short"> Bashing</option>
+                                                <option value="lethal" data-i18n="lethal-short"> Lethal</option>
+                                                <option value="aggravated" data-i18n="aggravated-short"> Aggravated</option>
+                                            </select>
+                                        </div>
                                         <div><input type="text" name="attr_attack_range5" class="weaponstat range" />
                                         </div>
                                         <div><input type="text" name="attr_attack_magazine5" class="weaponstat mag" />
@@ -1162,6 +1209,13 @@
                                             </select>
                                         </div>
                                         <div><input type="text" name="attr_attack_damage6" class="weaponstat" /></div>
+                                        <div class="selectcontainer">
+                                            <select name="attr_attack_damage_type6">
+                                                <option value="bashing" data-i18n="bashing-short"> Bashing</option>
+                                                <option value="lethal" data-i18n="lethal-short"> Lethal</option>
+                                                <option value="aggravated" data-i18n="aggravated-short"> Aggravated</option>
+                                            </select>
+                                        </div>
                                         <div><input type="text" name="attr_attack_range6" class="weaponstat range" />
                                         </div>
                                         <div><input type="text" name="attr_attack_magazine6" class="weaponstat mag" />
@@ -2289,6 +2343,8 @@
     value="((@{armor_speed0}+0)*@{armor_flag0})+((@{armor_speed1}+0)*@{armor_flag1})+((@{armor_speed2}+0)*@{armor_flag2})+((@{armor_speed3}+0)*@{armor_flag3})" />
 <input type="hidden" name="attr_weapon_penalty" value="0" />
 <input type="hidden" name="attr_armor_penalty" value="0" />
+<input type="hidden" name="attr_wound_penalty" value="0" />
+<input type="hidden" name="attr_attack_name" value="" />
 <input type="hidden" name="attr_dice_pool_attributes" value="" />
 <input type="hidden" name="attr_dice_pool_html" value="" />
 <input type="hidden" name="attr_dice_pool" value="0" />
@@ -2351,15 +2407,18 @@
             </tr>
             <tr>
                 <td class="sheet-specialrollflag">
-                    {{#chance}}
-                    <span>0C</span>
-                    {{/chance}}
                     {{#9again}}
                     <span>9A</span>
                     {{/9again}}
                     {{#8again}}
                     <span>8A</span>
                     {{/8again}}
+                    {{#isRote}}
+                    <span data-i18n="rote">Rote</span>
+                    {{/isRote}}
+                    {{#chance}}
+                    <span>0C</span>
+                    {{/chance}}
                 </td>
             </tr>
         </table>
@@ -2403,69 +2462,42 @@
         <table>
             <tr>
                 <th class="sheet-always-light">{{name}} <span data-i18n="makes-a">makes a</span> {{attack_name}} <span
-                        data-i18n="attack">attack</span></th>
+                        data-i18n="attack">attack</span>
+                        {{#reason}}
+                        {{reason}}
+                        {{/reason}}
+                    </th>
             </tr>
             <tr>
                 <td>
-                    {{#str}}
-                    <span data-i18n="strength">Strength</span><span>({{strength}})</span><br>
-                    {{/str}}
-                    {{#dex}}
-                    <span data-i18n="dexterity">Dexterity</span><span>({{dexterity}})</span><br>
-                    {{/dex}}
-                    {{#bra}}
-                    <span data-i18n="brawl">Brawl</span><span>({{brawl}})</span><br>
-                    {{/bra}}
-                    {{#wea}}
-                    <span data-i18n="weaponry">Weaponry</span><span>({{weaponry}})</span><br>
-                    {{/wea}}
-                    {{#fir}}
-                    <span data-i18n="firearms">Firearms</span><span>({{firearms}})</span><br>
-                    {{/fir}}
-                    {{#ath}}
-                    <span data-i18n="athletics">Athletics</span><span>({{athletics}})</span><br>
-                    {{/ath}}
-                    {{#^rollTotal() apen 0}}
-                    <span data-i18n="armor">Armor</span> <span
-                        data-i18n="penalty">Penalty</span><span>({{apen}})</span><br>
-                    {{/^rollTotal() apen 0}}
-                    {{#^rollTotal() wpen 0}}
-                    <span data-i18n="weapon">Weapon</span> <span
-                        data-i18n="penalty">Penalty</span><span>({{wpen}})</span><br>
-                    {{/^rollTotal() wpen 0}}
-                    {{#^rollTotal() woundpenalty 0}}
-                    <span data-i18n="wound">Wound</span> <span
-                        data-i18n="penalty">Penalty</span><span>({{woundpenalty}})</span>
-                    {{/^rollTotal() woundpenalty 0}}
-                    {{#^rollTotal() mod 0}}
-                    <span data-i18n="modifiers">Modifiers</span>({{mod}})<br>
-                    {{/^rollTotal() mod 0}}
-                    {{#rollTotal() result 0}}
-                    <span data-i18n="and-misses-with">and misses with</span><span>...</span><br>
+                    {{dicePoolHtml}}
+                </td>
+            </tr>
+            {{#rollTotal() result 0}}
             <tr>
-                <td class="sheet-result sheet-hit">{{result}} <span data-i18n="successes">Successes</span></td>
+                <td class="sheet-result sheet-miss"><span data-i18n="and-misses-with">and misses with</span> <span>{{result}}</span></td>
             </tr>
             {{/rollTotal() result 0}}
             {{#rollGreater() result 0}}
-            <span data-i18n="and-hits-for">and hits for</span><br>
             <tr>
-                <td class="sheet-result sheet-miss">{{result}} <span>+ {{weapon_damage}}</span> <span
+                <td class="sheet-result sheet-miss"><span data-i18n="and-hits-for">and hits for</span> <span>{{result}} + {{attack_damage}} = {{computed::totalDamage}} {{attack_damage_type}}</span> <span
                         data-i18n="damage">Damage</span></td>
             </tr>
             {{/rollGreater() result 0}}
-            </td>
-            </tr>
             <tr>
                 <td class="sheet-specialrollflag">
-                    {{#chance}}
-                    <span>0C</span>
-                    {{/chance}}
                     {{#9again}}
                     <span>9A</span>
                     {{/9again}}
                     {{#8again}}
                     <span>8A</span>
                     {{/8again}}
+                    {{#isRote}}
+                    <span data-i18n="rote">Rote</span>
+                    {{/isRote}}
+                    {{#chance}}
+                    <span>0C</span>
+                    {{/chance}}
                 </td>
             </tr>
         </table>
@@ -2515,7 +2547,7 @@
     'subterfuge',
   ]
   const skills = [...mentalSkills, ...physicalSkills, ...socialSkills]
-  const skillsSpecializations = skills.map((skill) => `specialization_${skill}`)
+  const skillSpecializations = skills.map((skill) => `specialization_${skill}`)
   const normalStats = [...attributes, ...skills]
   const sizeStats = ['base_size', 'giant', 'small_framed']
   const woundPenaltyStats = ['iron_stamina', 'incorporeal']
@@ -2524,6 +2556,7 @@
   const initiativeStats = ['shoot_first']
   const allStats = [
     ...normalStats,
+    ...skillSpecializations,
     ...sizeStats,
     ...speedStats,
     ...defenseStats,
@@ -2566,7 +2599,7 @@
         [derivedInitiativeStats, updateInitiative],
         [derivedWillpowerStats, updateWillpower],
         [derivedWoundPenaltyStats, updateWoundPenalties],
-        [skillsSpecializations, updateSpecializationVisible],
+        [skillSpecializations, updateSpecializationVisible],
       ]
       const source = eventInfo.sourceAttribute
       fixMaxOverflow(eventInfo)
@@ -2828,8 +2861,8 @@
   })
 
   const updateSpecializationVisible = () => {
-    getAttrs(skillsSpecializations, (v) => {
-      const specializationVisibility = skillsSpecializations.reduce(
+    getAttrs(skillSpecializations, (v) => {
+      const specializationVisibility = skillSpecializations.reduce(
         (acc, skill) => ({
           ...acc,
           [`has_${skill}`]: v[skill] ? '1' : '0',
@@ -2919,7 +2952,14 @@
     'health',
     'selected_attack',
     'rollstyle',
-    ...['_initiative', '_strength', '_name', '_type'].flatMap((attr) =>
+    ...[
+      '_initiative',
+      '_strength',
+      '_name',
+      '_type',
+      '_damage_type',
+      '_damage',
+    ].flatMap((attr) =>
       [...new Array(attackSelectCount).keys()].map((i) => `attack${attr}${i}`),
     ),
     ...[...Array(dotButtonCount).keys()].map((i) => `healthbox_${i + 1}`),
@@ -2944,7 +2984,11 @@
       const attackStrength = parseInt(v[`attack_strength${atknum}`]) || 0
       const weaponStrPenalty = Math.min(str - attackStrength, 0)
       const attackName = v[`attack_name${atknum}`] || ''
-      const armorStrPenalty = [...new Array(3).keys()].reduce(
+      const attackType = v[`attack_type${atknum}`] || ''
+      const attackDamage = v[`attack_damage${atknum}`] || 0
+      const attackDmgType = v[`attack_damage_type${atknum}`] || ''
+      const armorPenaltyApplies = attackType.includes('brawl') || attackType.includes('melee')
+      const armorStrPenalty = armorPenaltyApplies ? [...new Array(3).keys()].reduce(
         (penalty, index) => {
           const armorFlag = parseInt(v[`armor_flag${index}`]) || 0
           const armorStrength = parseInt(v[`armor_strength${index}`]) || 0
@@ -2953,7 +2997,7 @@
           return penalty + (armorFlag === '1' ? armorStrengthPenalty : 0)
         },
         0,
-      )
+      ) : 0
 
       const ironStamina = parseInt(v.iron_stamina, 10)
 
@@ -2969,16 +3013,22 @@
         armor_penalty: armorStrPenalty,
         initiative_penalty: initiativePenalty,
         wound_penalty: woundPenalty,
+        attack_name: attackName,
+        attack_damage: attackDamage,
+        attack_damage_type: attackDmgType,
       })
 
-      if(rollStyle !== 'attack') {
+      if (rollStyle !== 'attack') {
         return
       }
 
-    const [attr1, attr2] = getAttackAttributes(v[`attack_type${atknum}`])
+      const [attr1, attr2] = getAttackAttributes(v[`attack_type${atknum}`])
 
-    const attackAttrs = [getTranslationByKey(`${attr1}-short`), getTranslationByKey(attr2)].join(' + ')
-      if(attackAttrs === '' || attackName === '') {
+      const attackAttrs = [
+        getTranslationByKey(`${attr1}-short`),
+        getTranslationByKey(attr2),
+      ].join(' + ')
+      if (attackAttrs === '' || attackName === '') {
         setAttrs({
           active_attack_name: '',
         })
@@ -3002,17 +3052,21 @@
         const attr1Enabled = parseInt(v[`${attr1}_flag`]) || 0
         const attr2Enabled = parseInt(v[`${attr2}_flag`]) || 0
         const updateAttr2 = () => {
-            if(attr2Enabled !== 1) {
-                updateDicePoolAttributes(attr2)
-            }
+          if (attr2Enabled !== 1) {
+            updateDicePoolAttributes(attr2)
+          }
         }
 
-        if(attr1Enabled !== 1) {
-          setAttrs({
-            [`${attr1}_flag`]: 1
-          }, {silent: true}, () => {
-            updateDicePoolAttributes(attr1, updateAttr2)
-          })
+        if (attr1Enabled !== 1) {
+          setAttrs(
+            {
+              [`${attr1}_flag`]: 1,
+            },
+            { silent: true },
+            () => {
+              updateDicePoolAttributes(attr1, updateAttr2)
+            },
+          )
         } else {
           updateAttr2()
         }
@@ -3097,17 +3151,19 @@
         }))
         .reduce((all, next) => ({ ...all, [next.flag]: next.value }), {})
 
-      setAttrs({
-        ['dice_pool_attributes']: poolAttributes.join(','),
-        ['dice_pool_html']: dicePoolHtml,
-        ['dice_pool']: dicePool,
-        ['rolldisplay']: rollDisplay,
-        ...flags,
-      }, {silent: true}, () => {
-        console.log("Entering postUpdateFn")
-        console.log(typeof postUpdateFn)
-        typeof postUpdateFn === 'function' && postUpdateFn()
-        })
+      setAttrs(
+        {
+          ['dice_pool_attributes']: poolAttributes.join(','),
+          ['dice_pool_html']: dicePoolHtml,
+          ['dice_pool']: dicePool,
+          ['rolldisplay']: rollDisplay,
+          ...flags,
+        },
+        { silent: true },
+        () => {
+          typeof postUpdateFn === 'function' && postUpdateFn()
+        },
+      )
     })
   }
 
@@ -3327,54 +3383,33 @@
     }
   }
 
-  const getWillpowerHtml = (useWillpower, willpower) => {
-    if (!useWillpower) {
+  const getModifierHtml = (key, value) => {
+    if (value === 0) {
       return ''
     }
 
-    return `<div>${getTranslationByKey('willpower')} (+3)</div>`
-  }
-
-  const getSpecialtyHtml = (useSpecialty) => {
-    if (!useSpecialty) {
-      return ''
-    }
-
-    return `<div>${getTranslationByKey('use-specialty')} (+1)</div>`
-  }
-
-  const getWoundPenaltyHtml = (woundPenalties) => {
-    if (woundPenalties >= 0) {
-      return ''
-    }
-
-    return `<div>${getTranslationByKey(
-      'wound-penalty',
-    )} (${woundPenalties})</div>`
-  }
-
-  const getModifiersHtml = (modifier) => {
-    if (modifier === 0) {
-      return ''
-    }
-
-    return `<div>${getTranslationByKey('modifiers')} (${modifier})</div>`
+    return `<div>${getTranslationByKey(key)} (${value > 0 ? '+' : ''}${value})</div>`
   }
 
   const getDicePoolHtml = (
+    rollStyle,
     dicePoolAttributes,
     values,
     useSpecialty,
     useWillpower,
     woundPenalties,
+    armorPenalty,
+    weaponPenalty,
     modifiers,
   ) => {
     return [
       getSheetDicePoolHtml(dicePoolAttributes, values),
-      getSpecialtyHtml(useSpecialty),
-      getWillpowerHtml(useWillpower),
-      getWoundPenaltyHtml(woundPenalties),
-      getModifiersHtml(modifiers),
+      getModifierHtml('use-specialty', useSpecialty ? 1 : 0),
+      getModifierHtml('willpower', useWillpower ? 3 : 0),
+      getModifierHtml('wound-penalty', woundPenalties),
+      getModifierHtml('armor-penalty', rollStyle === 'attack' ? armorPenalty : 0),
+      getModifierHtml('weapon-penalty', rollStyle === 'attack' ? weaponPenalty : 0),
+      getModifierHtml('modifiers', modifiers),
     ].join('')
   }
 
@@ -3417,23 +3452,6 @@
     }
   }
 
-  const dicePoolAttributes = [
-    ...normalStats,
-    'dice_pool_attributes',
-    'dice_pool',
-    'rolltype_select',
-    'rollstyle',
-    'rollmodify_rote',
-    'rollmodify_willpower',
-    'rollmodify_modifier',
-    'rollmodify_specialty',
-    'rollreason',
-    'current_willpower',
-    'wound_penalty',
-    'character_name',
-    'attack',
-  ]
-
   const calculateDicePool = (
     rollStyle,
     dicePool,
@@ -3453,14 +3471,38 @@
     )
   }
 
-  on('clicked:roll', () => {
+  const getRollString = (rollStyle, totalDiceToRoll, rollType, isRote) => {
+    if (rollStyle === 'simple') {
+      return `${totalDiceToRoll}d10`
+    }
+    return generateDiceString(totalDiceToRoll, rollType, false, isRote)
+  }
 
-    // <button type="roll" class="rollstyle attack" name="roll_attack"
-    // value="&{template:wod-attack} {{name=@{character_name}}} {{strength=@{strength}}} {{dexterity=@{dexterity}}} {{brawl=@{brawl}}} {{weaponry=@{weaponry}}} {{firearms=@{firearms}}} {{athletics=@{athletics}}} {{mod=[[@{modifiermacro}]]}} {{woundpenalty=[[@{wound_penalty}]]}} {{wpen=[[@{weapon_penalty}]]}} {{apen=[[@{armor_penalty}]]}} @{attack}@{rolltype}"></button>
-    getAttrs(dicePoolAttributes, (v) => {
+  const rollDicePoolAttributes = [
+    ...normalStats,
+    'dice_pool_attributes',
+    'dice_pool',
+    'rolltype_select',
+    'rollstyle',
+    'rollmodify_rote',
+    'rollmodify_willpower',
+    'rollmodify_modifier',
+    'rollmodify_specialty',
+    'rollreason',
+    'current_willpower',
+    'wound_penalty',
+    'armor_penalty',
+    'weapon_penalty',
+    'character_name',
+    'attack_damage',
+    'attack_damage_type'
+  ]
+
+  on('clicked:roll', () => {
+    getAttrs(rollDicePoolAttributes, (v) => {
       const rollStyle = v.rollstyle || 'simple'
       const attributes = (v.dice_pool_attributes || '').split(',')
-      if(rollStyle === 'sheet' && attributes.length < 2) {
+      if (rollStyle === 'sheet' && attributes.length < 2) {
         return
       }
 
@@ -3473,6 +3515,11 @@
       const woundPenalties = parseInt(v.wound_penalty) || 0
       const isRote = parseInt(v.rollmodify_rote) === 1
       const rollType = v.rolltype_select || ''
+      const armorPenalty = parseInt(v.armor_penalty) || 0
+      const weaponPenalty = parseInt(v.weapon_penalty) || 0
+      const attackDamage = parseInt(v.attack_damage) || 0
+      const attackDmgType = getTranslationByKey(`${v.attack_damage_type}-dmg`) || ''
+
       const totalDiceToRoll = calculateDicePool(
         rollStyle,
         dicePool,
@@ -3496,21 +3543,23 @@
         !isChanceRoll && rollType === '9-again' ? '9again' : ''
       }}} {{8again=${
         !isChanceRoll && rollType === '8-again' ? '8again' : ''
-      }}} {{chance=${isChanceRoll ? 'chance' : ''}}}`
-
+      }}} {{chance=${isChanceRoll ? 'chance' : ''}}} {{attack_name=@{attack_name}}} {{attack_damage=@{attack_damage}}} {{attack_damage_type=${attackDmgType}}} {{totalDamage=[[0]]}}`
       setAttrs(
         {
           full_pool_html:
             rollStyle !== 'simple'
               ? getDicePoolHtml(
+                  rollStyle,
                   attributes,
                   v,
                   useSpecialty,
                   useWillpower,
                   woundPenalties,
+                  armorPenalty,
+                  weaponPenalty,
                   modifier,
                 )
-              : '',
+              : ''
         },
         {},
         () => {
@@ -3522,11 +3571,14 @@
             }
             const countSuccesses = results.results.result.result
             const rolls = results.results.result.dice
+            const totalDamage = countSuccesses + attackDamage
+            console.log(totalDamage)
 
             finishRoll(results.rollId, {
               successType: getTranslationByKey(
                 getSuccessType(countSuccesses, isChanceRoll, rolls),
               ),
+              totalDamage: totalDamage,
             })
           })
         },
