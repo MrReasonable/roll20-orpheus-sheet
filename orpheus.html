@@ -2987,17 +2987,17 @@
       const attackType = v[`attack_type${atknum}`] || ''
       const attackDamage = v[`attack_damage${atknum}`] || 0
       const attackDmgType = v[`attack_damage_type${atknum}`] || ''
-      const armorPenaltyApplies = attackType.includes('brawl') || attackType.includes('melee')
-      const armorStrPenalty = armorPenaltyApplies ? [...new Array(3).keys()].reduce(
-        (penalty, index) => {
-          const armorFlag = parseInt(v[`armor_flag${index}`]) || 0
-          const armorStrength = parseInt(v[`armor_strength${index}`]) || 0
-          const armorStrengthPenalty =
-            str < armorStrength ? str - armorStrength : 0
-          return penalty + (armorFlag === '1' ? armorStrengthPenalty : 0)
-        },
-        0,
-      ) : 0
+      const armorPenaltyApplies =
+        attackType.includes('brawl') || attackType.includes('melee')
+      const armorStrPenalty = armorPenaltyApplies
+        ? [...new Array(3).keys()].reduce((penalty, index) => {
+            const armorFlag = parseInt(v[`armor_flag${index}`]) || 0
+            const armorStrength = parseInt(v[`armor_strength${index}`]) || 0
+            const armorStrengthPenalty =
+              str < armorStrength ? str - armorStrength : 0
+            return penalty + (armorFlag === '1' ? armorStrengthPenalty : 0)
+          }, 0)
+        : 0
 
       const ironStamina = parseInt(v.iron_stamina, 10)
 
@@ -3388,7 +3388,9 @@
       return ''
     }
 
-    return `<div>${getTranslationByKey(key)} (${value > 0 ? '+' : ''}${value})</div>`
+    return `<div>${getTranslationByKey(key)} (${
+      value > 0 ? '+' : ''
+    }${value})</div>`
   }
 
   const getDicePoolHtml = (
@@ -3408,7 +3410,10 @@
       getModifierHtml('willpower', useWillpower ? 3 : 0),
       getModifierHtml('wound-penalty', woundPenalties),
       getModifierHtml('armor-penalty', rollStyle === 'attack' ? armorPenalty : 0),
-      getModifierHtml('weapon-penalty', rollStyle === 'attack' ? weaponPenalty : 0),
+      getModifierHtml(
+        'weapon-penalty',
+        rollStyle === 'attack' ? weaponPenalty : 0,
+      ),
       getModifierHtml('modifiers', modifiers),
     ].join('')
   }
@@ -3495,7 +3500,7 @@
     'weapon_penalty',
     'character_name',
     'attack_damage',
-    'attack_damage_type'
+    'attack_damage_type',
   ]
 
   on('clicked:roll', () => {
@@ -3518,7 +3523,8 @@
       const armorPenalty = parseInt(v.armor_penalty) || 0
       const weaponPenalty = parseInt(v.weapon_penalty) || 0
       const attackDamage = parseInt(v.attack_damage) || 0
-      const attackDmgType = getTranslationByKey(`${v.attack_damage_type}-dmg`) || ''
+      const attackDmgType =
+        getTranslationByKey(`${v.attack_damage_type}-dmg`) || ''
 
       const totalDiceToRoll = calculateDicePool(
         rollStyle,
@@ -3543,7 +3549,9 @@
         !isChanceRoll && rollType === '9-again' ? '9again' : ''
       }}} {{8again=${
         !isChanceRoll && rollType === '8-again' ? '8again' : ''
-      }}} {{chance=${isChanceRoll ? 'chance' : ''}}} {{attack_name=@{attack_name}}} {{attack_damage=@{attack_damage}}} {{attack_damage_type=${attackDmgType}}} {{totalDamage=[[0]]}}`
+      }}} {{chance=${
+        isChanceRoll ? 'chance' : ''
+      }}} {{attack_name=@{attack_name}}} {{attack_damage=@{attack_damage}}} {{attack_damage_type=${attackDmgType}}} {{totalDamage=[[0]]}}`
       setAttrs(
         {
           full_pool_html:
@@ -3559,7 +3567,7 @@
                   weaponPenalty,
                   modifier,
                 )
-              : ''
+              : '',
         },
         {},
         () => {
