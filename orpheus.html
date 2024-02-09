@@ -2297,6 +2297,11 @@
                             name="attr_vitality" value="6" />
                         <span data-i18n="luminous">Luminous</span>: <input type="number" name="attr_luminous"
                             value="0" />
+                        <span class="checkbox">
+                            <input type="hidden" class="flag" name="attr_shared_vitality" value="0">
+                            <button type="action" name="act_shared_vitality"></button>
+                            <button type="action" class="toggle" name="act_shared_vitality" data-i18n="shared-vitality">Shared Vitality</button>
+                        </span>
                     </div>
                     <div>
                         <h3 data-i18n="sheet-settings">Sheet Settings</h3>
@@ -2332,7 +2337,6 @@
 <input type="hidden" name="attr_initiative_base" value="0" />
 <input type="hidden" name="attr_shoot_first_bonus" value="0" />
 <input type="hidden" name="attr_initiative_bonus" value="0" />
-<input type="hidden" name="attr_shoot_first" value="0" />
 <input type="hidden" name="attr_balistic_armor"
     value="((@{armor_ballistic0}+0)*@{armor_flag0})+((@{armor_ballistic1}+0)*@{armor_flag1})+((@{armor_ballistic2}+0)*@{armor_flag2})+((@{armor_ballistic3}+0)*@{armor_flag3})" />
 <input type="hidden" name="attr_general_armor"
@@ -2663,6 +2667,7 @@
     'small_framed',
     'giant',
     'shoot_first',
+    'shared_vitality',
     'enable_profession',
     'enable_specialties',
     'armor_flag0',

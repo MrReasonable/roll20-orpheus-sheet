@@ -233,5 +233,6 @@
     "bashing-short": "B",
     "lethal-short": "L",
     "aggravated-short": "A",
-    "damage-type-short": "Type"
+    "damage-type-short": "Type",
+    "shared-vitality": "Shared Vitality"
 }
