@@ -457,10 +457,14 @@
 input.rollstyle[value="sheet"] ~ * button.rollstyle-sheet,
 input.rollstyle[value="attack"] ~ * button.rollstyle-attack,
 input.rollstyle[value="simple"] ~ * button.rollstyle-simple,
+input.rollstyle[value="damage"] ~ * button.rollstyle-damage,
 input.rolltype-select[value="chance"] ~ * button.rolltype-chance,
 input.rolltype-select[value="normal"] ~ * button.rolltype-normal,
 input.rolltype-select[value="9-again"] ~ * button.rolltype-9-again,
 input.rolltype-select[value="8-again"] ~ * button.rolltype-8-again,
+input.apply-damage-type[value="bashing"] ~ * button.apply-damage-type-bashing,
+input.apply-damage-type[value="lethal"] ~ * button.apply-damage-type-lethal,
+input.apply-damage-type[value="aggravated"] ~ * button.apply-damage-type-aggravated,
 input.highlight-next[value="1"] + button {
     color: black;
     text-shadow: 0px 0px 10px black;
@@ -656,7 +660,6 @@ input.highlight-next[value="1"] + button {
 .charsheet .columns {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.5em;
   flex-direction: column;
 }
 
@@ -691,6 +694,10 @@ input.highlight-next[value="1"] + button {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.ui-dialog .charsheet input[type="number"] {
+  width: 3em;
 }
 
 .charsheet .sheet-input-group > input[type="text"],
@@ -817,8 +824,8 @@ input.highlight-next[value="1"] + button {
   z-index: 100;
 }
 
-.charsheet .rollcontainer > button[type=roll],
 .charsheet .rollcontainer > button[name="act_roll"],
+.charsheet .rollcontainer > button[name="act_apply_damage"],
 button.sheet-toggle {
     /* Resetting user-agent styling */
     font-family: inherit;
@@ -868,6 +875,24 @@ button.sheet-toggle {
   grid-column: 1 / -1;
 }
 
+.diceroller-grid .damage-application label {
+  color: black;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 0;
+}
+
+.diceroller-grid .damage-application input[type="number"] {
+  width: 3em;
+  color: #404040;
+  margin: 0;
+  padding: 0 5px;
+  font-weight: normal;
+  font-size: 1em;
+}
+
+
 .diceroller-grid > .diceroller-modifiers label {
   color: #404040;
   margin: 0 5px;
@@ -883,7 +908,6 @@ button.sheet-toggle {
   font-size: 1em;
 }
 
-
 .diceroller-grid > .diceroller-options > * {
   padding: 2px 3px;
 }
@@ -896,7 +920,8 @@ button.sheet-toggle {
 
 .diceroller > input.rollstyle[value="sheet"] ~ * .rollstyle:not(.sheet),
 .diceroller > input.rollstyle[value="attack"] ~ * .rollstyle:not(.attack),
-.diceroller > input.rollstyle[value="simple"] ~ * .rollstyle:not(.simple) {
+.diceroller > input.rollstyle[value="simple"] ~ * .rollstyle:not(.simple),
+.diceroller > input.rollstyle[value="damage"] ~ * .rollstyle:not(.damage) {
   display: none;
 }
 
@@ -908,8 +933,19 @@ button.sheet-toggle {
   display: none;
 }
 
-.charsheet .rollcontainer > button[type=roll],
 .charsheet .rollcontainer > button[name="act_roll"] {
+  background: url('https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Chronicles%20of%20Darkness/images/die.png') no-repeat center;
+  background-size: contain;
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+  width: 100%;
+  padding: 0;
+}
+
+.charsheet .rollcontainer > button[name="act_apply_damage"] {
   background: url('https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Chronicles%20of%20Darkness/images/die.png') no-repeat center;
   background-size: contain;
   position: absolute;

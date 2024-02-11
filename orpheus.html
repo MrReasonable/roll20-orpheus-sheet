@@ -11,6 +11,7 @@
     <div class="diceroller">
         <input type="hidden" class="rollstyle" name="attr_rollstyle" value="sheet" />
         <input type="hidden" class="rolltype-select" name="attr_rolltype_select" value="normal" />
+        <input type="hidden" class="apply-damage-type" name="attr_apply_damage_type" value="bashing" />
         <div class="diceroller-grid">
             <input id="collapsible" class="toggle" type="checkbox" name="attr_rolltoggle">
             <label for="collapsible" class="lbl-toggle subheader" data-i18n="dice-roller-u">DICE ROLLER</label>
@@ -20,19 +21,29 @@
                     data-i18n="initiative">Initiative</button>
             </div>
             <div class="rollcontainer collapsible-content">
-                <button type="action" name="act_roll"></button>
+                <button type="action" name="act_roll" class="rollstyle sheet simple attack"></button>
+                <button type="action" name="act_apply_damage" class="rollstyle damage"></button>
             </div>
             <div class="diceroller-options collapsible-content">
-                <button type="action" class="toggle rollstyle-sheet" name="act_rollstyle_sheet"
-                    data-i18n="sheet-roll">Sheet
-                    Roll</button>
-                <button type="action" class="toggle rollstyle-attack" name="act_rollstyle_attack"
-                    data-i18n="attack-roll">Attack Roll</button>
-                <button type="action" class="toggle rollstyle-simple" name="act_rollstyle_simple"
-                    data-i18n="simple-roll">Simple Roll</button>
+                <div class="flex rows">
+                    <div class="flex columns">
+                        <button type="action" class="toggle rollstyle-sheet" name="act_rollstyle_sheet"
+                            data-i18n="sheet-roll">Sheet
+                            Roll</button>
+                        <button type="action" class="toggle rollstyle-attack" name="act_rollstyle_attack"
+                            data-i18n="attack-roll">Attack Roll</button>
+                        <button type="action" class="toggle rollstyle-simple" name="act_rollstyle_simple"
+                            data-i18n="simple-roll">Simple Roll</button>
+                    </div>
+                    <div class="horizontal-spacer"></div>
+                    <div class="flex columns">
+                        <button type="action" class="toggle rollstyle-damage" name="act_rollstyle_damage"
+                        data-i18n="apply-damage">Apply Damage</button>
+                    </div>
+                </div>
             </div>
             <div class="rolldisplay collapsible-content">
-                <div class=" flex columns flex-center">
+                <div class="flex columns flex-center">
                     <textarea class="rollstyle sheet" name="attr_rolldisplay"></textarea>
                     <textarea class="rollstyle attack" name="attr_active_attack_name"></textarea>
                     <div class="rollstyle simple flex flex-center j-space-around">
@@ -41,7 +52,7 @@
                     </div>
                 </div>
             </div>
-            <div class="diceroller-options collapsible-content">
+            <div class="diceroller-options collapsible-content rollstyle simple attack sheet">
                 <div class="flex rows">
                     <div class="flex columns">
                         <button type="action" class="toggle rolltype-normal" name="act_rolltype_select_normal"
@@ -65,11 +76,28 @@
                     </div>
                 </div>
             </div>
-            <div class="diceroller-modifiers collapsible-content">
+            <div class="diceroller-options collapsible-content rollstyle damage">
+                <div class="flex rows">
+                    <div class="flex columns">
+                        <button type="action" class="toggle apply-damage-type-bashing" name="act_apply_damage_type_bashing"
+                            data-i18n="bashing">Bashing</button>
+                        <button type="action" class="toggle apply-damage-type-lethal" name="act_apply_damage_type_lethal"
+                            data-i18n="lethal">Lethal</button>
+                        <button type="action" class="toggle apply-damage-type-aggravated" name="act_apply_damage_type_aggravated"
+                            data-i18n="aggravated">Aggravated</button>
+                    </div>
+                    <div class="horizontal-spacer"></div>
+                    <div class="flex rows damage-application">
+                        <label for="apply_damage_amount" data-i18n="amount">Amount</label><input type="number"
+                        id="apply_damage_amount" name="attr_apply_damage_amount" value="0" />
+                    </div>
+                </div>
+            </div>
+            <div class="diceroller-modifiers collapsible-content rollstyle attack sheet simple">
                 <div class="flex">
                     <label for="rollmodify_modifier" data-i18n="modifiers" class="rollstyle attack sheet">Modifiers</label><input type="number"
                         class="rollstyle attack sheet" id="rollmodify_modifier" name="attr_rollmodify_modifier" value="0" />
-                    <label for="rollreason" data-i18n="reason">Reason</label><input type="text" id="rollreason"
+                    <label for="rollreason" class="rollstyle attack sheet simple" data-i18n="reason">Reason</label><input class="rollstyle attack sheet simple" type="text" id="rollreason"
                         name="attr_rollreason" value="" />
                 </div>
             </div>
@@ -93,6 +121,7 @@
                     <div class="input-label">
                         <span data-i18n="shade">Shade</span>:
                     </div>
+                    <input type="hidden" name="attr_shade" value="none" />
                     <select name="attr_shade" class="select">
                         <option value="none" selected>---</option>
                         <option value="banshee" data-i18n="banshee">Banshee</option>
@@ -133,6 +162,7 @@
                     <div class="input-label">
                         <span data-i18n="lament">Lament</span>:
                     </div>
+                    <input type="hidden" name="attr_lament" value="none" />
                     <select name="attr_lament" class="select">
                         <option value="none" selected>---</option>
                         <option value="skimmer" data-i18n="skimmer">Skimmer</option>
@@ -2941,8 +2971,8 @@
   const updateIncorporeal = () => {
     getAttrs(['lament', 'projected'], (v) => {
       const lament = v.lament || ''
-      const projected = v.projected || ''
-      const incorporeal = lament === 'spirit' || lament === 'hue' || projected
+      const projected = parseInt(v.projected) || 0
+      const incorporeal = lament === 'spirit' || lament === 'hue' || projected === 1 ? 1 : 0
       setAttrs({
         incorporeal,
       })
@@ -2957,6 +2987,7 @@
     'health',
     'selected_attack',
     'rollstyle',
+    ...['wound_penalty_'].flatMap((attr) => [...new Array(3).keys()].map((i) => `${attr}${i + 1}`)),
     ...[
       '_initiative',
       '_strength',
@@ -3007,11 +3038,17 @@
       const ironStamina = parseInt(v.iron_stamina, 10)
 
       const woundPenalty = [...new Array(3).keys()]
-        .map((i) => v[`healthbox_${v.health - i}`])
-        .reduce((penalty, healthAttr) => {
-          const woundPenalty = isCorporeal && healthAttr !== 0 ? -1 : 0
-          return Math.min(ironStamina, penalty + woundPenalty)
-        }, 0)
+      .reduce((penalty, key) => {
+        if (penalty < 0) {
+            return penalty
+        }
+        console.log(key)
+        const healthBoxVal = parseInt(v[`healthbox_${v.health - key}`]) || 0
+        const woundPenaltyRating = parseInt(v[`wound_penalty_${3 - key}`]) || 0
+        console.log(woundPenaltyRating)
+        const woundPenalty = (isCorporeal && healthBoxVal !== 0) ? woundPenaltyRating : 0
+        return woundPenalty
+      }, 0)
 
       setAttrs({
         weapon_penalty: weaponStrPenalty,
@@ -3172,7 +3209,7 @@
     })
   }
 
-  const rollStyles = ['sheet', 'attack', 'simple']
+  const rollStyles = ['sheet', 'attack', 'simple', 'damage']
   rollStyles.forEach((rollStyle) => {
     on(`clicked:rollstyle_${rollStyle}`, (eventInfo) => {
       getAttrs(['rollstyle'], (v) => {
@@ -3199,6 +3236,15 @@
         rolltype_select: rolltype,
       })
     })
+  })
+
+  const applyDamageTypes = ['bashing', 'lethal', 'aggravated']
+  applyDamageTypes.forEach((damageType) => {
+    on(`clicked:apply_damage_type_${damageType}`, () => {
+        setAttrs({
+            apply_damage_type: damageType,
+        })
+      })
   })
 
   const rollmodifiers = ['rote', 'willpower', 'specialty']
@@ -3376,6 +3422,8 @@
       dice_pool_html: '',
       dice_pool: 0,
       rolldisplay: '',
+      apply_damage_type: 'bashing',
+      apply_damage_amount: 0,
       rollstyle: 'sheet',
       rolltype_select: 'normal',
       rollmodify_rote: '0',
@@ -3488,6 +3536,22 @@
     return generateDiceString(totalDiceToRoll, rollType, false, isRote)
   }
 
+  const applyDamageAttributes = [
+    'apply_damage_type',
+    'apply_damage_amount',
+    'current_vitality',
+    'current_spite',
+    'health',
+    ...[...Array(dotButtonCount).keys()].map((i) => `healthbox_${i + 1}`),
+  ]
+
+  on('clicked:apply_damage', () => {
+    getAttrs(applyDamageAttributes, (v) => {
+
+    })
+  })
+
+
   const rollDicePoolAttributes = [
     ...normalStats,
     'dice_pool_attributes',
@@ -3585,7 +3649,6 @@
             const countSuccesses = results.results.result.result
             const rolls = results.results.result.dice
             const totalDamage = countSuccesses + attackDamage
-            console.log(totalDamage)
 
             finishRoll(results.rollId, {
               successType: getTranslationByKey(
@@ -3620,6 +3683,11 @@
     ...[...Array(weaponCount).keys()].flatMap((i) =>
       repeatingWeaponTraits.map((t) => t.replace('%d', i + 1)),
     ),
+  ]
+
+  const version2Attrs = [
+    'lament',
+    'projected'
   ]
 
   const version1Attrs = [
@@ -3687,12 +3755,13 @@
     'weapon_size_%d': 'attack_size%d',
   }
 
-  const versionAttrs = [
+  const versionAttrs = _.uniq([
     'version',
     ...version1Attrs,
+    ...version2Attrs,
     ...repeatingV1Attrs,
     ...v0ArmorAttr,
-  ]
+  ])
 
   //Upgrade for new sheet versions
   const versionUpdate = () => {
@@ -3756,7 +3825,14 @@
         }
         attrs['version'] = 1
       }
-      console.log('Upgrading for V1:', attrs)
+      if(version < 2) {
+        const projected = (parseInt(v.projected) || 0) === 1
+        const isEphemeral = ['spirit', 'hue'].includes(v.lament)
+        const incorporeal = isEphemeral || projected ? 1 : 0
+        attrs['incorporeal'] = incorporeal
+        attrs['version'] = 2
+      }
+      console.log('Upgrading:', attrs)
       setAttrs(attrs)
     })
   }

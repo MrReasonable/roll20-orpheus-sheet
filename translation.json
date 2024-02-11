@@ -230,9 +230,14 @@
     "b-dmg": "Bashing",
     "l-dmg": "Lethal",
     "a-dmg": "Aggravated",
+    "bashing-dmg": "Bashing",
+    "lethal-dmg": "Lethal",
+    "aggravated-dmg": "Aggravated",
     "bashing-short": "B",
     "lethal-short": "L",
     "aggravated-short": "A",
     "damage-type-short": "Type",
-    "shared-vitality": "Shared Vitality"
+    "shared-vitality": "Shared Vitality",
+    "apply-damage": "Apply Damage",
+    "amount": "Amount"
 }
