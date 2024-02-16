@@ -1659,10 +1659,17 @@
                                             disabled="disabled" />
                                     </div>
                                 </div>
-                                <div class="sheet-input-group">
+                                <div class="derived">
                                     <span data-i18n="experience">Experience</span>
-                                    <span>:</span>
-                                    <input type="text" name="attr_experience">
+                                    <input type="number" class="experience-input" name="attr_experience" value="0">
+                                </div>
+                                <div class="derived">
+                                    <span data-i18n="experience-spent">Experience Spent</span>:
+                                    <input type="number" name="attr_show_experience_spent" disabled="disabled" value="@{experience_spent}">
+                                </div>
+                                <div class="derived">
+                                    <span data-i18n="total-experience">Total Experience</span>:
+                                    <input type="number" name="attr_show_total_experience" disabled="disabled" value="@{total_experience}">
                                 </div>
                                 <div>
                                     <div class="subheader">
@@ -2588,7 +2595,24 @@
   const speedStats = ['species_factor', 'fleet_of_foot']
   const defenseStats = ['defense_attr', 'defense_skill', 'defense_bonus']
   const initiativeStats = ['shoot_first']
-  const allStats = [
+
+  const experienceStatsMatcher = [
+    ...normalStats,
+    ...skillSpecializations,
+    'vitality',
+    'repeating_merit',
+    'repeating_horror',
+    'experience',
+  ]
+
+  const experienceStatsUpdater = [
+    ...normalStats,
+    ...skillSpecializations,
+    'vitality',
+    'experience',
+  ]
+
+  const allStats = _.uniq([
     ...normalStats,
     ...skillSpecializations,
     ...sizeStats,
@@ -2596,7 +2620,8 @@
     ...defenseStats,
     ...initiativeStats,
     ...woundPenaltyStats,
-  ]
+    ...experienceStatsMatcher,
+  ])
 
   const derivedHealthStats = [...sizeStats, 'stamina']
   const derivedSpeedStats = ['dexterity', 'strength', ...speedStats]
@@ -2634,11 +2659,17 @@
         [derivedWillpowerStats, updateWillpower],
         [derivedWoundPenaltyStats, updateWoundPenalties],
         [skillSpecializations, updateSpecializationVisible],
+        [normalStats, updateDicePool],
+        [
+          experienceStatsMatcher,
+          updateExperience,
+          (stat) =>
+            experienceStatsMatcher.filter((s) => stat.startsWith(s)).length > 0,
+        ],
       ]
-      const source = eventInfo.sourceAttribute
       fixMaxOverflow(eventInfo)
       updateDicePool()
-      updateStats(statUpdaters, source)
+      updateStats(statUpdaters, eventInfo)
     })
 
     on(`clicked:${attr}`, () => {
@@ -2661,10 +2692,11 @@
     }
   }
 
-  const updateStats = (statUpdaters, source) => {
-    statUpdaters.forEach(([stats, updater]) => {
-      if (stats.includes(source)) {
-        updater()
+  const updateStats = (statUpdaters, eventInfo) => {
+    const source = eventInfo.sourceAttribute
+    statUpdaters.forEach(([stats, updater, testFn]) => {
+      if ((testFn !== undefined && testFn(source)) || stats.includes(source)) {
+        updater(eventInfo)
       }
     })
   }
@@ -2786,6 +2818,100 @@
       })
     })
   })
+
+  const xpCosts = {
+    attributes: 4,
+    skills: 2,
+    specializations: 1,
+    merits: 1,
+    vitality: 5,
+    horrors: 7,
+  }
+
+  const startingDots = {
+    attributes: 21,
+    skills: 22,
+    specializations: 3,
+    merits: 7,
+    vitality: 6,
+    horrors: 1
+  }
+
+  const startingXpCosts = {
+    attributes: startingDots.attributes * xpCosts.attributes,
+    skills: startingDots.skills * xpCosts.skills,
+    specializations: startingDots.specializations * xpCosts.specializations,
+    merits: startingDots.merits * xpCosts.merits,
+    vitality: startingDots.vitality * xpCosts.vitality,
+    horrors: startingDots.horrors * xpCosts.horrors
+  }
+
+  const updateExperience = () => {
+    getSectionIDs('repeating_merit', function (idarray) {
+      const meritIDs = idarray.map((id) => `repeating_merit_${id}_merit`)
+      getSectionIDs('repeating_horror', function (idarray) {
+        const horrorCount = idarray.length
+        getAttrs([...experienceStatsUpdater, ...meritIDs], (v) => {
+          const experienceDistribution = _.chain(v).reduce(
+            (acc, value, key) => {
+              if (key === 'vitality' && value !== undefined) {
+                return {...acc, vitality: parseInt(value) * xpCosts.vitality}
+              }
+              if (key.startsWith('specialization_') && value !== undefined) {
+                return {...acc, specializations: (Math.min(value.length, value.split(',').length) * xpCosts.specializations + (acc.specializations || 0))}
+              }
+              if (key.startsWith('repeating_merit') && value !== undefined) {
+                return {...acc, merits: parseInt(value) * xpCosts.merits + (acc.merits || 0)}
+              }
+              if (attributes.includes(key) && value !== undefined) {
+                return {...acc, attributes: parseInt(value) * xpCosts.attributes + (acc.attributes || 0)}
+              }
+              if (skills.includes(key) && value !== undefined) {
+                return {...acc, skills: parseInt(value) * xpCosts.skills + (acc.skills || 0)}
+              }
+              return acc
+            },
+            {horrors: horrorCount * 7},
+          ).reduce(
+            (acc, value, key) => {
+                if(key === 'vitality') {
+                    return {...acc, 'vitality': Math.max(value - startingXpCosts.vitality, 0)}
+                }
+                if(key === 'specializations') {
+                    return {...acc, 'specializations': Math.max(value - startingXpCosts.specializations, 0)}
+                }
+                if(key === 'horrors') {
+                    return {...acc, 'horrors': Math.max(value - startingXpCosts.horrors, 0)}
+                }
+                if(key === 'merits') {
+                    return {...acc, 'merits': Math.max(value - startingXpCosts.merits, 0)}
+                }
+                if(key === 'attributes') {
+                    return {...acc, 'attributes': Math.max(value - startingXpCosts.attributes, 0)}
+                }
+                if(key === 'skills') {
+                    return {...acc, 'skills': Math.max(value - startingXpCosts.skills, 0)}
+                }
+                return acc
+            },
+            {}
+          ).value()
+          const experienceSpent = _.reduce(
+            experienceDistribution,
+            (acc, value) => acc + value,
+            0,
+          )
+          console.log(experienceDistribution)
+          console.log(experienceSpent)
+
+          setAttrs({
+            experience_spent: experienceSpent,
+            total_experience: (parseInt(v.experience) || 0) + experienceSpent,
+          })
+        })
+      })
+    })
+  }
 
   const updateHealth = () => {
     getAttrs(
@@ -2972,7 +3098,8 @@
     getAttrs(['lament', 'projected'], (v) => {
       const lament = v.lament || ''
       const projected = parseInt(v.projected) || 0
-      const incorporeal = lament === 'spirit' || lament === 'hue' || projected === 1 ? 1 : 0
+      const incorporeal =
+        lament === 'spirit' || lament === 'hue' || projected === 1 ? 1 : 0
       setAttrs({
         incorporeal,
       })
@@ -2987,7 +3114,9 @@
     'health',
     'selected_attack',
     'rollstyle',
-    ...['wound_penalty_'].flatMap((attr) => [...new Array(3).keys()].map((i) => `${attr}${i + 1}`)),
+    ...['wound_penalty_'].flatMap((attr) =>
+      [...new Array(3).keys()].map((i) => `${attr}${i + 1}`),
+    ),
     ...[
       '_initiative',
       '_strength',
@@ -3037,16 +3166,14 @@
 
       const ironStamina = parseInt(v.iron_stamina, 10)
 
-      const woundPenalty = [...new Array(3).keys()]
-      .reduce((penalty, key) => {
+      const woundPenalty = [...new Array(3).keys()].reduce((penalty, key) => {
         if (penalty < 0) {
-            return penalty
+          return penalty
         }
-        console.log(key)
         const healthBoxVal = parseInt(v[`healthbox_${v.health - key}`]) || 0
         const woundPenaltyRating = parseInt(v[`wound_penalty_${3 - key}`]) || 0
-        console.log(woundPenaltyRating)
-        const woundPenalty = (isCorporeal && healthBoxVal !== 0) ? woundPenaltyRating : 0
+        const woundPenalty =
+          isCorporeal && healthBoxVal !== 0 ? woundPenaltyRating : 0
         return woundPenalty
       }, 0)
 
@@ -3241,10 +3368,10 @@
   const applyDamageTypes = ['bashing', 'lethal', 'aggravated']
   applyDamageTypes.forEach((damageType) => {
     on(`clicked:apply_damage_type_${damageType}`, () => {
-        setAttrs({
-            apply_damage_type: damageType,
-        })
+      setAttrs({
+        apply_damage_type: damageType,
       })
+    })
   })
 
   const rollmodifiers = ['rote', 'willpower', 'specialty']
@@ -3546,11 +3673,8 @@
   ]
 
   on('clicked:apply_damage', () => {
-    getAttrs(applyDamageAttributes, (v) => {
-
-    })
+    getAttrs(applyDamageAttributes, (v) => {})
   })
-
 
   const rollDicePoolAttributes = [
     ...normalStats,
@@ -3685,10 +3809,7 @@
     ),
   ]
 
-  const version2Attrs = [
-    'lament',
-    'projected'
-  ]
+  const version2Attrs = ['lament', 'projected']
 
   const version1Attrs = [
     'int',
@@ -3825,7 +3946,7 @@
         }
         attrs['version'] = 1
       }
-      if(version < 2) {
+      if (version < 2) {
         const projected = (parseInt(v.projected) || 0) === 1
         const isEphemeral = ['spirit', 'hue'].includes(v.lament)
         const incorporeal = isEphemeral || projected ? 1 : 0
@@ -3846,6 +3967,7 @@
     updateInitiative()
     updateWillpower()
     updateSpecializationVisible()
+    updateExperience()
     const resetRollFlagAttrs = resetRollFlags()
 
     setAttrs(

@@ -795,6 +795,10 @@ input.highlight-next[value="1"] + button {
   height: 18px;
 }
 
+.derived input.experience-input[type=number] {
+  border: 1px solid black;
+}
+
 .charsheet input[type=text] {
   width: 165px;
   font-family: "Courier";
@@ -996,6 +1000,7 @@ button.sheet-toggle {
   color: black;
   margin-bottom: 0;
   width: auto;
+  padding: 0 5px;
 }
 
 .charsheet label.lbl-toggle:hover {
@@ -1019,13 +1024,13 @@ button.sheet-toggle {
 }
 
 .charsheet .collapsible-content {
-  max-height: 0px;
+  display: none;
   overflow: hidden;
   transition: max-height .25s ease-in-out;
 }
 
 .charsheet .toggle:checked + .lbl-toggle ~ .collapsible-content {
-  max-height: 350px;
+  display: block;
 }
 
 .charsheet .toggle:checked+.lbl-toggle {
