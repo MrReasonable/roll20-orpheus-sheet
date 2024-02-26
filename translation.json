@@ -241,5 +241,6 @@
   "apply-damage": "Apply Damage",
   "amount": "Amount",
   "experience-spent": "Exp Spent",
-  "total-experience": "Total Exp"
+  "total-experience": "Total Exp",
+  "deaths-respite": "Death's Respite"
 }

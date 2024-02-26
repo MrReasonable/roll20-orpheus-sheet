@@ -1566,6 +1566,57 @@
                                     </div>
                                 </div>
                                 <div class="el_spacer"></div>
+                                <div class="ne-mortal">
+                                  <div class="subheader">
+                                      <h3 data-i18n="deaths-respite">Death's Respite</h3>
+                                  </div>
+                                  <div class="checkboxes">
+                                    <input type="hidden" name="attr_max_deaths_respite" class="if" value="0" />
+                                    <input type="hidden" name="attr_current_deaths_respite" class="checked-if" value="0" />
+                                    <div
+                                        class="checkbox ne-0 ge-5 ge-4 ge-3 ge-2 ge-1">
+                                        <button type="action" name="act_deaths_respite_box1"></button>
+                                    </div>
+                                    <div
+                                        class="checkbox ne-0 ne-1 ge-5 ge-4 ge-3 ge-2">
+                                        <button type="action" name="act_deaths_respite_box2"></button>
+                                    </div>
+                                    <div
+                                        class="checkbox ne-0 ne-1 ne-2 ge-5 ge-4 ge-3">
+                                        <button type="action" name="act_deaths_respite_box3"></button>
+                                    </div>
+                                    <div
+                                        class="checkbox ne-0 ne-1 ne-2 ne-3 ge-5 ge-4">
+                                        <button type="action" name="act_deaths_respite_box4"></button>
+                                    </div>
+                                    <div
+                                        class="checkbox ne-0 ne-1 ne-2 ne-3 ne-4 ge-5">
+                                        <button type="action" name="act_deaths_respite_box5"></button>
+                                    </div>
+                                    <div
+                                    class="checkbox ne-0 ne-1 ne-2 ne-3 ne-4 ne-5 ge-15 ge-14 ge-13 ge-12 ge-11 ge-10 ge-9 ge-8 ge-7 ge-6">
+                                    <button type="action" name="act_deaths_respite_box6"></button>
+                                </div>
+                                <div
+                                    class="checkbox ne-0 ne-1 ne-2 ne-3 ne-4 ne-5 ne-6 ge-15 ge-14 ge-13 ge-12 ge-11 ge-10 ge-9 ge-8 ge-7">
+                                    <button type="action" name="act_deaths_respite_box7"></button>
+                                </div>
+                                <div
+                                    class="checkbox ne-0 ne-1 ne-2 ne-3 ne-4 ne-5 ne-6 ne-7 ge-15 ge-14 ge-13 ge-12 ge-11 ge-10 ge-9 ge-8 ne-hue">
+                                    <button type="action" name="act_deaths_respite_box8"></button>
+                                </div>
+                                <div
+                                    class="checkbox ne-0 ne-1 ne-2 ne-3 ne-4 ne-5 ne-6 ne-7 ne-8 ge-15 ge-14 ge-13 ge-12 ge-11 ge-10 ge-9 ne-hue">
+                                    <button type="action" name="act_deaths_respite_box9"></button>
+                                </div>
+                                <div
+                                    class="checkbox ne-0 ne-1 ne-2 ne-3 ne-4 ne-5 ne-6 ne-7 ne-8 ne-9 ge-15 ge-14 ge-13 ge-12 ge-11 ge-10 ne-hue">
+                                    <button type="action" name="act_deaths_respite_box10"></button>
+                                </div>
+
+                                  </div>
+                                </div>
+                                <div class="el_spacer"></div>
                                 <input type="hidden" name="attr_shade" class="shade-if" value="spectre" />
                                 <div class="ne-mortal">
                                     <div class="subheader">
@@ -1642,7 +1693,7 @@
                                     </div>
                                     <div class="derived">
                                         <span data-i18n="defense">Defense</span>:<input type="number"
-                                            name="attr_defense" value="@{defense_base}+@{defense_penalty}"
+                                            name="attr_defense" value="@{defense_base}+@{defense_bonus}+@{defense_penalty}"
                                             disabled="disabled" />
                                     </div>
                                     <div class="derived">
@@ -2591,6 +2642,7 @@
   const skillSpecializations = skills.map((skill) => `specialization_${skill}`)
   const normalStats = [...attributes, ...skills]
   const sizeStats = ['base_size', 'giant', 'small_framed']
+  const deathsRespiteStats = ['stamina', 'giant']
   const woundPenaltyStats = ['iron_stamina', 'incorporeal']
   const speedStats = ['species_factor', 'fleet_of_foot']
   const defenseStats = ['defense_attr', 'defense_skill', 'defense_bonus']
@@ -2660,6 +2712,7 @@
         [derivedWoundPenaltyStats, updateWoundPenalties],
         [skillSpecializations, updateSpecializationVisible],
         [normalStats, updateDicePool],
+        [deathsRespiteStats, updateMaxDeathsRespite],
         [
           experienceStatsMatcher,
           updateExperience,
@@ -2794,7 +2847,7 @@
     })
   })
 
-  const currentValueSeriesAttributes = ['willpower', 'vitality', 'spite']
+  const currentValueSeriesAttributes = ['willpower', 'vitality', 'spite', 'deaths_respite']
   const currentValueAttributes = [
     ...currentValueSeriesAttributes.flatMap((currentValueSeriesAttribute) =>
       new Array(30)
@@ -2808,6 +2861,7 @@
       const [attribute, value] = currentValueAttribute.split('_box')
       const attr = `current_${attribute}`
       const clickedValue = parseInt(value)
+      console.log(attr, clickedValue)
       getAttrs([attr], (v) => {
         const currentValue = parseInt(v[attr])
         const newValue =
@@ -2902,7 +2956,6 @@
             0,
           )
           console.log(experienceDistribution)
-          console.log(experienceSpent)
 
           setAttrs({
             experience_spent: experienceSpent,
@@ -3958,6 +4011,18 @@
     })
   }
 
+  const updateMaxDeathsRespite = () => {
+    getAttrs(['giant', 'stamina'], (v) => {
+      const giant = parseInt(v.giant) || 0
+      const stamina = parseInt(v.stamina) || 0
+      const maxDeathsRespite = stamina + (stamina * giant)
+      console.log(`maxDeathsRespite: ${maxDeathsRespite}`)
+      setAttrs({
+        max_deaths_respite: maxDeathsRespite,
+      })
+    })
+  }
+
   on('sheet:opened', () => {
     versionUpdate()
     updateHealth()
@@ -3968,6 +4033,7 @@
     updateWillpower()
     updateSpecializationVisible()
     updateExperience()
+    updateMaxDeathsRespite()
     const resetRollFlagAttrs = resetRollFlags()
 
     setAttrs(
